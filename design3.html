@@ -1,0 +1,465 @@
+<!doctype html>
+<!-- web-dev/freelance/websites/nail-me/design3.html · ดราฟต์แบบ 3 "Kinari & Shu" (หน้าเดียว TH/EN) · ดู DESIGN.md ข้อ 11 -->
+<html lang="th" data-lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nail me (San Chao Market) | ทำเล็บ สปาเท้า สุราษฎร์ธานี</title>
+  <meta name="description" content="Nail me ร้านทำเล็บ สปาเท้า ตัด สระ ไดร์ ที่ San Chao Market สุราษฎร์ธานี จุดแวะเติมความสวยหลังเลิกงานหรือหลังเดินเที่ยว">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nail me (San Chao Market) · Beauty & Relaxation">
+  <meta property="og:description" content="Your nail stop in Surat Thani: nails, foot spa, cut, wash & blow-dry.">
+  <meta name="theme-color" content="#FAF8F3">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23B8462E'/%3E%3Ctext x='32' y='42' font-family='sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23FAF8F3'%3En%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kinari: '#FAF8F3', ink: '#26241F', muted: '#6A665E', line: '#DAD5CB',
+            shu: '#B8462E', 'ai-soft': '#E6E9EC', 'shu-soft': '#F3E3DD'
+          },
+          fontFamily: {
+            display: ['"Zen Kaku Gothic New"', 'Anuphan', 'sans-serif'],
+            body: ['Anuphan', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --kinari:#FAF8F3; --ink:#26241F; --muted:#6A665E; --line:#DAD5CB; --shu:#B8462E; --ai-soft:#E6E9EC; --shu-soft:#F3E3DD;
+      --ease: cubic-bezier(.32,.72,0,1);
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-size: 16px; line-height: 1.75; font-weight: 400; }
+    @media (min-width: 768px) { body { font-size: 17px; } }
+    h1, h2, h3 { line-height: 1.3; text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    /* เส้นกริดแนวตั้งจาง ๆ ทั้งหน้า (จุดจำของแบบนี้) */
+    .grid-lines { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .grid-lines > div { height: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .grid-lines span { border-left: 1px solid rgba(38,36,31,.05); }
+    .grid-lines span:last-child { border-right: 1px solid rgba(38,36,31,.05); }
+    @media (min-width: 768px) { .grid-lines > div { padding: 0 32px; grid-template-columns: repeat(6, 1fr); } }
+
+    .skip { position: absolute; left: 16px; top: -64px; z-index: 70; background: var(--ink); color: var(--kinari); padding: 8px 16px; border-radius: 8px; }
+    .skip:focus { top: 16px; }
+    :focus-visible { outline: 2px solid var(--shu); outline-offset: 4px; border-radius: 4px; }
+
+    .site-header { background: rgba(250,248,243,.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color .4s var(--ease); }
+    .site-header.is-scrolled { border-color: var(--line); }
+    .nav-link { padding: 8px 0; color: var(--muted); }
+    .nav-link:hover { color: var(--ink); }
+
+    .lang-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; padding: 4px; }
+    .lang-toggle button { min-width: 40px; height: 32px; border-radius: 4px; font-size: 13px; letter-spacing: .08em; color: var(--muted); transition: background-color .3s var(--ease), color .3s var(--ease); }
+    .lang-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--kinari); }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 4px; font-size: 15px; font-weight: 500; white-space: nowrap; transition: transform .3s var(--ease), background-color .3s var(--ease); }
+    .btn i { font-size: 20px; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-lg { height: 56px; padding: 0 32px; }
+    .btn-shu { background: var(--shu); color: var(--kinari); }
+    .btn-shu:hover { background: #A33D27; }
+    .btn-line { border: 1px solid var(--ink); color: var(--ink); background: var(--kinari); }
+    .btn-line:hover { background: #F1EEE7; }
+    .btn-on-ink { border: 1px solid rgba(250,248,243,.5); color: var(--kinari); }
+
+    .label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .label::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--shu); margin-right: 12px; vertical-align: 1px; }
+
+    html[lang="th"] .label[data-i18n] { letter-spacing: .02em; }
+    .demo { display: inline-flex; align-items: center; height: 24px; padding: 0 12px; border: 1px dashed var(--shu); border-radius: 4px; font-size: 12px; line-height: 1; color: var(--shu); letter-spacing: .04em; vertical-align: middle; }
+
+    /* ตัวอักษรใหญ่ใน hero */
+    .wordmark { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: clamp(88px, 21vw, 248px); line-height: .9; letter-spacing: -.04em; }
+    .hanko { width: 48px; padding: 16px 0; white-space: nowrap; background: var(--shu); color: var(--kinari); border-radius: 4px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; font-size: 12px; letter-spacing: .2em; font-weight: 500; transform: rotate(4deg); }
+
+    .index-row { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--line); transition: background-color .3s var(--ease); }
+    .index-row:hover { background: rgba(184,70,46,.04); }
+    .index-row .n { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; color: var(--shu); }
+
+    /* คูปอง */
+    .ticket { position: relative; background: var(--shu-soft); border-radius: 8px; }
+    .ticket::before, .ticket::after { content: ""; position: absolute; top: 50%; width: 32px; height: 32px; border-radius: 50%; background: var(--kinari); transform: translateY(-50%); }
+    .ticket::before { left: -16px; } .ticket::after { right: -16px; }
+    .ticket-cut { border-left: 2px dashed rgba(184,70,46,.4); }
+    @media (max-width: 767px) { .ticket-cut { border-left: 0; border-top: 2px dashed rgba(184,70,46,.4); } .ticket::before, .ticket::after { top: auto; bottom: 88px; transform: none; } }
+
+    .ph-img { overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-start; padding: 16px; }
+    .ph-img:not(.absolute) { position: relative; }
+    .ph-img span { position: relative; font-size: 13px; line-height: 1.6; color: var(--ink); background: rgba(250,248,243,.9); padding: 4px 12px; border-radius: 4px; }
+
+    .price-table { width: 100%; border-collapse: collapse; }
+    .price-table th, .price-table td { text-align: left; padding: 16px 0; border-bottom: 1px solid var(--line); font-weight: 400; }
+    .price-table td:last-child { text-align: right; font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; white-space: nowrap; }
+    .price-table .cat th { padding-top: 32px; font-family: "Zen Kaku Gothic New", Anuphan, sans-serif; font-weight: 700; font-size: 20px; border-bottom: 2px solid var(--ink); }
+
+    .map-ph { background-color: #E3E0D8; background-image: linear-gradient(rgba(38,36,31,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(38,36,31,.07) 1px, transparent 1px); background-size: 32px 32px; }
+
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.is-in { opacity: 1; transform: none; }
+    [data-stagger] { opacity: 0; transform: translateY(24px); animation: rise .9s var(--ease) forwards; animation-delay: var(--d, 0ms); }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal, [data-stagger] { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NailSalon",
+    "name": "Nail me (San Chao Market)",
+    "description": "Beauty & Relaxation · Your nail stop in Surat Thani. Nails, foot spa, cut, wash & blow-dry.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Surat Thani", "addressCountry": "TH" },
+    "sameAs": ["https://www.facebook.com/share/19eZVxAMZj/"]
+  }
+  </script>
+</head>
+
+<body class="bg-kinari text-ink font-body antialiased">
+  <div class="grid-lines" aria-hidden="true"><div><span></span><span></span><span></span><span></span><span class="hidden md:block"></span><span class="hidden md:block"></span></div></div>
+  <a href="#main" class="skip" data-i18n="skip">ข้ามไปเนื้อหา</a>
+  <div class="relative z-10 bg-ink text-kinari text-[12px] leading-[1.6] text-center px-4 py-2" data-i18n="draft">ดราฟต์แบบ 3 · ข้อความใน [ ] และป้าย DEMO รอข้อมูลจริงจากร้าน</div>
+  <div id="top-sentinel" aria-hidden="true"></div>
+
+  <header class="site-header sticky top-0 z-40">
+    <div class="mx-auto max-w-[1200px] px-4 md:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-2 whitespace-nowrap shrink-0 font-display font-bold text-[20px]" aria-label="Nail me (San Chao Market)">
+        <span class="w-3 h-3 bg-shu inline-block" aria-hidden="true"></span>Nail me
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-[15px]" aria-label="หลัก">
+        <a class="nav-link" href="#services" data-i18n="nav.services">บริการ</a>
+        <a class="nav-link" href="#gallery" data-i18n="nav.gallery">ผลงาน</a>
+        <a class="nav-link" href="#reviews" data-i18n="nav.reviews">รีวิว</a>
+        <a class="nav-link" href="#menu" data-i18n="nav.menu">ราคา</a>
+        <a class="nav-link" href="#visit" data-i18n="nav.visit">ที่ตั้งร้าน</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-set-lang="th" aria-pressed="true">TH</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <div class="hidden md:block">
+          <a class="btn btn-shu" href="#" data-todo="เบอร์ร้าน (tel:)" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
+        </div>
+        <button type="button" class="lg:hidden w-12 h-12 inline-flex items-center justify-center" aria-expanded="false" aria-controls="mobile-nav" data-menu-btn>
+          <i class="ph ph-list text-[24px]" aria-hidden="true"></i><span class="sr-only" data-i18n="nav.open">เปิดเมนู</span>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="lg:hidden border-t border-line" hidden aria-label="มือถือ">
+      <ul class="mx-auto max-w-[1200px] px-4 md:px-8 py-4 grid gap-2 text-[17px]">
+        <li><a class="flex items-center h-12" href="#services" data-i18n="nav.services">บริการ</a></li>
+        <li><a class="flex items-center h-12" href="#gallery" data-i18n="nav.gallery">ผลงาน</a></li>
+        <li><a class="flex items-center h-12" href="#reviews" data-i18n="nav.reviews">รีวิว</a></li>
+        <li><a class="flex items-center h-12" href="#menu" data-i18n="nav.menu">ราคา</a></li>
+        <li><a class="flex items-center h-12" href="#visit" data-i18n="nav.visit">ที่ตั้งร้าน</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="relative z-10">
+    <!-- ===== Hero ตัวอักษรนำ + ดัชนีบริการ ===== -->
+    <section id="top">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8 pt-10 md:pt-16 pb-14 md:pb-20">
+        <div class="flex items-start justify-between gap-6">
+          <p class="label" data-stagger style="--d:0ms">Beauty &amp; Relaxation</p>
+          <div class="hanko shrink-0" data-stagger style="--d:480ms" aria-hidden="true">SURAT THANI</div>
+        </div>
+        <h1 class="mt-2" data-stagger style="--d:120ms">
+          <span class="wordmark block">Nail me</span>
+          <span class="block font-display font-bold text-[clamp(24px,3.6vw,40px)] mt-6" data-i18n="d3.title">จุดแวะเติมความสวย ในสุราษฎร์ธานี</span>
+        </h1>
+
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 mt-10 md:mt-14">
+          <div class="lg:col-span-5" data-stagger style="--d:240ms">
+            <p class="text-muted max-w-[30em]" data-i18n="d3.sub">ทำเล็บ สปาเท้า ตัด สระ ไดร์ ที่ San Chao Market แวะได้ทั้งหลังเลิกงานและหลังเดินเที่ยว</p>
+            <div class="flex flex-wrap gap-4 mt-8">
+              <a class="btn btn-shu btn-lg" href="#" data-todo="เบอร์ร้าน (tel:)" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
+              <a class="btn btn-line btn-lg" href="#" data-todo="LINE ID ใหม่" data-track="line"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span data-i18n="cta.line">ทัก LINE</span></a>
+            </div>
+          </div>
+          <!-- ดัชนีบริการ (แทน section บริการแยก) -->
+          <div id="services" class="lg:col-span-6 lg:col-start-7" data-stagger style="--d:360ms">
+            <p class="label mb-4">Services</p>
+            <a href="#menu" class="index-row">
+              <span class="n text-[20px]">01</span>
+              <span><span class="block font-display font-bold text-[20px]" data-i18n="s1.title">ทำเล็บ</span><span class="block text-muted text-[15px]" data-i18n="s1.desc">ดูแลเล็บมือและเล็บเท้า ให้สวยพร้อมทุกโอกาส</span></span>
+              <span class="text-[12px] text-shu border border-shu/40 rounded px-2" data-i18n="services.tag">บริการเด่น</span>
+            </a>
+            <a href="#menu" class="index-row">
+              <span class="n text-[20px]">02</span>
+              <span><span class="block font-display font-bold text-[20px]" data-i18n="s2.title">สปาเท้า</span><span class="block text-muted text-[15px]" data-i18n="s2.desc">แช่เท้า ผ่อนคลาย หลังวันยาว ๆ ของการทำงานหรือเดินเที่ยว</span></span>
+              <span class="text-[12px] text-shu border border-shu/40 rounded px-2" data-i18n="services.tag">บริการเด่น</span>
+            </a>
+            <a href="#menu" class="index-row border-b border-line">
+              <span class="n text-[20px]">03</span>
+              <span><span class="block font-display font-bold text-[20px]" data-i18n="s3.title">ตัด สระ ไดร์</span><span class="block text-muted text-[15px]" data-i18n="s3.desc">เติมความสดชื่นให้ผม ในที่เดียวกับที่ทำเล็บ</span></span>
+              <i class="ph ph-arrow-down-right text-muted" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== โปรโมชั่น (คูปอง) ===== -->
+    <section id="promo" class="pb-14 md:pb-20" aria-labelledby="promo-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="ticket grid md:grid-cols-12 reveal">
+          <div class="md:col-span-8 p-6 md:p-10">
+            <div class="flex flex-wrap items-center gap-4">
+              <p class="label !text-shu">Promotion</p>
+              <span class="demo" data-i18n="demo">DEMO · รอข้อมูลจริง</span>
+            </div>
+            <h2 id="promo-title" class="font-display font-bold text-[28px] md:text-[36px] mt-4" data-i18n="promo.title">[ชื่อโปรโมชั่นจากร้าน]</h2>
+            <p class="mt-2 text-ink" data-i18n="promo.desc">[รายละเอียดโปร · เงื่อนไข · วันหมดเขต]</p>
+          </div>
+          <div class="ticket-cut md:col-span-4 p-6 md:p-10 flex items-center md:justify-center">
+            <a class="btn btn-shu btn-lg w-full md:w-auto" href="#" data-todo="เบอร์ร้าน (tel:)" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="promo.cta">โทรจองโปรนี้</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ผลงาน (กริด 3 คอลัมน์ มีเลขภาพ) ===== -->
+    <section id="gallery" class="py-14 md:py-20 border-t border-line" aria-labelledby="gallery-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
+          <div>
+            <p class="label">Gallery</p>
+            <h2 id="gallery-title" class="font-display font-bold text-[clamp(28px,4vw,44px)] mt-2" data-i18n="gallery.title">ผลงานจากร้าน</h2>
+          </div>
+          <span class="demo" data-i18n="demo">DEMO · รอข้อมูลจริง</span>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <figure class="reveal"><div class="ph-img aspect-square bg-shu-soft"><span data-i18n="ph.g1">ผลงานเล็บเด่นของร้าน</span></div><figcaption class="text-[12px] text-muted mt-2 tracking-[.1em]">FIG. 01</figcaption></figure>
+          <figure class="reveal"><div class="ph-img aspect-square bg-ai-soft"><span data-i18n="ph.g3">สปาเท้า</span></div><figcaption class="text-[12px] text-muted mt-2 tracking-[.1em]">FIG. 02</figcaption></figure>
+          <figure class="reveal"><div class="ph-img aspect-square" style="background:#ECE7DD"><span data-i18n="ph.g4">บรรยากาศในร้าน</span></div><figcaption class="text-[12px] text-muted mt-2 tracking-[.1em]">FIG. 03</figcaption></figure>
+          <figure class="reveal"><div class="ph-img aspect-square" style="background:#ECE7DD"><span data-i18n="ph.g2">ผลงานเล็บ</span></div><figcaption class="text-[12px] text-muted mt-2 tracking-[.1em]">FIG. 04</figcaption></figure>
+          <figure class="reveal"><div class="ph-img aspect-square bg-shu-soft"><span data-i18n="ph.g2">ผลงานเล็บ</span></div><figcaption class="text-[12px] text-muted mt-2 tracking-[.1em]">FIG. 05</figcaption></figure>
+          <figure class="reveal"><div class="ph-img aspect-square bg-ai-soft"><span data-i18n="ph.g5">ทำผม</span></div><figcaption class="text-[12px] text-muted mt-2 tracking-[.1em]">FIG. 06</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== รีวิว (3 คอลัมน์ พื้นฟ้าเทา) ===== -->
+    <section id="reviews" class="bg-ai-soft py-14 md:py-20" aria-labelledby="reviews-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
+          <div>
+            <p class="label">Guest reviews</p>
+            <h2 id="reviews-title" class="font-display font-bold text-[clamp(28px,4vw,44px)] mt-2" data-i18n="reviews.title">เสียงจากลูกค้า</h2>
+          </div>
+          <span class="demo" data-i18n="demo">DEMO · รอข้อมูลจริง</span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <figure class="bg-kinari p-6 md:p-8 reveal">
+            <span class="font-display font-bold text-shu text-[48px] leading-none" aria-hidden="true">“</span>
+            <blockquote class="mt-2 text-[17px]" data-i18n="r1.quoteShort">[รีวิวจริงจากลูกค้า แคปจากเพจหรือ Google]</blockquote>
+            <figcaption class="mt-6 text-[14px] text-muted" data-i18n="r1.name">— [ชื่อลูกค้า] · Facebook</figcaption>
+          </figure>
+          <figure class="bg-kinari p-6 md:p-8 reveal">
+            <span class="font-display font-bold text-shu text-[48px] leading-none" aria-hidden="true">“</span>
+            <blockquote class="mt-2 text-[17px]" data-i18n="r2.quote2">[รีวิวลูกค้าคนที่ 2]</blockquote>
+            <figcaption class="mt-6 text-[14px] text-muted" data-i18n="r2.name">— [ชื่อลูกค้า] · Google</figcaption>
+          </figure>
+          <figure class="bg-kinari p-6 md:p-8 reveal">
+            <span class="font-display font-bold text-shu text-[48px] leading-none" aria-hidden="true">“</span>
+            <blockquote class="mt-2 text-[17px]" data-i18n="r3.quote3">[รีวิวจากนักท่องเที่ยว (ภาษาอังกฤษ) ถ้ามี]</blockquote>
+            <figcaption class="mt-6 text-[14px] text-muted" data-i18n="r3.name">— [ชื่อลูกค้า] · Facebook</figcaption>
+          </figure>
+        </div>
+        <a class="inline-flex items-center gap-2 mt-10 text-[15px] border-b border-ink/30 hover:border-ink pb-1" href="https://www.facebook.com/share/19eZVxAMZj/" target="_blank" rel="noopener" data-track="facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i><span data-i18n="reviews.more">ดูรีวิวทั้งหมดบนเพจ</span></a>
+      </div>
+    </section>
+
+    <!-- ===== เมนูและราคา (ตาราง) ===== -->
+    <section id="menu" class="py-14 md:py-20" aria-labelledby="menu-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8 grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-4 reveal">
+          <p class="label">Menu &amp; prices</p>
+          <h2 id="menu-title" class="font-display font-bold text-[clamp(28px,4vw,44px)] mt-2" data-i18n="menu.title">เมนูและราคา</h2>
+          <p class="mt-4 text-muted" data-i18n="menu.note">ราคาตามเมนูปัจจุบันของร้าน</p>
+          <span class="demo mt-4" data-i18n="demo">DEMO · รอข้อมูลจริง</span>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal">
+          <table class="price-table">
+            <caption class="sr-only" data-i18n="menu.title">เมนูและราคา</caption>
+            <tbody>
+              <tr class="cat"><th colspan="2" scope="colgroup" data-i18n="m1.title">เล็บ</th></tr>
+              <tr><td data-i18n="m.item">[ชื่อบริการ]</td><td>฿ —</td></tr>
+              <tr><td data-i18n="m.item">[ชื่อบริการ]</td><td>฿ —</td></tr>
+              <tr><td data-i18n="m.item">[ชื่อบริการ]</td><td>฿ —</td></tr>
+              <tr class="cat"><th colspan="2" scope="colgroup" data-i18n="m2.title">สปาเท้า</th></tr>
+              <tr><td data-i18n="m.item">[ชื่อบริการ]</td><td>฿ —</td></tr>
+              <tr><td data-i18n="m.item">[ชื่อบริการ]</td><td>฿ —</td></tr>
+              <tr class="cat"><th colspan="2" scope="colgroup" data-i18n="m3.title">ตัด สระ ไดร์</th></tr>
+              <tr><td data-i18n="m.item">[ชื่อบริการ]</td><td>฿ —</td></tr>
+              <tr><td data-i18n="m.item">[ชื่อบริการ]</td><td>฿ —</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== แวะมาที่ร้าน (แผนที่เต็มกว้าง + แถบข้อมูล) ===== -->
+    <section id="visit" class="pb-14 md:pb-20" aria-labelledby="visit-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="border-t-2 border-ink pt-10 flex flex-wrap items-end justify-between gap-6 reveal">
+          <div>
+            <p class="label">Visit us</p>
+            <h2 id="visit-title" class="font-display font-bold text-[clamp(28px,4vw,44px)] mt-2" data-i18n="visit.title">แวะมาที่ร้าน</h2>
+            <p class="mt-2 text-muted" data-i18n="visit.sub">มาเที่ยวสุราษฎร์ธานี? กดปุ่มนำทางเพื่อเปิด Google Maps ได้ทันที</p>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a class="btn btn-shu btn-lg" href="#" data-todo="เบอร์ร้าน (tel:)" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
+            <a class="btn btn-line btn-lg" href="#" data-todo="ลิงก์หมุด Google Maps" data-track="directions"><i class="ph ph-navigation-arrow" aria-hidden="true"></i><span data-i18n="cta.directions">นำทาง</span></a>
+          </div>
+        </div>
+        <div class="map-ph aspect-[4/3] md:aspect-[21/9] mt-10 flex flex-col items-center justify-center gap-4 text-center p-8 reveal">
+          <span class="w-14 h-14 bg-shu text-kinari inline-flex items-center justify-center rounded"><i class="ph ph-map-pin text-[32px]" aria-hidden="true"></i></span>
+          <span class="text-[15px] bg-kinari/90 rounded px-4 py-2" data-i18n="ph.map">Google Maps (รอลิงก์หมุดร้าน)</span>
+        </div>
+        <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l border-line mt-0 reveal">
+          <div class="border-r border-b border-line p-6"><dt class="label" data-i18n="visit.addrLabel">ที่ตั้ง</dt><dd class="mt-2"><span data-i18n="visit.addr">San Chao Market, สุราษฎร์ธานี</span><br><span class="text-[14px] text-muted" data-i18n="visit.addrTodo">[ที่อยู่เต็ม · รอยืนยัน]</span></dd></div>
+          <div class="border-r border-b border-line p-6"><dt class="label" data-i18n="visit.hoursLabel">เวลาเปิด</dt><dd class="mt-2" data-i18n="visit.hours">[เวลาเปิด-ปิด · ยังไม่ระบุ]</dd></div>
+          <div class="border-r border-b border-line p-6"><dt class="label" data-i18n="visit.phoneLabel">โทรศัพท์</dt><dd class="mt-2" data-i18n="visit.phone">[เบอร์ร้าน]</dd></div>
+          <div class="border-r border-b border-line p-6"><dt class="label">LINE</dt><dd class="mt-2" data-i18n="visit.lineOnly">[LINE ID ใหม่]</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 bg-ink text-kinari pt-14 pb-24 md:pb-14 overflow-hidden">
+    <div class="mx-auto max-w-[1200px] px-4 md:px-8 grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-6">
+        <p class="font-display font-bold text-[48px] leading-none tracking-[-.02em]">Nail me</p>
+        <p class="mt-4 text-[15px] text-kinari/70">San Chao Market · Surat Thani<br>Beauty &amp; Relaxation · Your nail stop in Surat Thani</p>
+      </div>
+      <ul class="md:col-span-5 md:col-start-8 grid gap-2 text-[15px]">
+        <li><a class="flex items-center justify-between min-h-[48px] border-b border-kinari/15 hover:text-shu-soft" href="https://www.facebook.com/share/19eZVxAMZj/" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="footer.fb1">เพจ Facebook</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></li>
+        <li><a class="flex items-center justify-between min-h-[48px] border-b border-kinari/15 hover:text-shu-soft" href="https://www.facebook.com/share/p/14rrNbiGFDz/" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="footer.fb2">เพจ Facebook (สำรอง)</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></li>
+        <li><a class="flex items-center justify-between min-h-[48px] border-b border-kinari/15 hover:text-shu-soft" href="#" data-todo="LINE ID ใหม่" data-track="line"><span>LINE</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+    <div class="mx-auto max-w-[1200px] px-4 md:px-8 mt-10 flex flex-wrap justify-between gap-4 text-[13px] text-kinari/60">
+      <p>© 2026 Nail me (San Chao Market)</p>
+      <a href="#" data-todo="หน้านโยบายความเป็นส่วนตัว" class="hover:text-kinari" data-i18n="footer.privacy">นโยบายความเป็นส่วนตัว</a>
+    </div>
+  </footer>
+
+  <div class="md:hidden fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 px-4 pt-2 bg-kinari border-t border-line" style="padding-bottom: calc(8px + env(safe-area-inset-bottom));">
+    <a class="btn btn-shu" href="#" data-todo="เบอร์ร้าน (tel:)" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
+    <a class="btn btn-line" href="#" data-todo="LINE ID ใหม่" data-track="line"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span data-i18n="cta.line">ทัก LINE</span></a>
+  </div>
+
+  <script>
+    const I18N_EN = {
+      'skip': 'Skip to content',
+      'draft': 'Draft C · items in [ ] and DEMO tags await real salon content',
+      'nav.services': 'Services', 'nav.reviews': 'Reviews', 'nav.gallery': 'Gallery', 'nav.menu': 'Prices', 'nav.visit': 'Visit', 'nav.open': 'Open menu',
+      'cta.call': 'Call to book', 'cta.line': 'Chat on LINE', 'cta.directions': 'Directions',
+      'd3.title': 'Your nail stop in Surat Thani',
+      'd3.sub': 'Nails, foot spa, cut, wash &amp; blow-dry at San Chao Market. Drop by after work, or after a day of exploring.',
+      'services.tag': 'Signature',
+      's1.title': 'Nails', 's1.desc': 'Hands and toes, done neatly for any occasion.',
+      's2.title': 'Foot spa', 's2.desc': 'Soak and unwind after a long day at work or sightseeing.',
+      's3.title': 'Cut, wash &amp; blow-dry', 's3.desc': 'Freshen up your hair while you are here.',
+      'demo': 'DEMO · awaiting content',
+      'promo.title': '[Promotion from the salon]', 'promo.desc': '[Offer details · conditions · end date]', 'promo.cta': 'Call to book this offer',
+      'gallery.title': 'From the salon',
+      'ph.g1': 'Signature nail work', 'ph.g2': 'Nail work', 'ph.g3': 'Foot spa', 'ph.g4': 'Inside the salon', 'ph.g5': 'Hair',
+      'reviews.title': 'What guests say', 'reviews.more': 'See all reviews on our page',
+      'r1.quoteShort': '[A real guest review from Facebook or Google]', 'r1.name': '— [Guest name] · Facebook',
+      'r2.quote2': '[Guest review no. 2]', 'r2.name': '— [Guest name] · Google',
+      'r3.quote3': '[A traveller review in English, if available]', 'r3.name': '— [Guest name] · Facebook',
+      'menu.title': 'Menu &amp; prices', 'menu.note': 'Prices follow the salon’s current menu.',
+      'm1.title': 'Nails', 'm2.title': 'Foot spa', 'm3.title': 'Cut, wash &amp; blow-dry', 'm.item': '[Service name]',
+      'visit.title': 'Visit us', 'visit.sub': 'Visiting Surat Thani? Tap Directions to open Google Maps.',
+      'visit.addrLabel': 'Address', 'visit.addr': 'San Chao Market, Surat Thani', 'visit.addrTodo': '[Full address · to be confirmed]',
+      'visit.hoursLabel': 'Hours', 'visit.hours': '[Opening hours · not yet provided]',
+      'visit.phoneLabel': 'Phone', 'visit.phone': '[Salon phone]', 'visit.lineOnly': '[new LINE ID]',
+      'ph.map': 'Google Maps (awaiting the salon’s pin)',
+      'footer.fb1': 'Facebook page', 'footer.fb2': 'Facebook page (backup)', 'footer.privacy': 'Privacy policy'
+    };
+    const META = {
+      th: { title: document.title, desc: document.querySelector('meta[name="description"]').content },
+      en: { title: 'Nail me (San Chao Market) | Nails & Foot Spa in Surat Thani', desc: 'Nail me: nails, foot spa, cut, wash & blow-dry at San Chao Market, Surat Thani. A relaxing stop after work or a day of sightseeing.' }
+    };
+    function setLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        if (el.dataset.th === undefined) el.dataset.th = el.innerHTML;
+        const en = I18N_EN[el.dataset.i18n];
+        el.innerHTML = (lang === 'en' && en) ? en : el.dataset.th;
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dataset.lang = lang;
+      document.title = META[lang].title;
+      document.querySelector('meta[name="description"]').content = META[lang].desc;
+      document.querySelectorAll('[data-set-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)));
+      try { localStorage.setItem('nailme-lang', lang); } catch (e) {}
+    }
+
+    (function initLang() {
+      let lang = new URLSearchParams(location.search).get('lang');
+      if (!lang) { try { lang = localStorage.getItem('nailme-lang'); } catch (e) {} }
+      if (lang === 'en') setLang('en');
+      document.querySelectorAll('[data-set-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.setLang)));
+    })();
+
+    // เมนูมือถือ
+    (function initMenu() {
+      const btn = document.querySelector('[data-menu-btn]');
+      const nav = document.getElementById('mobile-nav');
+      const toggle = open => { nav.hidden = !open; btn.setAttribute('aria-expanded', String(open)); };
+      btn.addEventListener('click', () => toggle(nav.hidden));
+      nav.addEventListener('click', e => { if (e.target.closest('a')) toggle(false); });
+    })();
+
+    // header ตอนเลื่อน (ใช้ IntersectionObserver แทน scroll listener)
+    (function initHeader() {
+      const header = document.querySelector('.site-header');
+      new IntersectionObserver(([entry]) => header.classList.toggle('is-scrolled', !entry.isIntersecting))
+        .observe(document.getElementById('top-sentinel'));
+    })();
+
+    // scroll reveal
+    (function initReveal() {
+      const items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        items.forEach(el => el.classList.add('is-in')); return;
+      }
+      const io = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
+      }), { rootMargin: '0px 0px -8% 0px' });
+      items.forEach(el => io.observe(el));
+    })();
+
+    // วัดผลปุ่มติดต่อ (GTM อ่าน dataLayer ตอนขึ้นจริง) + กันลิงก์ที่ยังไม่มีปลายทาง
+    window.dataLayer = window.dataLayer || [];
+    document.addEventListener('click', e => {
+      const el = e.target.closest('[data-track], [data-todo]');
+      if (!el) return;
+      if (el.dataset.track) window.dataLayer.push({ event: 'contact_click', contact_method: el.dataset.track, page_lang: document.documentElement.lang });
+      if (el.dataset.todo && el.getAttribute('href') === '#') e.preventDefault();
+    });
+  </script>
+</body>
+</html>
