@@ -1,0 +1,368 @@
+<!doctype html>
+<!-- web-dev/freelance/websites/nail-me/design5.html · แนวคิด A "โต๊ะช่าง" ทำมือตั้งแต่ศูนย์ ไม่ใช้โครงร่วมกับแบบ 1–4 (ไทยอย่างเดียวก่อน อังกฤษทำหลังเลือกแบบ) -->
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ร้านทำเล็บ สุราษฎร์ธานี · Nail Me ตลาดศาลเจ้า | ทาสีเจล 200 สปาเท้า ต่อเล็บ</title>
+  <meta name="description" content="Nail Me ร้านทำเล็บข้างตลาดศาลเจ้า สุราษฎร์ธานี ทาสีเจลเริ่มต้น 200 บาท สปาเท้า 10 ขั้นตอน สปามือ ต่อเล็บ PVC เปิดทุกวัน 09:00–21:00 โทร 064-654-2666 LINE jenny5667">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี · ร้านหรู แต่ราคาน่ารัก">
+  <meta property="og:image" content="img/og-logo.jpg">
+  <meta name="theme-color" content="#F6F0E8">
+  <link rel="icon" type="image/png" href="img/favicon-64.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chonburi&family=Srisakdi:wght@400;700&family=Bai+Jamjuree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <style>
+    :root { --paper:#F6F0E8; --paper2:#EFE5DA; --ink:#2B2422; --mute:#75655E; --pink:#E8929F; --marker:#D4556A; --note:#FBDDE0; --tape:rgba(217,184,106,.55); --ease:cubic-bezier(.16,1,.3,1); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Bai Jamjuree", sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .07; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 768px) { .wrap { padding: 0 40px; } }
+    .display { font-family: "Chonburi", "Bai Jamjuree", serif; font-weight: 400; line-height: 1.15; letter-spacing: -.01em; }
+    .hand { font-family: "Srisakdi", cursive; font-weight: 700; }
+    .marker { background: linear-gradient(transparent 55%, rgba(232,146,159,.55) 55%, rgba(232,146,159,.55) 92%, transparent 92%); padding: 0 .1em; }
+    :focus-visible { outline: 2px solid var(--marker); outline-offset: 4px; }
+
+    /* กระดาษโน้ต + เทป */
+    .note { position: relative; background: var(--note); color: var(--ink); padding: 20px 22px; box-shadow: 2px 6px 18px rgba(43,36,34,.10); transform: rotate(var(--r, -1.5deg)); }
+    .note.cream { background: #FFF8EE; }
+    .tape::before { content: ""; position: absolute; top: -12px; left: 50%; width: 96px; height: 24px; margin-left: -48px; background: var(--tape); transform: rotate(-3deg); backdrop-filter: blur(1px); }
+    .tape.tape-2::after { content: ""; position: absolute; bottom: -10px; right: 18px; width: 72px; height: 22px; background: var(--tape); transform: rotate(8deg); }
+
+    /* header: แค่แถบบาง */
+    header { position: sticky; top: 0; z-index: 40; background: rgba(246,240,232,.92); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(43,36,34,.12); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
+    header .brand { display: flex; align-items: center; gap: 10px; }
+    header .brand img { width: 36px; height: 36px; border-radius: 50%; }
+    header .brand b { font-family: "Chonburi", serif; font-weight: 400; font-size: 20px; }
+    header nav a { font-size: 14px; margin-left: 18px; border-bottom: 1px solid transparent; }
+    header nav a:hover { border-color: var(--ink); }
+    .call { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 14px; border-radius: 4px; }
+    .call:hover { background: var(--marker); }
+
+    /* hero คอลลาจ */
+    .hero { position: relative; padding: 40px 0 24px; }
+    @media (min-width: 1024px) { .hero { padding: 72px 0 40px; } }
+    .hero .title { font-size: clamp(44px, 9vw, 120px); line-height: 1.02; position: relative; z-index: 2; max-width: 9em; }
+    .hero .title em { font-style: normal; color: var(--marker); }
+    .hero .sub { margin-top: 20px; max-width: 30em; font-size: 18px; position: relative; z-index: 2; }
+    .hero .phone { display: inline-block; margin-top: 20px; font-family: "Chonburi", serif; font-size: clamp(30px, 5vw, 52px); line-height: 1; border-bottom: 4px solid var(--marker); position: relative; z-index: 2; }
+    .hero .phone small { display: block; font-family: "Bai Jamjuree", sans-serif; font-size: 14px; color: var(--mute); margin-bottom: 6px; }
+    .collage { position: relative; height: 420px; margin-top: 28px; }
+    @media (min-width: 768px) { .collage { height: 520px; margin-top: -40px; } }
+    @media (min-width: 1024px) { .hero .grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; align-items: center; } .collage { height: 640px; margin-top: 0; } }
+    .shot { position: absolute; width: var(--w, 46%); aspect-ratio: 3 / 4; overflow: hidden; background: var(--paper2); box-shadow: 0 18px 40px rgba(43,36,34,.18); transform: rotate(var(--r)); animation: drop .9s var(--ease) both; animation-delay: var(--d, 0ms); }
+    .shot img { width: 100%; height: 100%; object-fit: cover; }
+    .shot .tag { position: absolute; left: -10px; bottom: 18px; }
+    @keyframes drop { from { opacity: 0; transform: translateY(-24px) rotate(calc(var(--r) - 6deg)); } to { opacity: 1; transform: rotate(var(--r)); } }
+    .tag { display: inline-block; font-family: "Srisakdi", cursive; font-weight: 700; font-size: 26px; line-height: 1; color: var(--ink); background: #FFF8EE; padding: 8px 12px 6px; box-shadow: 1px 3px 10px rgba(43,36,34,.18); transform: rotate(-4deg); white-space: nowrap; }
+    .tag s { color: var(--mute); font-size: 16px; margin-right: 4px; }
+    .scribble { position: absolute; pointer-events: none; }
+
+    /* feed รูปแปะ */
+    .feed-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 56px 0 8px; }
+    .feed-head h2 { font-size: clamp(32px, 5vw, 56px); margin: 0; }
+    .feed-head p { margin: 0; color: var(--mute); }
+    .feed { columns: 2; column-gap: 16px; margin-top: 24px; }
+    @media (min-width: 768px) { .feed { columns: 3; column-gap: 24px; } }
+    @media (min-width: 1100px) { .feed { columns: 4; } }
+    .pin { break-inside: avoid; margin: 0 0 24px; position: relative; transform: rotate(var(--r)); transition: transform .5s var(--ease); }
+    .pin:hover { transform: rotate(0) scale(1.02); z-index: 2; }
+    .pin img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: var(--paper2); box-shadow: 0 10px 24px rgba(43,36,34,.14); }
+    .pin:nth-child(3n) img { aspect-ratio: 1 / 1; }
+    .pin:nth-child(5n) img { aspect-ratio: 4 / 5; }
+    .pin figcaption { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; margin-top: 10px; font-size: 13px; line-height: 1.4; color: var(--mute); }
+    .pin .tag { font-size: 22px; padding: 6px 10px 4px; transform: rotate(3deg); flex: none; }
+
+    /* ป้ายราคาเขียนมือ */
+    .board { margin: 72px auto 0; max-width: 820px; background: #FFF8EE; padding: 32px 24px; box-shadow: 0 20px 50px rgba(43,36,34,.14); transform: rotate(-.6deg); position: relative; }
+    @media (min-width: 768px) { .board { padding: 48px 56px; } }
+    .board h2 { font-family: "Srisakdi", cursive; font-weight: 700; font-size: clamp(36px, 6vw, 60px); margin: 0 0 8px; line-height: 1; }
+    .board .cols { display: grid; gap: 8px 48px; }
+    @media (min-width: 768px) { .board .cols { grid-template-columns: 1fr 1fr; } }
+    .board h3 { font-family: "Srisakdi", cursive; font-weight: 700; font-size: 26px; margin: 20px 0 4px; color: var(--marker); }
+    .board ul { list-style: none; margin: 0; padding: 0; }
+    .board li { display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px dashed rgba(43,36,34,.25); font-size: 16px; }
+    .board li span:first-child { flex: 1; }
+    .board li b { font-family: "Chonburi", serif; font-weight: 400; font-size: 20px; }
+    .board .foot { margin-top: 20px; font-size: 13px; color: var(--mute); }
+
+    /* โปร + รีวิว */
+    .two { display: grid; gap: 40px; margin-top: 80px; align-items: start; }
+    @media (min-width: 900px) { .two { grid-template-columns: 1fr 1.2fr; gap: 64px; } }
+    .promo h2 { font-family: "Srisakdi", cursive; font-weight: 700; font-size: 40px; margin: 0; line-height: 1; }
+    .promo .big { font-family: "Chonburi", serif; font-size: clamp(56px, 10vw, 96px); line-height: 1; margin: 8px 0 0; color: var(--marker); }
+    .promo .big small { font-family: "Bai Jamjuree", sans-serif; font-size: 16px; color: var(--ink); margin-left: 8px; }
+    .promo ul { list-style: none; padding: 0; margin: 12px 0 0; font-size: 16px; }
+    .review blockquote { margin: 0; font-family: "Chonburi", serif; font-size: clamp(28px, 4vw, 44px); line-height: 1.3; }
+    .review cite { display: block; font-style: normal; color: var(--mute); font-size: 14px; margin-top: 16px; }
+    .circ { position: relative; display: inline-block; padding: 6px 14px; }
+    .circ svg { position: absolute; inset: -8px -14px; width: calc(100% + 28px); height: calc(100% + 16px); }
+    .circ svg path { fill: none; stroke: var(--marker); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.4s var(--ease) .4s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+
+    /* สปา + มาหาเรา */
+    .spa { margin-top: 80px; display: grid; gap: 32px; }
+    @media (min-width: 900px) { .spa { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } }
+    .spa ol { counter-reset: s; list-style: none; padding: 0; margin: 16px 0 0; columns: 2; column-gap: 24px; }
+    .spa li { counter-increment: s; break-inside: avoid; padding: 6px 0 6px 40px; position: relative; font-size: 16px; }
+    .spa li::before { content: counter(s); position: absolute; left: 0; top: 2px; font-family: "Srisakdi", cursive; font-weight: 700; font-size: 26px; color: var(--marker); line-height: 1; }
+    .visit { margin-top: 80px; display: grid; gap: 32px; }
+    @media (min-width: 900px) { .visit { grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; } }
+    .map { position: relative; aspect-ratio: 4 / 3; background: var(--paper2); transform: rotate(1deg); box-shadow: 0 16px 40px rgba(43,36,34,.16); }
+    .map iframe { width: 100%; height: 100%; border: 0; filter: sepia(.25) saturate(.8); }
+    .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+    .contacts a { display: block; font-family: "Srisakdi", cursive; font-weight: 700; font-size: 24px; line-height: 1.1; }
+    .contacts a small { display: block; font-family: "Bai Jamjuree", sans-serif; font-weight: 400; font-size: 12px; color: var(--mute); margin-bottom: 4px; }
+    .faq details { border-bottom: 1px dashed rgba(43,36,34,.3); }
+    .faq summary { cursor: pointer; padding: 14px 0; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-family: "Chonburi", serif; color: var(--marker); }
+    .faq details[open] summary::after { content: "–"; }
+    .faq p { margin: 0 0 14px; color: var(--mute); font-size: 15px; }
+    footer { margin-top: 96px; padding: 32px 0 100px; border-top: 1px solid rgba(43,36,34,.15); font-size: 13px; color: var(--mute); }
+    @media (min-width: 768px) { footer { padding-bottom: 40px; } }
+    .bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(246,240,232,.95); border-top: 1px solid rgba(43,36,34,.12); }
+    .bar a { display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 4px; font-weight: 500; }
+    .bar .a1 { background: var(--ink); color: var(--paper); } .bar .a2 { border: 1.5px solid var(--ink); }
+    @media (min-width: 768px) { .bar { display: none; } }
+    .reveal { opacity: 0; transform: translateY(14px) rotate(var(--r, 0deg)); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.in { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: rotate(var(--r, 0deg)); } .shot { opacity: 1; } }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"NailSalon","name":"Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี","image":"img/og-logo.jpg","telephone":"+66646542666","openingHours":"Mo-Su 09:00-21:00","priceRange":"฿",
+     "address":{"@type":"PostalAddress","streetAddress":"ข้างตลาดศาลเจ้า ตรงข้ามรถไฟฟ้าบ้านดอน","addressLocality":"Mueang Surat Thani","addressRegion":"Surat Thani","addressCountry":"TH"},
+     "sameAs":["https://www.facebook.com/profile.php?id=61580350351076","https://www.facebook.com/nailmesuratthani","https://line.me/ti/p/~jenny5667"]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"ต้องจองคิวล่วงหน้าไหม","acceptedAnswer":{"@type":"Answer","text":"โทร 064-654-2666 หรือ LINE jenny5667 จองล่วงหน้าได้ หรือ walk-in มาที่ร้านได้เลย เปิดทุกวัน 09:00–21:00"}},
+      {"@type":"Question","name":"ทาสีเจลราคาเท่าไหร่","acceptedAnswer":{"@type":"Answer","text":"ราคาปกติ มือ 250 เท้า 300 สีลูกแก้ว 350 บาท ช่วงโปรโมชั่นเริ่มต้น 200 บาท ตัดแต่งหนังฟรี แคปโพสต์โปรให้ช่างก่อนรับบริการ"}},
+      {"@type":"Question","name":"ถอดสีเจลที่ทำจากร้านอื่นได้ไหม","acceptedAnswer":{"@type":"Answer","text":"ได้ ถอดอย่างเดียว 100 บาท ถอดแล้วทำต่อที่ร้าน เจล 50 บาท PVC 100 บาท"}},
+      {"@type":"Question","name":"Do you welcome international travellers?","acceptedAnswer":{"@type":"Answer","text":"Yes. WhatsApp +66 84 999 6109 or call +66 64 654 2666. Next to San Chao Market, central Surat Thani, open daily 09:00–21:00."}}
+    ]}]}
+  </script>
+</head>
+<body>
+  <div style="background:var(--ink);color:var(--paper);font-size:12px;text-align:center;padding:6px 16px">ดราฟต์แนวคิด A "โต๊ะช่าง" · ข้อมูลและรูปจากเพจ/โฟลเดอร์ร้าน 10 ต.ค. 69 · ภาษาอังกฤษทำหลังเลือกแบบ</div>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="img/nail-me-logo-160.png" alt="Nail Me" width="36" height="36"><b>Nail Me</b></a>
+      <nav aria-label="หลัก" style="display:none" class="nav-d"><a href="#feed">ลายเล็บ</a><a href="#board">ราคา</a><a href="#promo">โปร</a><a href="#spa">สปา</a><a href="#visit">มาหาเรา</a></nav>
+      <a class="call" href="tel:+66646542666" data-track="call"><i class="ph ph-phone"></i>064-654-2666</a>
+    </div>
+  </header>
+  <style>@media (min-width: 900px) { .nav-d { display: block !important; } }</style>
+
+  <main id="top" style="overflow-x:clip">
+    <!-- hero: คอลลาจรูปจริง + ชื่อร้านตัวใหญ่ -->
+    <section class="hero wrap">
+      <div class="grid">
+        <div>
+          <p class="hand" style="font-size:28px;margin:0;color:var(--marker)">ร้านทำเล็บ ข้างตลาดศาลเจ้า สุราษฎร์ฯ</p>
+          <h1 class="display title">ร้านหรู<br>แต่ราคา<em>น่ารัก</em></h1>
+          <p class="sub">ทาสีเจลเริ่ม <span class="marker">200 บาท</span> ตัดแต่งหนังฟรี · สีให้เลือกกว่า 100 เฉด · สปาเท้า สปามือ ต่อเล็บ · ทำแล้วดูแลให้หลังทำ ไม่ทิ้งงาน</p>
+          <a class="phone" href="tel:+66646542666" data-track="call"><small>โทรจองคิว · เปิดทุกวัน 09:00–21:00 · walk-in ได้</small>064-654-2666</a>
+          <p style="margin-top:14px;font-size:15px;color:var(--mute)">หรือทัก LINE <a href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line" style="border-bottom:1.5px solid var(--ink);color:var(--ink)">jenny5667</a> · WhatsApp <a href="https://wa.me/66849996109" target="_blank" rel="noopener" data-track="whatsapp" style="border-bottom:1.5px solid var(--ink);color:var(--ink)">084-999-6109</a></p>
+        </div>
+        <div class="collage" aria-label="ผลงานจากร้าน">
+          <figure class="shot" style="--w:58%;--r:-5deg;left:0;top:6%;--d:0ms;margin:0"><img src="https://lh3.googleusercontent.com/d/1UAxglvIkVH8Ip5Fo804GOA9ZJjr_ootS=w1200" alt="เพ้นท์ลายจุดโบว์ ผลงาน Nail Me" fetchpriority="high"><span class="tag"><s>450</s> ฿350</span></figure>
+          <figure class="shot" style="--w:44%;--r:4deg;right:0;top:0;--d:120ms;margin:0"><img src="https://lh3.googleusercontent.com/d/1EKacoRJ85xAP42r1IDpdXSSra2paZn_3=w1200" alt="ทาสีเจลเท้าลายเดซี่" loading="eager"><span class="tag">฿300</span></figure>
+          <figure class="shot" style="--w:40%;--r:-2deg;right:8%;bottom:4%;--d:240ms;margin:0"><img src="https://lh3.googleusercontent.com/d/1YmKe5tEzvpZkWJGLssCTW6MaXt49mOmg=w1200" alt="เล็บกลิตเตอร์ทอง" loading="eager"><span class="tag">฿350</span></figure>
+          <figure class="shot" style="--w:36%;--r:6deg;left:14%;bottom:0;--d:360ms;margin:0"><img src="https://lh3.googleusercontent.com/d/1Ipw15EDSKBsK7AselVCCZmPKIQ4ek-RN=w1200" alt="เล็บเจลแดงเงา" loading="eager"><span class="tag"><s>250</s> ฿200</span></figure>
+          <div class="note tape" style="position:absolute;left:46%;top:46%;--r:3deg;width:150px;padding:12px 14px;z-index:3"><span class="hand" style="font-size:22px;line-height:1.1;display:block">เลือกลายได้เลย<br>แล้วโทรมา 💅</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- feed: รูปแปะ + ป้ายราคาเขียนมือ -->
+    <section id="feed" class="wrap">
+      <div class="feed-head">
+        <h2 class="display">ลายที่ทำได้ ราคาตามป้าย</h2>
+        <p>แคปรูปที่ชอบส่งมาทาง LINE แล้วมาทำได้เลย · ราคางานเพ้นท์ขึ้นกับจำนวนนิ้ว</p>
+      </div>
+      <div class="feed">
+        <figure class="pin reveal" style="--r:-2deg">
+          <img src="https://lh3.googleusercontent.com/d/15XJ6vhagHu2wiS42nPKwGygAmkw32Ddo=w1200" alt="ทาสีเจลมือ สีพื้น ตัดแต่งหนังฟรี ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ทาสีเจลมือ สีพื้น ตัดแต่งหนังฟรี</span><span class="tag"><s>250</s> ฿200</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:1.5deg">
+          <img src="https://lh3.googleusercontent.com/d/1UAxglvIkVH8Ip5Fo804GOA9ZJjr_ootS=w1200" alt="เพ้นท์ลายจุด โบว์ · โปรกี่นิ้วก็ได้ ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>เพ้นท์ลายจุด โบว์ · โปรกี่นิ้วก็ได้</span><span class="tag"><s>450</s> ฿350</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-1deg">
+          <img src="https://lh3.googleusercontent.com/d/1PJcpMwC7X_qX3z4oiqHcDRZhIesSawyU=w1200" alt="ทาสีเจลเท้า ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ทาสีเจลเท้า</span><span class="tag">฿300</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:2deg">
+          <img src="https://lh3.googleusercontent.com/d/1YmKe5tEzvpZkWJGLssCTW6MaXt49mOmg=w1200" alt="กลิตเตอร์ทอง ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>กลิตเตอร์ทอง</span><span class="tag">฿350</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-1.5deg">
+          <img src="https://lh3.googleusercontent.com/d/1pntTSKYGk-EFayT3rF-0HT8P55UZXQ5F=w1200" alt="เฟรนช์ + เพ้นท์ดอกไม้ (+30/+20 ต่อนิ้ว) ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>เฟรนช์ + เพ้นท์ดอกไม้ (+30/+20 ต่อนิ้ว)</span><span class="tag">฿280</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:1deg">
+          <img src="https://lh3.googleusercontent.com/d/1Ipw15EDSKBsK7AselVCCZmPKIQ4ek-RN=w1200" alt="สีแดงเงา ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>สีแดงเงา</span><span class="tag"><s>250</s> ฿200</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-2.5deg">
+          <img src="https://lh3.googleusercontent.com/d/1Oei9dUjojxuSW-H6natRzdzBWvKEZrLM=w1200" alt="ต่อเล็บ PVC ทรงยาว ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ต่อเล็บ PVC ทรงยาว</span><span class="tag"><s>350</s> ฿250</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:2deg">
+          <img src="https://lh3.googleusercontent.com/d/1ddEvFHfRWMnSVnXYZTy4EUhx_zWtAYQa=w1200" alt="ติดอะไหล่ เพชร (+20 ต่อนิ้ว) ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ติดอะไหล่ เพชร (+20 ต่อนิ้ว)</span><span class="tag">฿270</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-1deg">
+          <img src="https://lh3.googleusercontent.com/d/1L0eg8f7cFxLhymha1i9WO9aAN6N9W_Um=w1200" alt="สปาเท้า 10 ขั้นตอน + สีกลิตเตอร์ ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>สปาเท้า 10 ขั้นตอน + สีกลิตเตอร์</span><span class="tag"><s>499</s> ฿450</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:1.5deg">
+          <img src="https://lh3.googleusercontent.com/d/1uNuLHxviM4rtHmhYiBawVwgLvBXe0XEy=w1200" alt="ขาวมินิมอล ลายจุด ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ขาวมินิมอล ลายจุด</span><span class="tag">฿270</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-2deg">
+          <img src="https://lh3.googleusercontent.com/d/1IL1Bl3lZf0EJge_MZ1uISRHAorFu3-7n=w1200" alt="ปลายโครมเงิน ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ปลายโครมเงิน</span><span class="tag">฿250</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:1deg">
+          <img src="https://lh3.googleusercontent.com/d/1OajpzAh2v_2KaqOe75ooyheJ50WOtWEa=w1200" alt="PVC + สีแดง ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>PVC + สีแดง</span><span class="tag">฿350</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-1.5deg">
+          <img src="https://lh3.googleusercontent.com/d/1LTKzRB9zFzKf_nFHhbc5K-Gt2S9Ah2l2=w1200" alt="ขาวแต่งฟอยล์ทอง ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ขาวแต่งฟอยล์ทอง</span><span class="tag">฿270</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:2deg">
+          <img src="https://lh3.googleusercontent.com/d/1EKacoRJ85xAP42r1IDpdXSSra2paZn_3=w1200" alt="เท้าลายเดซี่ + สปาเท้า ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>เท้าลายเดซี่ + สปาเท้า</span><span class="tag">฿799</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-1deg">
+          <img src="https://lh3.googleusercontent.com/d/1FFJpQkwNHBAWxrZTDowK3jGz4DMfrKC2=w1200" alt="เฟรนช์ลายจุด ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>เฟรนช์ลายจุด</span><span class="tag">฿280</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:1.5deg">
+          <img src="https://lh3.googleusercontent.com/d/1bbEwPtwzzEIAQPlsJBp3Yin35wcx4Ipo=w1200" alt="นู้ดเงา เรียบ ๆ ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>นู้ดเงา เรียบ ๆ</span><span class="tag"><s>250</s> ฿200</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:-2deg">
+          <img src="https://lh3.googleusercontent.com/d/1I3kqhPaChlb1eTTb-JxmtG138r0Ehkc9=w1200" alt="ชมพูประกาย เสริมหน้าเล็บ ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ชมพูประกาย เสริมหน้าเล็บ</span><span class="tag">฿150</span></figcaption>
+        </figure>
+        <figure class="pin reveal" style="--r:1deg">
+          <img src="https://lh3.googleusercontent.com/d/1kzTYQ1zlJMcNdeOGMr0cuPNNhpzEKsVj=w1200" alt="ลายลูกไม้ · สปามือ 9 ขั้นตอน ผลงานร้าน Nail Me" loading="lazy" decoding="async" width="900" height="1200">
+          <figcaption><span>ลายลูกไม้ · สปามือ 9 ขั้นตอน</span><span class="tag">฿399</span></figcaption>
+        </figure>
+      </div>
+      <p style="font-size:13px;color:var(--mute);margin-top:8px">ดูผลงานล่าสุดบนเพจ <a href="https://www.facebook.com/nailmesuratthani" target="_blank" rel="noopener" data-track="facebook" style="border-bottom:1px solid var(--ink)">Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี</a></p>
+    </section>
+
+    <!-- ป้ายราคาเขียนมือ -->
+    <section class="wrap">
+      <div id="board" class="board tape tape-2 reveal" style="--r:-.6deg">
+        <h2>ป้ายราคาหน้าร้าน</h2>
+        <p style="margin:0;color:var(--mute);font-size:14px">ราคาปกติตามป้ายในร้าน (ต.ค. 69) · โปรเดือนนี้ดูข้างล่าง</p>
+        <div class="cols">
+          <div>
+            <h3>ทาสีเจล</h3>
+            <ul><li><span>ทาสีเจลมือ</span><b>250</b></li><li><span>ทาสีเจลเท้า</span><b>300</b></li><li><span>สีลูกแก้ว Cat Eye</span><b>350</b></li></ul>
+            <h3>ต่อเล็บ · เสริมเล็บ</h3>
+            <ul><li><span>ต่อเล็บ PVC</span><b>350</b></li><li><span>เสริมหน้าเล็บหลังทาสี</span><b>150</b></li><li><span>เสริมหน้าเล็บก่อนทาสี</span><b>450</b></li></ul>
+            <h3>ถอดเล็บ</h3>
+            <ul><li><span>ถอดสีเจล ทำต่อ (ปกติ 100)</span><b>50</b></li><li><span>ถอด PVC ทำต่อ (ปกติ 200)</span><b>100</b></li><li><span>ถอดไม่ทำ</span><b>100</b></li></ul>
+          </div>
+          <div>
+            <h3>ดูแลเล็บ · สปา</h3>
+            <ul><li><span>สปาเท้า 10 ขั้นตอน</span><b>499</b></li><li><span>สปามือ 9 ขั้นตอน</span><b>399</b></li><li><span>Manicure / Pedicure</span><b>200</b></li></ul>
+            <h3>งานเพิ่ม (คิดต่อ 1 นิ้ว)</h3>
+            <ul><li><span>เพ้นท์ลาย</span><b>20+</b></li><li><span>เฟรนช์ปลาย</span><b>30+</b></li><li><span>ออมเบร / ไล่ปลาย</span><b>30+</b></li><li><span>ติดอะไหล่เล็ก ๆ</span><b>20+</b></li><li><span>ปั้นนูน</span><b>50+</b></li></ul>
+            <h3>ผม</h3>
+            <ul><li><span>สระไดร์ ทุกความยาว</span><b>150</b></li></ul>
+          </div>
+        </div>
+        <p class="foot hand" style="font-size:22px;color:var(--marker)">เราจะดูแลคุณอย่างดี เพราะคุณคือคนพิเศษ ♡</p>
+      </div>
+    </section>
+
+    <!-- โปร + รีวิว -->
+    <section class="wrap two">
+      <div id="promo" class="note tape promo reveal" style="--r:1.5deg">
+        <h2>โปรเดือนนี้</h2>
+        <p class="big">200<small>ทาสีเจล <s>250</s> ตัดแต่งหนังฟรี</small></p>
+        <ul>
+          <li><b>450</b> สปาเท้า 9 ขั้นตอน <s>499</s></li>
+          <li><b>350</b> ทาสีเจล + เพ้นท์ กี่นิ้วก็ได้</li>
+          <li><b>250</b> ต่อเล็บ PVC เจลเว้นโคน <s>350</s></li>
+          <li><b>150</b> สระไดร์ ทุกความยาว</li>
+        </ul>
+        <p class="hand" style="font-size:22px;margin:16px 0 0;line-height:1.2">แคปโพสต์โปรให้ช่างดูก่อนรับบริการนะคะ</p>
+        <a href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook" style="font-size:14px;border-bottom:1px solid var(--ink)">ดูโพสต์โปรบนเพจ ↗</a>
+      </div>
+      <div class="review reveal">
+        <p class="hand" style="font-size:26px;margin:0 0 12px;color:var(--marker)">ลูกค้าว่าไง</p>
+        <blockquote class="display">“ทำเล็บเท้าสวยค่ะ ชอบมาก สวยมากค้า”</blockquote>
+        <cite>ปฐมาวดี ชูมี · รีวิวบนเพจ Facebook 17 ก.ค. 69 · เล็บเจล</cite>
+        <p style="margin-top:28px;font-size:18px"><span class="circ"><svg viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M12,38 C20,10 170,2 190,30 C200,50 150,66 90,64 C30,62 2,52 12,38"/></svg><b class="display" style="font-size:40px">100%</b></span> <span style="margin-left:12px">แนะนำ จาก 6 รีวิวบนเพจ · ผู้ติดตาม 1,000+</span></p>
+        <p style="margin-top:12px;font-size:14px"><a href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook" style="border-bottom:1px solid var(--ink)">อ่านรีวิวทั้งหมดบนเพจ ↗</a> · ร้านดูแลให้หลังทำ ไม่ทิ้งงาน</p>
+      </div>
+    </section>
+
+    <!-- สปาเท้า -->
+    <section id="spa" class="wrap spa">
+      <figure class="pin reveal" style="--r:-2deg;margin:0;max-width:420px"><img src="https://lh3.googleusercontent.com/d/1L0eg8f7cFxLhymha1i9WO9aAN6N9W_Um=w1200" alt="สปาเท้า ผลงาน Nail Me" loading="lazy" decoding="async" width="900" height="1200"><figcaption><span>สปาเท้า 10 ขั้นตอน ขัดถึงใต้เข่า</span><span class="tag"><s>499</s> ฿450</span></figcaption></figure>
+      <div class="reveal">
+        <h2 class="display" style="font-size:clamp(32px,5vw,52px);margin:0">สปาเท้า 10 ขั้นตอน<br><span style="color:var(--marker)">ขัดถึงใต้เข่า</span></h2>
+        <p style="color:var(--mute);margin:12px 0 0">ทำเต็มทุกขั้นตอน ไม่รีบ เหมาะหลังเลิกงานหรือเดินเที่ยวทั้งวัน · สปามือ 9 ขั้นตอน 399</p>
+        <ol><li>แช่เกลือ ดีท็อกซ์</li><li>แช่น้ำนม</li><li>ฟอก ขัด ล้างเท้า</li><li>สครับเกลือ</li><li>มาร์ก + แรป บำรุงล้ำลึก</li><li>ตัดหนัง</li><li>ขัดส้นเท้า</li><li>บำรุงโลชั่น</li><li>นวดผ่อนคลาย</li><li>สเปรย์ให้ความชุ่มชื้น</li></ol>
+        <a class="call" href="tel:+66646542666" data-track="call" style="margin-top:20px;height:48px;padding:0 24px;font-size:15px"><i class="ph ph-phone"></i>โทรจองสปา</a>
+      </div>
+    </section>
+
+    <!-- มาหาเรา -->
+    <section id="visit" class="wrap visit">
+      <div class="map reveal" style="--r:1deg"><iframe src="https://www.google.com/maps?q=Nail+Me+%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2+%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B2%E0%B8%A9%E0%B8%8E%E0%B8%A3%E0%B9%8C%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%B5&output=embed&hl=th" title="แผนที่ Nail Me ตลาดศาลเจ้า" loading="lazy"></iframe></div>
+      <div class="reveal">
+        <h2 class="display" style="font-size:clamp(32px,5vw,52px);margin:0">มาหาเรา</h2>
+        <p class="hand" style="font-size:26px;margin:8px 0 0;line-height:1.2">ข้างตลาดศาลเจ้า ตรงข้ามรถไฟฟ้าบ้านดอน<br>เยื้อง ๆ Tops ติดห้างทองก้องไพศาล</p>
+        <p style="color:var(--mute);margin:12px 0 0">เปิดทุกวัน 09:00–21:00 · จองคิวหรือ walk-in · ยินดีต้อนรับทั้งลูกค้าไทยและนักท่องเที่ยว · Thai &amp; international guests welcome</p>
+        <div class="contacts">
+          <a href="tel:+66646542666" data-track="call"><small>โทร</small>064-654-2666</a>
+          <a href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line"><small>LINE</small>jenny5667</a>
+          <a href="https://wa.me/66849996109" target="_blank" rel="noopener" data-track="whatsapp"><small>WhatsApp</small>084-999-6109</a>
+          <a href="https://m.me/nailmesuratthani" target="_blank" rel="noopener" data-track="message"><small>Facebook</small>ทักเพจ</a>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Nail+Me+%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2+%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B2%E0%B8%A9%E0%B8%8E%E0%B8%A3%E0%B9%8C%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%B5" target="_blank" rel="noopener" data-track="directions" style="display:inline-block;margin-top:20px;border-bottom:1.5px solid var(--ink);font-weight:500">เปิดนำทางใน Google Maps ↗</a>
+        <div class="faq" style="margin-top:40px">
+          <p class="hand" style="font-size:24px;margin:0 0 4px;color:var(--marker)">ถามบ่อย</p>
+          <details><summary>ต้องจองคิวล่วงหน้าไหม</summary><p>โทร 064-654-2666 หรือ LINE jenny5667 จองล่วงหน้าได้ หรือ walk-in มาที่ร้านได้เลย เปิดทุกวัน 09:00–21:00</p></details>
+          <details><summary>ทาสีเจลราคาเท่าไหร่</summary><p>ราคาปกติ มือ 250 เท้า 300 สีลูกแก้ว 350 บาท ช่วงโปรโมชั่นเริ่มต้น 200 บาท ตัดแต่งหนังฟรี แคปโพสต์โปรให้ช่างก่อนรับบริการ</p></details>
+          <details><summary>ถอดสีเจลที่ทำจากร้านอื่นได้ไหม</summary><p>ได้ ถอดอย่างเดียว 100 บาท ถอดแล้วทำต่อที่ร้าน เจล 50 บาท PVC 100 บาท</p></details>
+          <details><summary>Do you welcome international travellers?</summary><p>Yes. WhatsApp +66 84 999 6109 or call +66 64 654 2666. Next to San Chao Market, central Surat Thani, open daily 09:00–21:00.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p style="margin:0"><b style="font-family:'Chonburi',serif;font-weight:400;font-size:18px;color:var(--ink)">Nail Me</b> ตลาดศาลเจ้า สุราษฎร์ธานี · ข้างตลาดศาลเจ้า ตรงข้ามรถไฟฟ้าบ้านดอน · เปิดทุกวัน 09:00–21:00 · 064-654-2666</p>
+    <p style="margin:8px 0 0">© 2026 Nail Me · <a href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook">เพจหลัก</a> · <a href="https://www.facebook.com/nailmesuratthani" target="_blank" rel="noopener" data-track="facebook">เพจสำรอง</a> · <a href="#" data-todo="หน้านโยบายความเป็นส่วนตัว">นโยบายความเป็นส่วนตัว</a></p>
+  </footer>
+
+  <div class="bar"><a class="a1" href="tel:+66646542666" data-track="call"><i class="ph ph-phone"></i>โทรจองคิว</a><a class="a2" href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line"><i class="ph ph-chat-circle-dots"></i>ทัก LINE</a></div>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    document.addEventListener('click', e => { const el = e.target.closest('[data-track]'); if (el) window.dataLayer.push({ event: 'contact_click', channel: el.dataset.track, href: el.getAttribute('href') }); });
+    const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 90 + 'ms'; io.observe(el); });
+  </script>
+</body>
+</html>
