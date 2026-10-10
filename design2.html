@@ -24,7 +24,21 @@
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <!-- bubble ติดต่อ ลอยมุมขวาล่าง -->
+  <div class="fab" data-fab>
+    <div class="fab-menu" id="fab-menu" hidden>
+      <a href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span><b data-i18n="fab.call">โทรจองคิว</b><small>064-654-2666</small></span></a>
+      <a href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span><b>LINE</b><small>jenny5667</small></span></a>
+      <a href="https://wa.me/66849996109" target="_blank" rel="noopener" data-track="whatsapp"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i><span><b>WhatsApp</b><small>084-999-6109</small></span></a>
+      <a href="https://m.me/nailmesuratthani" target="_blank" rel="noopener" data-track="message"><i class="ph ph-messenger-logo" aria-hidden="true"></i><span><b>Facebook</b><small data-i18n="fab.msg">ทักเพจ</small></span></a>
+    </div>
+    <button type="button" class="fab-btn" aria-expanded="false" aria-controls="fab-menu" data-fab-btn><i class="ph ph-chats-circle fab-ic" aria-hidden="true"></i><i class="ph ph-x fab-x" aria-hidden="true"></i><span class="sr-only" data-i18n="fab.open">ติดต่อร้าน</span></button>
+  </div>
+
   <script>
+    (function(){ const b=document.querySelector('[data-fab-btn]'), m=document.getElementById('fab-menu'); if(!b) return;
+      b.addEventListener('click',()=>{ const o=b.getAttribute('aria-expanded')==='true'; b.setAttribute('aria-expanded',String(!o)); m.hidden=o; });
+      document.addEventListener('click',e=>{ if(!e.target.closest('[data-fab]')){ b.setAttribute('aria-expanded','false'); m.hidden=true; } }); })();
     tailwind.config = {
       theme: {
         extend: {
@@ -163,6 +177,20 @@
     .reveal.is-in { opacity: 1; transform: none; }
     [data-stagger] { opacity: 0; transform: translateY(16px); animation: rise .9s var(--ease) forwards; animation-delay: var(--d, 0ms); }
     @keyframes rise { to { opacity: 1; transform: none; } }
+    /* bubble ติดต่อ */
+    .fab { position: fixed; right: 16px; bottom: calc(76px + env(safe-area-inset-bottom)); z-index: 55; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    @media (min-width: 768px) { .fab { right: 24px; bottom: 24px; } }
+    .fab-btn { position: relative; width: 56px; height: 56px; border-radius: 999px; background: var(--pink-deep); color: var(--cream); box-shadow: 0 8px 24px rgba(0,0,0,.18); display: grid; place-items: center; font-size: 26px; transition: transform .3s var(--ease); }
+    .fab-btn:hover { transform: scale(1.05); }
+    .fab-btn .fab-ic, .fab-btn .fab-x { grid-area: 1 / 1; transition: opacity .25s var(--ease), transform .25s var(--ease); }
+    .fab-btn .fab-x { opacity: 0; transform: rotate(-90deg); }
+    .fab-btn[aria-expanded="true"] .fab-ic { opacity: 0; transform: rotate(90deg); } .fab-btn[aria-expanded="true"] .fab-x { opacity: 1; transform: none; }
+    .fab-menu { display: grid; gap: 8px; }
+    .fab-menu[hidden] { display: none; }
+    .fab-menu a { display: flex; align-items: center; gap: 12px; min-width: 220px; padding: 10px 14px; background: var(--cream); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.12); animation: fabin .35s var(--ease) both; }
+    .fab-menu a:nth-child(2) { animation-delay: .05s; } .fab-menu a:nth-child(3) { animation-delay: .1s; } .fab-menu a:nth-child(4) { animation-delay: .15s; }
+    .fab-menu i { font-size: 22px; color: var(--pink-deep); } .fab-menu b { display: block; font-weight: 500; font-size: 15px; line-height: 1.3; } .fab-menu small { font-size: 12px; color: var(--muted); }
+    @keyframes fabin { from { opacity: 0; transform: translateY(8px); } }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -655,6 +683,7 @@
       'rit.2': 'Spa &amp; nail care', 'rit.2.d': '10-step foot spa 499, 9-step hand spa 399, manicure / pedicure 200.', 'rit.more2': 'See the spa steps',
       'rit.3': 'Hair', 'rit.3.d': 'Wash &amp; blow-dry, any length, 150 THB. Other hair services: please call or message.', 'rit.more3': 'Call to ask',
       'why.more': 'Visit us',
+      'fab.call': 'Call to book', 'fab.msg': 'Message us', 'fab.open': 'Contact the salon',
       'skip': 'Skip to content',
       'draft': 'Draft · details and photos from the salon’s Facebook pages and shared folder, 10 Oct 2026',
       'nav.promo': 'Promotion', 'nav.services': 'Services &amp; prices', 'nav.spa': 'Spa', 'nav.gallery': 'Gallery', 'nav.reviews': 'Reviews', 'nav.faq': 'FAQ', 'nav.visit': 'Visit', 'nav.open': 'Open menu',
