@@ -123,6 +123,18 @@
     .faq:last-child { border-bottom: 1px solid var(--line); }
     .why { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 24px 0; border-top: 1px solid var(--line); }
     .why .idx { font-family: "Cormorant Garamond", serif; font-size: 28px; color: var(--gold); line-height: 1; padding-top: 4px; }
+    /* ผลงานแบบการ์ดรูป+ราคา */
+    .scroller { scrollbar-width: none; } .scroller::-webkit-scrollbar { display: none; }
+    .chip { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--blush); font-size: 14px; white-space: nowrap; color: var(--ink); }
+    .chip:hover { border-color: var(--pink-deep); color: var(--pink-deep); }
+    .show-row { display: grid; grid-auto-flow: column; grid-auto-columns: 76%; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .show-row::-webkit-scrollbar { display: none; }
+    @media (min-width: 640px) { .show-row { grid-auto-columns: 46%; } }
+    @media (min-width: 1024px) { .show-row { grid-auto-columns: calc((100% - 48px) / 4); } }
+    .row-btn { width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line); display: inline-flex; align-items: center; justify-content: center; color: var(--ink); font-size: 18px; background: var(--cream); }
+    .row-btn:hover { border-color: var(--pink-deep); color: var(--pink-deep); }
+    .show-card { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .show-card .ph { aspect-ratio: 1 / 1; overflow: hidden; background: var(--rose); }
 
     /* แบบ 2: การ์ดบริการมีรูป + เช็กลิสต์ */
     .svc-card { background: var(--cream); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
@@ -372,26 +384,182 @@
       </div>
     </section>
 
-    <!-- ===== 6. ผลงาน: กริดแน่น ขนาดเท่ากัน (ตาม seeUnail) ===== -->
-    <section id="gallery" class="bg-cream border-y border-line py-14 md:py-20" aria-labelledby="gallery-title">
+    <!-- ===== 6. ผลงานและบริการ: การ์ดรูป+ราคา แยกหมวด เลื่อนแนวนอน (โครงตาม nailhousebangkok) ===== -->
+    <section id="gallery" class="bg-cream border-t border-line py-14 md:py-20 lg:py-24" aria-labelledby="gallery-title">
       <div class="mx-auto max-w-[1200px] px-4 md:px-8">
-        <div class="text-center mb-8 reveal">
-          <h2 id="gallery-title" class="font-display font-semibold text-[clamp(32px,4.5vw,48px)]" data-i18n="gallery.title">ผลงานจากร้าน</h2>
-          <a class="inline-block mt-2 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://www.facebook.com/nailmesuratthani" target="_blank" rel="noopener" data-track="facebook" data-i18n="gallery.more">ดูผลงานล่าสุดบนเพจ</a>
+        <div class="flex flex-wrap items-end justify-between gap-4 mb-8 reveal">
+          <div>
+            <h2 id="gallery-title" class="font-display font-semibold text-[clamp(32px,4.5vw,48px)]" data-i18n="gallery.title">ผลงานจากร้าน</h2>
+            <p class="mt-3 text-muted max-w-[36em]" data-i18n="gallery.sub">ลายที่ทำได้จริงจากร้าน พร้อมราคาตามป้าย เลือกลายแล้วโทรจองได้เลย หรือส่งรูปลายที่ชอบมาทาง LINE</p>
+          </div>
+          <a class="text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://www.facebook.com/nailmesuratthani" target="_blank" rel="noopener" data-track="facebook" data-i18n="gallery.more">ดูผลงานล่าสุดบนเพจ</a>
         </div>
-        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-3 reveal">
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1YmKe5tEzvpZkWJGLssCTW6MaXt49mOmg=w1200" alt="เล็บเจลกลิตเตอร์สีทอง ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1UAxglvIkVH8Ip5Fo804GOA9ZJjr_ootS=w1200" alt="เล็บเจลลายจุดโบว์ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1Ipw15EDSKBsK7AselVCCZmPKIQ4ek-RN=w1200" alt="เล็บเจลสีแดงเงา ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1IL1Bl3lZf0EJge_MZ1uISRHAorFu3-7n=w1200" alt="เล็บเจลปลายโครมเงิน ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1L0eg8f7cFxLhymha1i9WO9aAN6N9W_Um=w1200" alt="ทาสีเจลเท้ากลิตเตอร์ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1LTKzRB9zFzKf_nFHhbc5K-Gt2S9Ah2l2=w1200" alt="เล็บเจลสีขาวแต่งทอง ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1ddEvFHfRWMnSVnXYZTy4EUhx_zWtAYQa=w1200" alt="เล็บเจลชมพูติดอะไหล่ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1FFJpQkwNHBAWxrZTDowK3jGz4DMfrKC2=w1200" alt="เล็บเฟรนช์ลายจุด ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1jJgzFECBHDRuXOneEpp4MxmFJB8frx2y=w1200" alt="ทาสีเจลเท้าลายดอกไม้ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200" ></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1kzTYQ1zlJMcNdeOGMr0cuPNNhpzEKsVj=w1200" alt="เล็บเจลลายลูกไม้ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
-          <div class="aspect-square overflow-hidden rounded-lg"><img src="https://lh3.googleusercontent.com/d/1bbEwPtwzzEIAQPlsJBp3Yin35wcx4Ipo=w1200" alt="เล็บเจลสีนู้ดเงา ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+        <nav class="flex gap-3 overflow-x-auto scroller pb-2 mb-8 reveal" aria-label="หมวดผลงาน">
+          <a class="chip" href="#show-color" data-i18n="chip.1">ทาสีเจล</a><a class="chip" href="#show-art" data-i18n="chip.2">เพ้นท์ · อะไหล่</a><a class="chip" href="#show-ext" data-i18n="chip.3">ต่อเล็บ · สปา</a><a class="chip" href="#menu" data-i18n="chip.4">ราคาทั้งหมด</a>
+        </nav>
+        <!-- TODO ก่อนขึ้นจริง: โหลดรูปจาก Drive มาไว้ใน img/ แปลง WebP ≤300KB · ชื่อลาย/ราคาต่อใบให้ร้านตรวจ (ราคาที่มี + คือประมาณจากป้าย) -->
+        <div class="reveal">
+        <div class="mt-10 first:mt-0" id="show-color">
+          <div class="flex items-baseline justify-between gap-4 mb-4"><h3 class="font-display font-medium text-[24px] md:text-[28px]" data-i18n="show.c1">ทาสีเจล · Nail color</h3><div class="flex items-center gap-3"><a class="text-[14px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="#menu" data-i18n="show.all">ดูราคาทั้งหมด</a><span class="hidden md:inline-flex gap-2"><button type="button" class="row-btn" data-row-prev aria-label="ก่อนหน้า"><i class="ph ph-arrow-left" aria-hidden="true"></i></button><button type="button" class="row-btn" data-row-next aria-label="ถัดไป"><i class="ph ph-arrow-right" aria-hidden="true"></i></button></span></div></div>
+          <div class="show-row">
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/15XJ6vhagHu2wiS42nPKwGygAmkw32Ddo=w1200" alt="ทาสีเจลมือสีนู้ด ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sc1">ทาสีเจลมือ สีพื้น</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sc1.d">ตัดแต่งหนัง + ทาสีเจล 1 สี เลือกได้กว่า 100 เฉด</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿200</span> <span class="text-[13px] text-muted line-through">฿250</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1bbEwPtwzzEIAQPlsJBp3Yin35wcx4Ipo=w1200" alt="ทาสีเจลมือสีนู้ดเงา ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sc2">ทาสีเจลมือ โทนนู้ด</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sc2.d">สีเรียบ เงางาม ติดทน 1–3 เดือน</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿200</span> <span class="text-[13px] text-muted line-through">฿250</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1Ipw15EDSKBsK7AselVCCZmPKIQ4ek-RN=w1200" alt="ทาสีเจลสีแดงเงา ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sc3">ทาสีเจลมือ สีเข้ม</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sc3.d">แดง น้ำตาล เบอร์กันดี สีฤดูกาล</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿200</span> <span class="text-[13px] text-muted line-through">฿250</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1PJcpMwC7X_qX3z4oiqHcDRZhIesSawyU=w1200" alt="ทาสีเจลเท้าสีน้ำตาล ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sc4">ทาสีเจลเท้า</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sc4.d">ตัดแต่งหนัง + ทาสีเจลเท้า แห้งไว ใส่รองเท้าได้เลย</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿300</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1YmKe5tEzvpZkWJGLssCTW6MaXt49mOmg=w1200" alt="เล็บเจลกลิตเตอร์ทอง ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sc5">กลิตเตอร์ · สีลูกแก้ว</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sc5.d">สีประกาย กลิตเตอร์ หรือ Cat Eye เจลแม่เหล็ก</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿350</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1IL1Bl3lZf0EJge_MZ1uISRHAorFu3-7n=w1200" alt="เล็บเจลปลายโครมเงิน ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sc6">ปลายโครม</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sc6.d">ทาสีเจล + ผงโครมที่ปลายเล็บ คิดเพิ่มต่อนิ้วตามป้าย</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿250</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          </div>
         </div>
+        <div class="mt-10 first:mt-0" id="show-art">
+          <div class="flex items-baseline justify-between gap-4 mb-4"><h3 class="font-display font-medium text-[24px] md:text-[28px]" data-i18n="show.c2">เพ้นท์ · ติดอะไหล่ · Nail art</h3><div class="flex items-center gap-3"><a class="text-[14px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="#menu" data-i18n="show.all">ดูราคาทั้งหมด</a><span class="hidden md:inline-flex gap-2"><button type="button" class="row-btn" data-row-prev aria-label="ก่อนหน้า"><i class="ph ph-arrow-left" aria-hidden="true"></i></button><button type="button" class="row-btn" data-row-next aria-label="ถัดไป"><i class="ph ph-arrow-right" aria-hidden="true"></i></button></span></div></div>
+          <div class="show-row">
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1UAxglvIkVH8Ip5Fo804GOA9ZJjr_ootS=w1200" alt="เล็บเจลลายจุดโบว์ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sa1">เพ้นท์ลายจุด โบว์</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sa1.d">ทาสีเจล + เพ้นท์ลาย +20/นิ้ว · โปร เพ้นท์กี่นิ้วก็ได้ 350</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿350</span> <span class="text-[13px] text-muted line-through">฿270</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1pntTSKYGk-EFayT3rF-0HT8P55UZXQ5F=w1200" alt="เล็บเฟรนช์ปลายลายดอกไม้ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sa2">เฟรนช์ปลาย + ดอกไม้</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sa2.d">เฟรนช์ +30/นิ้ว เพ้นท์ดอกไม้ +20/นิ้ว</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿280</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1FFJpQkwNHBAWxrZTDowK3jGz4DMfrKC2=w1200" alt="เล็บเฟรนช์ลายจุด ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sa3">เฟรนช์ลายจุด</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sa3.d">เฟรนช์ปลาย +30/นิ้ว ลายจุด +20/นิ้ว</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿280</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1ddEvFHfRWMnSVnXYZTy4EUhx_zWtAYQa=w1200" alt="เล็บเจลชมพูติดอะไหล่ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sa4">ติดอะไหล่ เพชร</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sa4.d">ติดอะไหล่เล็ก +20/นิ้ว ปั้นนูน +50/นิ้ว</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿270</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1LTKzRB9zFzKf_nFHhbc5K-Gt2S9Ah2l2=w1200" alt="เล็บเจลสีขาวแต่งทอง ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sa5">ขาวแต่งฟอยล์ทอง</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sa5.d">ทาสีเจล + ตกแต่งฟอยล์ คิดเพิ่มต่อนิ้ว</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿270</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1uNuLHxviM4rtHmhYiBawVwgLvBXe0XEy=w1200" alt="เล็บเจลขาวลายจุด ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="sa6">ขาวมินิมอล ลายจุด</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="sa6.d">เพ้นท์ลาย +20/นิ้ว</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿270</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          </div>
+        </div>
+        <div class="mt-10 first:mt-0" id="show-ext">
+          <div class="flex items-baseline justify-between gap-4 mb-4"><h3 class="font-display font-medium text-[24px] md:text-[28px]" data-i18n="show.c3">ต่อเล็บ · สปา · Extensions &amp; spa</h3><div class="flex items-center gap-3"><a class="text-[14px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="#menu" data-i18n="show.all">ดูราคาทั้งหมด</a><span class="hidden md:inline-flex gap-2"><button type="button" class="row-btn" data-row-prev aria-label="ก่อนหน้า"><i class="ph ph-arrow-left" aria-hidden="true"></i></button><button type="button" class="row-btn" data-row-next aria-label="ถัดไป"><i class="ph ph-arrow-right" aria-hidden="true"></i></button></span></div></div>
+          <div class="show-row">
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1Oei9dUjojxuSW-H6natRzdzBWvKEZrLM=w1200" alt="ต่อเล็บ PVC ทรงยาว ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="se1">ต่อเล็บ PVC ทรงยาว</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="se1.d">ต่อเล็บ PVC เจลเว้นโคน ดูเป็นธรรมชาติ</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿250</span> <span class="text-[13px] text-muted line-through">฿350</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1OajpzAh2v_2KaqOe75ooyheJ50WOtWEa=w1200" alt="ต่อเล็บ PVC สีแดง ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="se2">ต่อเล็บ PVC + ทาสีเจล</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="se2.d">ต่อเล็บ 350 + ทาสีเจลตามป้าย</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿350</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1I3kqhPaChlb1eTTb-JxmtG138r0Ehkc9=w1200" alt="เล็บเจลชมพูประกาย ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="se3">เสริมหน้าเล็บ + สี</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="se3.d">เสริมหน้าเล็บก่อนทาสี 450 · หลังทาสี 150</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿150</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1L0eg8f7cFxLhymha1i9WO9aAN6N9W_Um=w1200" alt="ทาสีเจลเท้ากลิตเตอร์ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="se4">สปาเท้า 10 ขั้นตอน</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="se4.d">แช่ ขัด มาร์ก นวด บำรุง ขัดถึงใต้เข่า</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿450</span> <span class="text-[13px] text-muted line-through">฿499</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1EKacoRJ85xAP42r1IDpdXSSra2paZn_3=w1200" alt="ทาสีเจลเท้าลายเดซี่ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="se5">สปาเท้า + ทาสีเจลเท้า</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="se5.d">สปาเท้า 499 + ทาสีเจลเท้า 300</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿799</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          <article class="show-card snap-start">
+            <div class="ph"><img src="https://lh3.googleusercontent.com/d/1kzTYQ1zlJMcNdeOGMr0cuPNNhpzEKsVj=w1200" alt="เล็บเจลลายลูกไม้ ผลงาน Nail Me" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+            <div class="p-4 md:p-5">
+              <h3 class="font-medium text-[17px] leading-[1.4]" data-i18n="se6">สปามือ 9 ขั้นตอน</h3>
+              <p class="mt-1 text-[13px] text-muted leading-[1.6]" data-i18n="se6.d">บำรุงล้ำลึก ตัดหนัง นวด บำรุงจมูกเล็บ</p>
+              <div class="mt-3 flex items-baseline justify-between gap-3"><p><span class="num text-[26px] text-pink-deep leading-none">฿399</span></p><a class="text-[13px] text-pink-deep underline decoration-gold underline-offset-4 whitespace-nowrap" href="tel:+66646542666" data-track="call" data-i18n="show.book">จองคิว</a></div>
+            </div>
+          </article>
+          </div>
+        </div>
+        </div>
+        <p class="mt-6 text-[13px] text-muted" data-i18n="gallery.note">ราคาในการ์ดคือราคาตามป้ายราคาในร้าน ราคางานเพ้นท์/ตกแต่งขึ้นกับจำนวนนิ้วและลาย สอบถามช่างก่อนทำได้</p>
       </div>
     </section>
 
@@ -533,6 +701,10 @@
   </div>
 
   <script>
+    document.querySelectorAll('[data-row-prev],[data-row-next]').forEach(b => b.addEventListener('click', () => {
+      const row = b.closest('div[id^="show-"]').querySelector('.show-row'); const card = row.firstElementChild; const w = card ? card.getBoundingClientRect().width + 16 : 300;
+      row.scrollBy({ left: b.hasAttribute('data-row-next') ? w : -w, behavior: 'smooth' });
+    }));
     const I18N_EN = {
       'hero.welcome': 'Welcome to Nail Me', 'cta.find': 'Find the salon', 'bk.label': 'Please make a reservation', 'bk.label2': 'Ready when you are',
       'rit.title': 'What would you like to treat today?', 'rit.1': 'Nails', 'rit.1.d': 'Gel polish, cat eye, PVC extensions and nail art from 250 THB (promo 200).', 'rit.more': 'Services &amp; prices',
@@ -579,6 +751,16 @@
       'w4': 'Central and easy to find', 'w4.d': 'Next to San Chao Market, opposite the Ban Don electric train stop, across from Tops.',
       'w5': 'Travellers welcome', 'w5.d': 'We welcome both Thai customers and international travellers.',
       'gallery.title': 'From the salon', 'gallery.more': 'See the latest work on our page',
+      'gallery.sub': 'Real designs done at the salon with prices from our board. Pick one and call to book, or send us a photo on LINE.',
+      'chip.1': 'Gel colour', 'chip.2': 'Nail art', 'chip.3': 'Extensions &amp; spa', 'chip.4': 'All prices', 'show.all': 'See all prices', 'show.book': 'Book',
+      'show.c1': 'Nail colour', 'show.c2': 'Nail art &amp; decorations', 'show.c3': 'Extensions &amp; spa',
+      'sc1': 'Gel polish, hands', 'sc1.d': 'Cuticle care + one-colour gel, 100+ shades', 'sc2': 'Nude gel, hands', 'sc2.d': 'Clean glossy finish, lasts 1–3 months', 'sc3': 'Deep-colour gel, hands', 'sc3.d': 'Red, brown, burgundy, seasonal shades',
+      'sc4': 'Gel polish, feet', 'sc4.d': 'Cuticle care + gel pedicure, quick dry', 'sc5': 'Glitter · cat eye', 'sc5.d': 'Sparkle, glitter or magnetic cat-eye gel', 'sc6': 'Chrome tips', 'sc6.d': 'Gel + chrome powder on the tips, priced per nail',
+      'sa1': 'Dots &amp; bows', 'sa1.d': 'Gel + hand-painted art +20/nail · promo: art on any nails 350', 'sa2': 'French + flowers', 'sa2.d': 'French tip +30/nail, painted flowers +20/nail', 'sa3': 'French with dots', 'sa3.d': 'French tip +30/nail, dots +20/nail',
+      'sa4': 'Gems &amp; charms', 'sa4.d': 'Small decorations +20/nail, 3D +50/nail', 'sa5': 'White with gold foil', 'sa5.d': 'Gel + foil decoration, priced per nail', 'sa6': 'Minimal white dots', 'sa6.d': 'Hand-painted +20/nail',
+      'se1': 'Long PVC extensions', 'se1.d': 'PVC extensions with gel, natural look', 'se2': 'PVC extensions + gel', 'se2.d': 'Extensions 350 + gel colour as listed', 'se3': 'Overlay + colour', 'se3.d': 'Overlay before gel 450 · after gel 150',
+      'se4': '10-step foot spa', 'se4.d': 'Soak, scrub, mask, massage, up to the knee', 'se5': 'Foot spa + gel pedicure', 'se5.d': 'Foot spa 499 + gel pedicure 300', 'se6': '9-step hand spa', 'se6.d': 'Deep nourishment, cuticle care, massage, cuticle oil',
+      'gallery.note': 'Card prices are from the in-store price board. Art and decoration prices depend on the number of nails and the design; ask your technician first.',
       'reviews.title': 'Guest review',
       'r1.quote': '“Beautiful pedicure, I love it, so pretty!”', 'r1.name': 'Pathamawadee C. · Facebook review, 17 Jul 2026 · gel nails · translated from Thai',
       'stat.0': 'recommended, from 6 reviews on our page', 'stat.1': 'followers on our main page', 'stat.2': 'gel shades to choose from',

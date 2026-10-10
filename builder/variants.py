@@ -539,11 +539,11 @@ def build_d4(src, imgs):
     # ดึง section ที่ใช้ร่วม (4 สปา, 5 ทำไม, 8 จองคิว, 9 FAQ, 10 ที่ตั้ง) แล้วเรียงใหม่
     def get(n):
         a, b = section(d4, n); return d4[a:b]
-    s4, s5, s8, s9, s10 = get(4), get(5), get(8), get(9), get(10)
+    s4, s5, s6, s8, s9, s10 = get(4), get(5), get(6), get(8), get(9), get(10)
     photos = '\n'.join(f'        <div class="snap-start shrink-0 w-[78%] sm:w-[44%] lg:w-[30%] aspect-[3/4] overflow-hidden rounded-3xl">{im}</div>' for im in imgs)
     main_start = d4.index('  <main id="main">\n') + len('  <main id="main">\n')
     main_end = d4.index('  </main>')
-    body = D4_HERO + '\n' + D4_PROMO + '\n' + D4_REVIEWS + '\n' + D4_GALLERY.replace('__PHOTOS__', photos) + '\n' + D4_SERVICES + '\n' + s4 + '\n' + s5 + '\n' + s8 + '\n' + s9 + '\n' + s10
+    body = D4_HERO + '\n' + D4_PROMO + '\n' + D4_REVIEWS + '\n' + s6 + '\n' + D4_SERVICES + '\n' + s4 + '\n' + s5 + '\n' + s8 + '\n' + s9 + '\n' + s10
     d4 = d4[:main_start] + body + d4[main_end:]
     # ส่วนที่ใช้ร่วม: หัวข้อตัวบางกว่า, พื้นสลับ
     d4 = d4.replace('class="font-display font-semibold text-[clamp(32px,4.5vw,48px)]"', 'class="font-display font-medium text-[clamp(32px,4.5vw,48px)]"')
@@ -574,7 +574,7 @@ def build():
                     '<!-- web-dev/freelance/websites/nail-me/design2.html · แบบ 2 "Private & Calm" โครงตาม seeunail.com (สร้างจาก builder/variants.py อย่าแก้ตรงนี้) -->')
     d2 = d2.replace('    .reveal { opacity: 0;', D2_CSS + '    .reveal { opacity: 0;')
     d2 = swap(d2, 1, D2_HERO); d2 = swap(d2, 2, D2_PROMO); d2 = swap(d2, 3, D2_SERVICES); d2 = swap(d2, 5, D2_WHY)
-    d2 = swap(d2, 6, D2_GALLERY.replace('__PHOTOS__', grid(imgs))); d2 = swap(d2, 7, D2_REVIEWS); d2 = swap(d2, 8, D2_BOOKING)
+    d2 = swap(d2, 7, D2_REVIEWS); d2 = swap(d2, 8, D2_BOOKING)
     d2 = d2.replace('<meta name="theme-color" content="#FBEDEA">', '<meta name="theme-color" content="#F4EFE9">')
     d2 = d2.replace('.site-header.is-scrolled { background: rgba(251,237,234,.94);', '.site-header.is-scrolled { background: rgba(244,239,233,.94);')
     d2 = re.sub(r'    <p class="wordmark[^\n]*\n', '', d2)
@@ -588,7 +588,7 @@ def build():
     d3 = d3.replace('    .reveal { opacity: 0;', D3_CSS + '    .reveal { opacity: 0;')
     d3 = swap(d3, 1, D3_HERO); d3 = swap(d3, 2, D3_PROMO)
     a3, _ = section(d3, 3); d3 = d3[:a3] + D3_RITUAL + '\n' + d3[a3:]   # แทรก "เลือกบริการ" ก่อนเมนูเต็ม
-    d3 = swap(d3, 5, D3_WHY); d3 = swap(d3, 6, D3_GALLERY.replace('__PHOTOS__', grid(imgs, 6))); d3 = swap(d3, 7, D3_REVIEWS); d3 = swap(d3, 8, D3_BOOKING)
+    d3 = swap(d3, 5, D3_WHY); d3 = swap(d3, 7, D3_REVIEWS); d3 = swap(d3, 8, D3_BOOKING)
     d3 = d3.replace('<meta name="theme-color" content="#FBEDEA">', '<meta name="theme-color" content="#B5505F">')
     d3 = d3.replace('class="font-display font-semibold text-[clamp(32px,4.5vw,48px)]"', 'class="font-display font-medium text-[clamp(32px,4.5vw,48px)] text-pink-deep"')
     d3 = d3.replace('class="font-display font-semibold text-[clamp(36px,5vw,56px)]"', 'class="font-display font-medium text-[clamp(36px,5vw,56px)] text-pink-deep"')
