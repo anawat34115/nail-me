@@ -13,7 +13,7 @@
   <meta property="og:image" content="img/og-logo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta name="theme-color" content="#476650">
+  <meta name="theme-color" content="#B5505F">
   <link rel="icon" type="image/png" href="img/favicon-64.png">
   <link rel="apple-touch-icon" href="img/nail-me-logo-160.png">
 
@@ -29,7 +29,7 @@
       theme: {
         extend: {
           colors: {
-            'blush': '#F7F5F0', 'cream': '#FFFFFF', 'rose': '#DFE6DC', 'pink': '#6E8A74', 'pink-deep': '#476650', 'gold': '#B99A5B', 'gold-deep': '#86703A', 'gold-light': '#E4D6B3', 'ink': '#24302A', 'muted': '#5F6B64', 'cocoa': '#2B3D33', 'line': '#DEDFD6'
+            'blush': '#FBEDEA', 'cream': '#FFFDFB', 'rose': '#F4C6CE', 'pink': '#E8929F', 'pink-deep': '#B5505F', 'gold': '#C9A24B', 'gold-deep': '#8F6D22', 'gold-light': '#E9D7A5', 'ink': '#3A3532', 'muted': '#6E655F', 'cocoa': '#4A2C30', 'line': '#EBD9D6'
           },
           fontFamily: {
             display: ['"Cormorant Garamond"', '"Noto Serif Thai"', 'serif'],
@@ -43,7 +43,7 @@
 
   <style>
     :root {
-      --blush:#F7F5F0; --cream:#FFFFFF; --rose:#DFE6DC; --pink:#6E8A74; --pink-deep:#476650; --gold:#B99A5B; --gold-deep:#86703A; --gold-light:#E4D6B3; --ink:#24302A; --muted:#5F6B64; --cocoa:#2B3D33; --line:#DEDFD6;
+      --blush:#FBEDEA; --cream:#FFFDFB; --rose:#F4C6CE; --pink:#E8929F; --pink-deep:#B5505F; --gold:#C9A24B; --gold-deep:#8F6D22; --gold-light:#E9D7A5; --ink:#3A3532; --muted:#6E655F; --cocoa:#4A2C30; --line:#EBD9D6;
       --ease: cubic-bezier(.16,1,.3,1);
     }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -57,7 +57,7 @@
     :focus-visible { outline: 2px solid var(--pink-deep); outline-offset: 4px; border-radius: 4px; }
 
     .site-header { transition: background-color .4s var(--ease), box-shadow .4s var(--ease); }
-    .site-header.is-scrolled { background: rgba(247,245,240,.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--line); }
+    .site-header.is-scrolled { background: rgba(251,237,234,.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--line); }
     .nav-link { position: relative; padding: 8px 0; color: var(--ink); }
     .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: var(--gold-deep); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
     .nav-link:hover::after { transform: scaleX(1); }
@@ -130,7 +130,7 @@
     .arrow-link::after { content: "→"; }
     .ncard { border-top: 2px solid var(--pink-deep); padding-top: 24px; }
     .ncard .n { font-family: "Cormorant Garamond", serif; font-size: 40px; line-height: 1; color: var(--pink-deep); }
-    .hero-dim { background: linear-gradient(180deg, rgba(36,48,42,.30) 0%, rgba(36,48,42,.60) 100%); }
+    .hero-dim { background: linear-gradient(180deg, rgba(74,44,48,.30) 0%, rgba(74,44,48,.62) 100%); }
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
     .reveal.is-in { opacity: 1; transform: none; }
     [data-stagger] { opacity: 0; transform: translateY(16px); animation: rise .9s var(--ease) forwards; animation-delay: var(--d, 0ms); }

@@ -203,15 +203,15 @@ D2_BOOKING = """    <!-- ===== 8. กรุณาจองคิว (ตาม s
     </section>
 """
 
-# ---------------------------------------------------------------- แบบ 3: "Garden" (โครงตาม nailgarden.com: hero รูป+ข้อความกลาง → "เลือกบริการ" การ์ดเลข 01/02/03 → เรื่องร้าน รูป+ข้อความ → เมนู → แกลเลอรี 6 รูป → รีวิว → CTA ปิดกลางหน้า · ลิงก์ข้อความ "→" · ป้าย eyebrow)
-D3_COLORS = {
-    'blush': '#F7F5F0',      # กระดาษ
-    'cream': '#FFFFFF',
-    'rose': '#DFE6DC',       # เขียวอ่อน
-    'pink': '#6E8A74',       # เซจ
-    'pink-deep': '#476650',  # เขียวสวน = ปุ่มหลัก/ราคา
-    'gold': '#B99A5B', 'gold-deep': '#86703A', 'gold-light': '#E4D6B3',
-    'ink': '#24302A', 'muted': '#5F6B64', 'cocoa': '#2B3D33', 'line': '#DEDFD6',
+# ---------------------------------------------------------------- แบบ 3: "Garden × Blush" (โครงตาม nailgarden.com: hero รูป+ข้อความกลาง → "เลือกบริการ" การ์ดเลข 01/02/03 → เรื่องร้าน รูป+ข้อความ → เมนู → แกลเลอรี 6 รูป → รีวิว → CTA ปิดกลางหน้า · ลิงก์ข้อความ "→" · ป้าย eyebrow)
+D3_COLORS = {   # CI โลโก้ (ปรับ 10 ต.ค. 19:08 ตาม Apex) โครงยังเป็น nailgarden
+    'blush': '#FBEDEA',      # พื้นชมพูอ่อน
+    'cream': '#FFFDFB',
+    'rose': '#F4C6CE',
+    'pink': '#E8929F',
+    'pink-deep': '#B5505F',  # ปุ่มหลัก/ราคา/หัวข้อ
+    'gold': '#C9A24B', 'gold-deep': '#8F6D22', 'gold-light': '#E9D7A5',
+    'ink': '#3A3532', 'muted': '#6E655F', 'cocoa': '#4A2C30', 'line': '#EBD9D6',
 }
 D3_FONTS = {
     'tw': "display: ['\"Cormorant Garamond\"', '\"Noto Serif Thai\"', 'serif'],\n            body: ['Anuphan', 'sans-serif']",
@@ -226,7 +226,7 @@ D3_CSS = """
     .arrow-link::after { content: "→"; }
     .ncard { border-top: 2px solid var(--pink-deep); padding-top: 24px; }
     .ncard .n { font-family: "Cormorant Garamond", serif; font-size: 40px; line-height: 1; color: var(--pink-deep); }
-    .hero-dim { background: linear-gradient(180deg, rgba(36,48,42,.30) 0%, rgba(36,48,42,.60) 100%); }
+    .hero-dim { background: linear-gradient(180deg, rgba(74,44,48,.30) 0%, rgba(74,44,48,.62) 100%); }
 """
 
 D3_HERO = f"""    <!-- ===== 1. Hero: รูปเต็มจอ ข้อความกลาง + 2 ปุ่ม (ตาม nailgarden) ===== -->
@@ -589,8 +589,7 @@ def build():
     d3 = swap(d3, 1, D3_HERO); d3 = swap(d3, 2, D3_PROMO)
     a3, _ = section(d3, 3); d3 = d3[:a3] + D3_RITUAL + '\n' + d3[a3:]   # แทรก "เลือกบริการ" ก่อนเมนูเต็ม
     d3 = swap(d3, 5, D3_WHY); d3 = swap(d3, 6, D3_GALLERY.replace('__PHOTOS__', grid(imgs, 6))); d3 = swap(d3, 7, D3_REVIEWS); d3 = swap(d3, 8, D3_BOOKING)
-    d3 = d3.replace('<meta name="theme-color" content="#FBEDEA">', '<meta name="theme-color" content="#476650">')
-    d3 = d3.replace('.site-header.is-scrolled { background: rgba(251,237,234,.94);', '.site-header.is-scrolled { background: rgba(247,245,240,.94);')
+    d3 = d3.replace('<meta name="theme-color" content="#FBEDEA">', '<meta name="theme-color" content="#B5505F">')
     d3 = d3.replace('class="font-display font-semibold text-[clamp(32px,4.5vw,48px)]"', 'class="font-display font-medium text-[clamp(32px,4.5vw,48px)] text-pink-deep"')
     d3 = d3.replace('class="font-display font-semibold text-[clamp(36px,5vw,56px)]"', 'class="font-display font-medium text-[clamp(36px,5vw,56px)] text-pink-deep"')
     d3 = d3.replace('<span class="font-display text-[24px] font-semibold italic text-pink-deep">Nail Me</span>', '<span class="font-display text-[24px] font-medium italic text-pink-deep">Nail Me</span>')
