@@ -3,6 +3,8 @@
 # เนื้อหา/i18n/JS ใช้ร่วมกัน ต่างกันที่โทนสี ฟอนต์ และเลย์เอาต์ของ hero / โปร / บริการ / ผลงาน / จองคิว
 # ใช้: python builder/variants.py  (รันจากโฟลเดอร์ websites/nail-me)
 import re, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import showcase as SH
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / 'index.html'
@@ -350,7 +352,8 @@ D3_BOOKING = """    <!-- ===== 8. CTA ปิด กลางหน้า (ตา
     </section>
 """
 
-EXTRA_EN = """      'hero.welcome': 'Welcome to Nail Me', 'cta.find': 'Find the salon', 'bk.label': 'Please make a reservation', 'bk.label2': 'Ready when you are',
+EXTRA_EN = """      'chip.0': 'All',
+      'hero.welcome': 'Welcome to Nail Me', 'cta.find': 'Find the salon', 'bk.label': 'Please make a reservation', 'bk.label2': 'Ready when you are',
       'rit.title': 'What would you like to treat today?', 'rit.1': 'Nails', 'rit.1.d': 'Gel polish, cat eye, PVC extensions and nail art from 250 THB (promo 200).', 'rit.more': 'Services &amp; prices',
       'rit.2': 'Spa &amp; nail care', 'rit.2.d': '10-step foot spa 499, 9-step hand spa 399, manicure / pedicure 200.', 'rit.more2': 'See the spa steps',
       'rit.3': 'Hair', 'rit.3.d': 'Wash &amp; blow-dry, any length, 150 THB. Other hair services: please call or message.', 'rit.more3': 'Call to ask',
@@ -539,7 +542,8 @@ def build_d4(src, imgs):
     # ดึง section ที่ใช้ร่วม (4 สปา, 5 ทำไม, 8 จองคิว, 9 FAQ, 10 ที่ตั้ง) แล้วเรียงใหม่
     def get(n):
         a, b = section(d4, n); return d4[a:b]
-    s4, s5, s6, s8, s9, s10 = get(4), get(5), get(6), get(8), get(9), get(10)
+    s4, s5, s8, s9, s10 = get(4), get(5), get(8), get(9), get(10); s6 = SH.render_l4()
+    d4 = d4.replace('    .reveal { opacity: 0;', SH.L4_CSS + '    .reveal { opacity: 0;'); d4 = d4.replace(SH.L1_JS, SH.L4_JS)
     photos = '\n'.join(f'        <div class="snap-start shrink-0 w-[78%] sm:w-[44%] lg:w-[30%] aspect-[3/4] overflow-hidden rounded-3xl">{im}</div>' for im in imgs)
     main_start = d4.index('  <main id="main">\n') + len('  <main id="main">\n')
     main_end = d4.index('  </main>')
@@ -560,8 +564,22 @@ def build_d4(src, imgs):
     d4 = d4.replace("    const I18N_EN = {\n", "    const I18N_EN = {\n" + D4_EN)
     (ROOT / 'design4.html').write_text(d4)
 
+def strip_l1(src):
+    # ลบ CSS/JS ของ showcase เดิมใน index แล้วใส่จาก showcase.py (แหล่งเดียว)
+    a = src.find('    /* ผลงานแบบการ์ดรูป+ราคา */'); 
+    if a != -1:
+        b = src.index('    .reveal { opacity: 0;', a); src = src[:a] + src[b:]
+    a = src.find("    document.querySelectorAll('[data-row-prev]")
+    if a != -1:
+        b = src.index('    const I18N_EN = {', a); src = src[:a] + src[b:]
+    return src
+
 def build():
-    src = SRC.read_text()
+    src = strip_l1(SRC.read_text())
+    src = swap(src, 6, SH.render_l1())
+    src = src.replace('    .reveal { opacity: 0;', '    /* ผลงานแบบการ์ดรูป+ราคา */\n' + SH.L1_CSS + '    .reveal { opacity: 0;')
+    src = src.replace('    const I18N_EN = {', SH.L1_JS + '    const I18N_EN = {', 1)
+    SRC.write_text(src)
     a, b = section(src, 6)
     imgs = re.findall(r'<img [^>]*>', src[a:b])
     def grid(ims, n=None):
@@ -574,6 +592,7 @@ def build():
                     '<!-- web-dev/freelance/websites/nail-me/design2.html · แบบ 2 "Private & Calm" โครงตาม seeunail.com (สร้างจาก builder/variants.py อย่าแก้ตรงนี้) -->')
     d2 = d2.replace('    .reveal { opacity: 0;', D2_CSS + '    .reveal { opacity: 0;')
     d2 = swap(d2, 1, D2_HERO); d2 = swap(d2, 2, D2_PROMO); d2 = swap(d2, 3, D2_SERVICES); d2 = swap(d2, 5, D2_WHY)
+    d2 = swap(d2, 6, SH.render_l2()); d2 = d2.replace('    .reveal { opacity: 0;', SH.L2_CSS + '    .reveal { opacity: 0;'); d2 = d2.replace(SH.L1_JS, SH.L2_JS)
     d2 = swap(d2, 7, D2_REVIEWS); d2 = swap(d2, 8, D2_BOOKING)
     d2 = d2.replace('<meta name="theme-color" content="#FBEDEA">', '<meta name="theme-color" content="#F4EFE9">')
     d2 = d2.replace('.site-header.is-scrolled { background: rgba(251,237,234,.94);', '.site-header.is-scrolled { background: rgba(244,239,233,.94);')
@@ -588,7 +607,7 @@ def build():
     d3 = d3.replace('    .reveal { opacity: 0;', D3_CSS + '    .reveal { opacity: 0;')
     d3 = swap(d3, 1, D3_HERO); d3 = swap(d3, 2, D3_PROMO)
     a3, _ = section(d3, 3); d3 = d3[:a3] + D3_RITUAL + '\n' + d3[a3:]   # แทรก "เลือกบริการ" ก่อนเมนูเต็ม
-    d3 = swap(d3, 5, D3_WHY); d3 = swap(d3, 7, D3_REVIEWS); d3 = swap(d3, 8, D3_BOOKING)
+    d3 = swap(d3, 5, D3_WHY); d3 = swap(d3, 6, SH.render_l3()); d3 = d3.replace('    .reveal { opacity: 0;', SH.L3_CSS + '    .reveal { opacity: 0;'); d3 = d3.replace(SH.L1_JS, ''); d3 = swap(d3, 7, D3_REVIEWS); d3 = swap(d3, 8, D3_BOOKING)
     d3 = d3.replace('<meta name="theme-color" content="#FBEDEA">', '<meta name="theme-color" content="#B5505F">')
     d3 = d3.replace('class="font-display font-semibold text-[clamp(32px,4.5vw,48px)]"', 'class="font-display font-medium text-[clamp(32px,4.5vw,48px)] text-pink-deep"')
     d3 = d3.replace('class="font-display font-semibold text-[clamp(36px,5vw,56px)]"', 'class="font-display font-medium text-[clamp(36px,5vw,56px)] text-pink-deep"')
