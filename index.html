@@ -11,9 +11,12 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nail me (San Chao Market) · Beauty & Relaxation">
   <meta property="og:description" content="Your nail stop in Surat Thani: nails, foot spa, cut, wash & blow-dry.">
-  <!-- TODO og:image: รูปหน้าร้านจริง 1200x630 -->
-  <meta name="theme-color" content="#F7F3EE">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%233A3532'/%3E%3Ctext x='32' y='42' font-family='serif' font-size='30' text-anchor='middle' fill='%23F7F3EE'%3En%3C/text%3E%3C/svg%3E">
+  <meta property="og:image" content="img/og-logo.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+    <meta name="theme-color" content="#F7F3EE">
+  <link rel="icon" type="image/png" href="img/favicon-64.png">
+  <link rel="apple-touch-icon" href="img/nail-me-logo-160.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -166,9 +169,12 @@
   <header class="site-header sticky top-0 z-40">
     <div class="mx-auto max-w-[1200px] px-4 md:px-8 h-16 lg:h-[72px] flex items-center justify-between gap-4">
       <!-- TODO: เปลี่ยนเป็นไฟล์โลโก้จริงเมื่อร้านส่งมา -->
-      <a href="#top" class="flex flex-col leading-none whitespace-nowrap shrink-0" aria-label="Nail me (San Chao Market)">
+      <a href="#top" class="flex items-center gap-3 whitespace-nowrap shrink-0" aria-label="Nail Me ตลาดศาลเจ้า">
+        <img src="img/nail-me-logo-160.png" srcset="img/nail-me-logo-160.png 1x, img/nail-me-logo-512.png 2x" width="48" height="48" alt="โลโก้ Nail Me" class="w-12 h-12 rounded-full shrink-0" fetchpriority="high">
+        <span class="flex flex-col leading-none">
         <span class="font-display text-[24px] font-semibold tracking-[.02em]">Nail me</span>
-        <span class="text-[12px] tracking-[.16em] uppercase text-ink-muted mt-1">San Chao Market</span>
+        <span class="text-[12px] tracking-[.16em] uppercase text-ink-muted mt-1">ตลาดศาลเจ้า · Surat Thani</span>
+        </span>
       </a>
 
       <nav class="hidden lg:flex items-center gap-8 text-[15px]" aria-label="หลัก">
@@ -450,6 +456,7 @@
   <footer class="bg-ink text-washi pt-14 pb-24 md:pb-14">
     <div class="mx-auto max-w-[1200px] px-4 md:px-8 grid md:grid-cols-3 gap-10">
       <div>
+        <img src="img/nail-me-logo-160.png" width="64" height="64" alt="" class="w-16 h-16 rounded-full mb-4" loading="lazy">
         <p class="font-display text-[28px] font-semibold leading-none">Nail me</p>
         <p class="text-[12px] tracking-[.16em] uppercase text-sand mt-2">San Chao Market</p>
         <p class="mt-6 text-sand text-[15px]">Beauty &amp; Relaxation<br>Your nail stop in Surat Thani</p>
