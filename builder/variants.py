@@ -71,9 +71,9 @@ D2_HERO = f"""    <!-- ===== 1. Hero: รูปเต็มจอ ข้อค�
         <p class="text-cream/90 mt-6 max-w-[30em] mx-auto text-[17px] md:text-[19px]" data-stagger style="--d:240ms" data-i18n="hero.sub">Nail Me ร้านทำเล็บ สปาเท้า สปามือ และสระไดร์ ใจกลางเมืองสุราษฎร์ธานี ทาสีเจลเริ่มต้น 200 บาท สีเจลให้เลือกกว่า 100 เฉด ทำแล้วดูแลให้หลังทำ ไม่ทิ้งงาน</p>
         <div class="flex flex-wrap justify-center gap-4 mt-8" data-stagger style="--d:360ms">
           <a class="btn btn-lg bg-cream text-pink-deep hover:bg-gold-light" href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
-          <a class="btn btn-lg btn-on-dark" href="https://m.me/nailmesuratthani" target="_blank" rel="noopener" data-track="message"><i class="ph ph-messenger-logo" aria-hidden="true"></i><span data-i18n="cta.line">ทักเพจ</span></a>
+          <a class="btn btn-lg btn-on-dark" href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span data-i18n="cta.line">ทัก LINE</span></a>
         </div>
-        <p class="mt-8 text-[15px] text-cream/80" data-stagger style="--d:480ms"><span data-i18n="hero.hours">เปิดทุกวัน 09:00–21:00</span> · <span data-i18n="hero.walkin">จองคิวหรือ walk-in</span> · <a href="tel:+66646542666" data-track="call" class="text-gold-light underline underline-offset-4">064-654-2666</a></p>
+        <p class="mt-8 text-[15px] text-cream/80" data-stagger style="--d:480ms"><span data-i18n="hero.hours">เปิดทุกวัน 09:00–21:00</span> · <span data-i18n="hero.walkin">จองคิวหรือ walk-in</span> · <a href="tel:+66646542666" data-track="call" class="text-gold-light underline underline-offset-4">064-654-2666</a> · LINE <a href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line" class="text-gold-light underline underline-offset-4">jenny5667</a></p>
       </div>
     </section>
 """
@@ -197,7 +197,7 @@ D2_BOOKING = """    <!-- ===== 8. กรุณาจองคิว (ตาม s
         </ol>
         <div class="flex flex-wrap justify-center gap-4 mt-10 reveal">
           <a class="btn btn-lg bg-cream text-pink-deep hover:bg-gold-light" href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
-          <a class="btn btn-lg btn-on-dark" href="https://m.me/nailmesuratthani" target="_blank" rel="noopener" data-track="message"><i class="ph ph-messenger-logo" aria-hidden="true"></i><span data-i18n="cta.line">ทักเพจ</span></a>
+          <a class="btn btn-lg btn-on-dark" href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span data-i18n="cta.line">ทัก LINE</span></a>
         </div>
       </div>
     </section>
@@ -344,7 +344,7 @@ D3_BOOKING = """    <!-- ===== 8. CTA ปิด กลางหน้า (ตา
         </ol>
         <div class="flex flex-wrap justify-center gap-4 mt-10 reveal">
           <a class="btn btn-lg bg-cream text-pink-deep hover:bg-gold-light" href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
-          <a class="btn btn-lg btn-on-dark" href="https://m.me/nailmesuratthani" target="_blank" rel="noopener" data-track="message"><i class="ph ph-messenger-logo" aria-hidden="true"></i><span data-i18n="cta.line">ทักเพจ</span></a>
+          <a class="btn btn-lg btn-on-dark" href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span data-i18n="cta.line">ทัก LINE</span></a>
         </div>
       </div>
     </section>
@@ -399,9 +399,9 @@ D4_HERO = f"""    <!-- ===== 1. Hero: รูปเต็มจอ ไฟอุ�
         <p class="mt-6 max-w-[32em] text-cream/85 text-[17px] md:text-[19px]" data-stagger style="--d:240ms" data-i18n="hero.sub">Nail Me ร้านทำเล็บ สปาเท้า สปามือ และสระไดร์ ใจกลางเมืองสุราษฎร์ธานี ทาสีเจลเริ่มต้น 200 บาท สีเจลให้เลือกกว่า 100 เฉด ทำแล้วดูแลให้หลังทำ ไม่ทิ้งงาน</p>
         <div class="flex flex-wrap gap-4 mt-8" data-stagger style="--d:360ms">
           <a class="btn btn-lg bg-gold-light text-cocoa hover:bg-cream" href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
-          <a class="btn btn-lg btn-on-dark" href="https://m.me/nailmesuratthani" target="_blank" rel="noopener" data-track="message"><i class="ph ph-messenger-logo" aria-hidden="true"></i><span data-i18n="cta.line">ทักเพจ</span></a>
+          <a class="btn btn-lg btn-on-dark" href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line"><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><span data-i18n="cta.line">ทัก LINE</span></a>
         </div>
-        <p class="mt-8 text-[15px] text-cream/70" data-stagger style="--d:480ms"><span data-i18n="hero.hours">เปิดทุกวัน 09:00–21:00</span> · <span data-i18n="hero.walkin">จองคิวหรือ walk-in</span> · <a href="tel:+66646542666" data-track="call" class="text-gold-light underline underline-offset-4">064-654-2666</a></p>
+        <p class="mt-8 text-[15px] text-cream/70" data-stagger style="--d:480ms"><span data-i18n="hero.hours">เปิดทุกวัน 09:00–21:00</span> · <span data-i18n="hero.walkin">จองคิวหรือ walk-in</span> · <a href="tel:+66646542666" data-track="call" class="text-gold-light underline underline-offset-4">064-654-2666</a> · LINE <a href="https://line.me/ti/p/~jenny5667" target="_blank" rel="noopener" data-track="line" class="text-gold-light underline underline-offset-4">jenny5667</a></p>
       </div>
     </section>
 """
