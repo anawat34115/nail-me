@@ -2,11 +2,10 @@
 
 ร้านทำเล็บ สปาเท้า ตัด สระ ไดร์ สุราษฎร์ธานี · งาน Fastwork แพ็ก A
 
-- `index.html` แบบ 1 **Blush & Gold** อิงโลโก้ร้าน (ชมพู-ทอง) · 10 section ตามหลัก SEO
-- `design2.html` แบบ 2 **Private & Calm** โครงตาม seeunail.com (เบจ-น้ำตาล การ์ดบริการมีรูป เช็กลิสต์ 100% ใหญ่)
-- `design3.html` แบบ 3 **Garden × Blush** โครงตาม nailgarden.com (การ์ดเลข 01/02/03 ลิงก์ลูกศร) สี CI โลโก้
-- `design4.html` แบบ 4 **Hojicha Evening × Blush** โครงดราฟต์ญี่ปุ่นเดิม (hero ไฟอุ่น โปรเกยขอบ รีวิวขึ้นก่อน ลายเล็บแถบใหญ่) สี CI โลโก้
-- แบบ 2–4 สร้างจาก `index.html` ด้วย `python builder/variants.py` (แก้เนื้อหาที่ index แล้วรันใหม่) · section ผลงาน 18 การ์ด แก้ข้อมูลที่ `builder/showcase_data.py` (เลย์เอาต์ 4 แบบใน `builder/showcase.py`)
+- `index.html` แบบ 1 **แมกกาซีน** ทำมือ · `design2.html` แบบ 2 **ห้องส่วนตัว** (โครง seeUnail) ทำมือ · `design3.html` แบบ 3 **ป้ายหน้าร้าน** (จากป้ายราคาในร้าน) ทำมือ → สร้างจาก `python builder/handmade.py` (ข้อมูลร้านอยู่ในไฟล์นั้น)
+- `design4.html` แบบ 4 **Hojicha Evening × Blush** (Tailwind, ไฟล์นิ่ง ไม่ต้องสร้างใหม่ · `builder/variants.py` เลิกใช้แล้ว)
+- `design5.html` แบบ 5 **โต๊ะช่าง** ทำมือ คอลลาจ ป้ายเขียนมือ
+- ทุกแบบ: ภาษาไทยก่อน อังกฤษทำหลังลูกค้าเลือกแบบ (แบบ 4 มี `?lang=en`)
 - `drafts/` แบบเก่า 3 แนวญี่ปุ่น เก็บไว้อ้างอิง
 - `img/photos.json` รหัสรูปจากโฟลเดอร์ Drive ที่ร้านแชร์ (ตอนนี้ลิงก์ตรง ก่อนขึ้นจริงต้องโหลดมาไว้ใน img/)
 - `logo/` โลโก้จากเพจ + ร่างโลโก้ 3 แนวทาง
