@@ -1,5 +1,5 @@
 # web-dev/freelance/websites/nail-me/builder/variants.py
-# สร้าง design2.html (โครงตาม seeunail.com) และ design3.html (โครงตาม nailgarden.com) จาก index.html
+# สร้าง design2.html (โครงตาม seeunail.com), design3.html (โครงตาม nailgarden.com), design4.html (Hojicha Evening × Blush) จาก index.html
 # เนื้อหา/i18n/JS ใช้ร่วมกัน ต่างกันที่โทนสี ฟอนต์ และเลย์เอาต์ของ hero / โปร / บริการ / ผลงาน / จองคิว
 # ใช้: python builder/variants.py  (รันจากโฟลเดอร์ websites/nail-me)
 import re, pathlib, sys
@@ -357,6 +357,209 @@ EXTRA_EN = """      'hero.welcome': 'Welcome to Nail Me', 'cta.find': 'Find the 
       'why.more': 'Visit us',
 """
 
+# ---------------------------------------------------------------- แบบ 4: "Hojicha Evening × Blush" (โครงจากดราฟต์ญี่ปุ่นแบบ 2 เดิม: hero รูปเต็มจอไฟอุ่น → โปรเกยขอบ hero → รีวิวขึ้นก่อน → ลายเล็บแถบใหญ่ → บริการสลับซ้าย-ขวา นำด้วยสปา → เมนูพื้นเข้ม → ... · สี CI จากโลโก้ ชมพู-ทอง-โกโก้)
+D4_COLORS = {
+    'blush': '#FBEDEA',      # พื้นหลัก
+    'cream': '#FFF9F5',      # พื้นสลับ
+    'rose': '#F4C6CE',       # ชมพูกลาง
+    'pink': '#E8929F',       # ชมพูแบรนด์
+    'pink-deep': '#B5505F',  # ปุ่มหลัก/ราคา
+    'gold': '#C9A24B', 'gold-deep': '#8F6D22', 'gold-light': '#E9D7A5',
+    'ink': '#3A3532', 'muted': '#6E655F', 'cocoa': '#4A2C30', 'line': '#EBD9D6',
+}
+D4_FONTS = {
+    'tw': "display: ['\"Zen Old Mincho\"', '\"Noto Serif Thai\"', 'serif'],\n            body: ['\"Noto Sans Thai\"', 'sans-serif']",
+    'link': '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600&family=Noto+Serif+Thai:wght@500;600&family=Noto+Sans+Thai:wght@300;400;500&display=swap">',
+    'display_css': '"Zen Old Mincho", "Noto Serif Thai", serif', 'body_css': '"Noto Sans Thai", sans-serif',
+}
+P_TOES_DAISY = PHO('1EKacoRJ85xAP42r1IDpdXSSra2paZn_3'); P_POLKA = PHO('1UAxglvIkVH8Ip5Fo804GOA9ZJjr_ootS'); P_LONG = PHO('1Oei9dUjojxuSW-H6natRzdzBWvKEZrLM')
+
+D4_CSS = """
+    /* แบบ 4: hero ไฟอุ่น + โปรเกยขอบ + บริการสลับ */
+    .hero-shade { background: linear-gradient(180deg, rgba(74,44,48,.35) 0%, rgba(74,44,48,.55) 60%, rgba(74,44,48,.92) 100%); }
+    .hero-zoom { animation: slowzoom 18s var(--ease) forwards; transform-origin: center; }
+    @keyframes slowzoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+    .quote-mark { font-family: "Zen Old Mincho", serif; font-size: 56px; line-height: .6; color: var(--gold); display: block; }
+    .scroller { scrollbar-width: none; } .scroller::-webkit-scrollbar { display: none; }
+    .alt { display: grid; gap: 32px; align-items: center; }
+    @media (min-width: 1024px) { .alt { grid-template-columns: 1fr 1fr; gap: 64px; } .alt.flip > :first-child { order: 2; } }
+    .tea-row { display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(233,215,165,.25); }
+    .tea-row .lead { flex: 1; border-bottom: 1px dotted rgba(233,215,165,.5); transform: translateY(-5px); min-width: 24px; }
+    .tea-row .pr { font-family: "Zen Old Mincho", serif; font-size: 22px; color: var(--gold-light); white-space: nowrap; }
+    .faq summary i { color: var(--gold-deep); }
+"""
+
+D4_HERO = f"""    <!-- ===== 1. Hero: รูปเต็มจอ ไฟอุ่นยามเย็น ซูมช้า (Hojicha Evening) ===== -->
+    <section id="top" class="relative overflow-hidden bg-cocoa text-cream">
+      <img src="{P_TOES_DAISY}" alt="" class="hero-zoom absolute inset-0 w-full h-full object-cover" width="900" height="1200" fetchpriority="high" decoding="async">
+      <div class="hero-shade absolute inset-0" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-[1200px] px-4 md:px-8 min-h-[80svh] flex flex-col justify-center pt-20 pb-40 md:pb-48">
+        <p class="label !text-gold-light" data-stagger style="--d:0ms" data-i18n="hero.eyebrow">ร้านทำเล็บ สุราษฎร์ธานี · ข้างตลาดศาลเจ้า</p>
+        <h1 class="font-display font-medium text-[clamp(40px,7.5vw,80px)] mt-4 max-w-[12em] leading-[1.15]" data-stagger style="--d:120ms"><span data-i18n="hero.title1">ร้านหรู</span><br><span class="text-rose whitespace-nowrap" data-i18n="hero.title2">แต่ราคาน่ารัก</span></h1>
+        <p class="mt-6 max-w-[32em] text-cream/85 text-[17px] md:text-[19px]" data-stagger style="--d:240ms" data-i18n="hero.sub">Nail Me ร้านทำเล็บ สปาเท้า สปามือ และสระไดร์ ใจกลางเมืองสุราษฎร์ธานี ทาสีเจลเริ่มต้น 200 บาท สีเจลให้เลือกกว่า 100 เฉด ทำแล้วดูแลให้หลังทำ ไม่ทิ้งงาน</p>
+        <div class="flex flex-wrap gap-4 mt-8" data-stagger style="--d:360ms">
+          <a class="btn btn-lg bg-gold-light text-cocoa hover:bg-cream" href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
+          <a class="btn btn-lg btn-on-dark" href="https://m.me/nailmesuratthani" target="_blank" rel="noopener" data-track="message"><i class="ph ph-messenger-logo" aria-hidden="true"></i><span data-i18n="cta.line">ทักเพจ</span></a>
+        </div>
+        <p class="mt-8 text-[15px] text-cream/70" data-stagger style="--d:480ms"><span data-i18n="hero.hours">เปิดทุกวัน 09:00–21:00</span> · <span data-i18n="hero.walkin">จองคิวหรือ walk-in</span> · <a href="tel:+66646542666" data-track="call" class="text-gold-light underline underline-offset-4">064-654-2666</a></p>
+      </div>
+    </section>
+"""
+
+D4_PROMO = """    <!-- ===== 2. โปรโมชั่น: การ์ดเกยขอบ hero ===== -->
+    <section id="promo" class="relative z-10 -mt-24 md:-mt-28" aria-labelledby="promo-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="bg-cream border border-gold rounded-3xl px-6 py-8 md:px-10 md:py-10 grid lg:grid-cols-12 gap-6 lg:gap-10 items-center reveal">
+          <div class="lg:col-span-4">
+            <p class="label" data-i18n="promo.label">โปรเดือนนี้</p>
+            <h2 id="promo-title" class="font-display font-medium text-[26px] md:text-[30px] mt-2 text-pink-deep" data-i18n="promo.title">แคปโพสต์โปร ให้ช่างก่อนรับบริการ</h2>
+            <a class="inline-flex items-center gap-2 mt-3 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="promo.cta">ดูโพสต์โปรบนเพจ</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+          </div>
+          <ul class="lg:col-span-6 grid grid-cols-3 gap-4 md:gap-8 lg:border-l border-line lg:pl-10">
+            <li><p class="num text-[36px] md:text-[48px] leading-none text-pink-deep">฿200</p><p class="mt-2 text-[13px] md:text-[14px] text-muted" data-i18n="promo.p0">ทาสีเจล ตัดแต่งหนังฟรี <span class="line-through opacity-70">250</span></p></li>
+            <li><p class="num text-[36px] md:text-[48px] leading-none text-pink-deep">฿450</p><p class="mt-2 text-[13px] md:text-[14px] text-muted" data-i18n="promo.p1">สปาเท้า 9 ขั้นตอน <span class="line-through opacity-70">499</span></p></li>
+            <li><p class="num text-[36px] md:text-[48px] leading-none text-pink-deep">฿150</p><p class="mt-2 text-[13px] md:text-[14px] text-muted" data-i18n="promo.p2">สระไดร์ ทุกความยาว</p></li>
+          </ul>
+          <div class="lg:col-span-2 lg:text-right"><a class="btn btn-pink btn-lg" href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="promo.cta2">โทรจองโปร</span></a></div>
+        </div>
+      </div>
+    </section>
+"""
+
+D4_REVIEWS = """    <!-- ===== 7→3. รีวิว ขึ้นก่อนบริการ (ลูกค้าขอให้เด่น) ===== -->
+    <section id="reviews" class="py-14 md:py-20 lg:py-24" aria-labelledby="reviews-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
+          <div>
+            <p class="label" data-i18n="reviews.label">Guest reviews</p>
+            <h2 id="reviews-title" class="font-display font-medium text-[clamp(32px,4.5vw,48px)] mt-2" data-i18n="reviews.title">รีวิวจากลูกค้า</h2>
+          </div>
+          <a class="inline-flex items-center gap-2 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="reviews.more">อ่านรีวิวทั้งหมดบนเพจ</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <figure class="lg:col-span-7 border-t border-cocoa pt-6 reveal">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote class="font-display font-medium text-[clamp(28px,4vw,44px)] leading-[1.4] mt-4" data-i18n="r1.quote">“ทำเล็บเท้าสวยค่ะ ชอบมาก สวยมากค้า”</blockquote>
+            <figcaption class="mt-6 text-[15px] text-muted" data-i18n="r1.name">ปฐมาวดี ชูมี · รีวิวบนเพจ Facebook 17 ก.ค. 2569 · เล็บเจล</figcaption>
+          </figure>
+          <dl class="lg:col-span-5 grid sm:grid-cols-3 lg:grid-cols-1 gap-4 lg:gap-6 border-t border-cocoa pt-6 reveal">
+            <div class="flex items-baseline gap-4"><dt class="num text-[40px] md:text-[48px] leading-none text-pink-deep">100%</dt><dd class="text-[14px] text-muted" data-i18n="stat.0">แนะนำ จาก 6 รีวิวบนเพจ</dd></div>
+            <div class="flex items-baseline gap-4"><dt class="num text-[40px] md:text-[48px] leading-none text-pink-deep">1,000+</dt><dd class="text-[14px] text-muted" data-i18n="stat.1">ผู้ติดตามเพจหลัก</dd></div>
+            <div class="flex items-baseline gap-4"><dt class="num text-[40px] md:text-[48px] leading-none text-pink-deep">100+</dt><dd class="text-[14px] text-muted" data-i18n="stat.2">เฉดสีเจลให้เลือก</dd></div>
+          </dl>
+        </div>
+        <!-- TODO: รีวิวเพิ่มจากร้าน (ใส่เป็น figure ต่อท้าย ใช้รีวิวจริงเท่านั้น) -->
+      </div>
+    </section>
+"""
+
+D4_GALLERY = """    <!-- ===== 6→4. ลายเล็บ: แถบรูปใหญ่เลื่อนแนวนอน (ลูกค้าขอให้เน้น) ===== -->
+    <section id="gallery" class="bg-cream border-y border-line py-14 md:py-20 lg:py-24" aria-labelledby="gallery-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-8 reveal">
+          <div>
+            <p class="label" data-i18n="gallery.label">Nail art</p>
+            <h2 id="gallery-title" class="font-display font-medium text-[clamp(32px,4.5vw,48px)] mt-2" data-i18n="gallery.title2">ลายเล็บจากร้าน</h2>
+            <p class="mt-3 text-muted max-w-[36em]" data-i18n="gallery.sub">สีพื้น เฟรนช์ โครม กลิตเตอร์ ติดอะไหล่ เพ้นท์ลาย เลือกลายกับช่างหน้าร้าน หรือส่งรูปลายที่ชอบมาก่อนได้</p>
+          </div>
+          <a class="inline-flex items-center gap-2 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://www.facebook.com/nailmesuratthani" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="gallery.more">ดูผลงานล่าสุดบนเพจ</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="scroller flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 md:px-8 pb-4 reveal" style="scroll-padding-left: max(16px, calc((100vw - 1200px) / 2 + 32px))">
+__PHOTOS__
+      </div>
+    </section>
+"""
+
+def d4_alt(img, alt, flip, label, title_key, title, desc_key, desc, rows, more_href='#menu'):
+    rows_html = ''.join(f'<li class="flex justify-between gap-4 py-3 border-t border-line"><span data-i18n="{k}">{t}</span><span class="num text-[22px] text-pink-deep whitespace-nowrap">{p}</span></li>' for k, t, p in rows)
+    return f"""        <div class="alt{' flip' if flip else ''} reveal">
+          <div class="aspect-[4/3] overflow-hidden rounded-3xl"><img src="{img}" alt="{alt}" class="photo" loading="lazy" decoding="async" width="900" height="1200"></div>
+          <div>
+            <p class="label">{label}</p>
+            <h3 class="font-display font-medium text-[clamp(28px,3.5vw,40px)] mt-2" data-i18n="{title_key}">{title}</h3>
+            <p class="mt-3 text-muted" data-i18n="{desc_key}">{desc}</p>
+            <ul class="mt-6">{rows_html}<li class="border-t border-line"></li></ul>
+          </div>
+        </div>
+"""
+
+D4_SERVICES = f"""    <!-- ===== 3→5. บริการ: สลับซ้าย-ขวา นำด้วยสปาเท้า (Hojicha) ===== -->
+    <section id="services" class="py-14 md:py-20 lg:py-24" aria-labelledby="services-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8">
+        <div class="mb-12 md:mb-16 max-w-[640px] reveal">
+          <h2 id="services-title" class="font-display font-medium text-[clamp(36px,5vw,56px)]" data-i18n="services.title">บริการและราคา</h2>
+          <p class="mt-4 text-muted" data-i18n="services.intro">ทาสีเจล ต่อเล็บ ดูแลเล็บมือ-เท้า และสปา ราคาปกติตามป้ายราคาในร้าน ช่วงโปรโมชั่นถูกกว่านี้ ดูที่โปรเดือนนี้</p>
+        </div>
+        <div class="grid gap-16 md:gap-20">
+{d4_alt(P_FSPA,'สปาเท้า ผลงาน Nail Me',False,'Spa','g.care','ดูแลเล็บ · สปา','s.fspa.d','ขัดถึงใต้เข่า แช่ ขัด มาร์ก นวด บำรุง <a href="#spa" class="underline decoration-gold underline-offset-4" data-i18n="s.steps">ดูขั้นตอน</a>',[('s.fspa','สปาเท้า 10&nbsp;<span class="whitespace-nowrap">ขั้นตอน</span>','฿499'),('s.hspa','สปามือ 9&nbsp;<span class="whitespace-nowrap">ขั้นตอน</span>','฿399'),('s.mani','Manicure / Pedicure','฿200')])}{d4_alt(P_HAND,'ทาสีเจลมือ ผลงาน Nail Me',True,'Gel polish','g.gel','ทาสีเจล · Gel polish','s.gelh.d','สีเจลคุณภาพดี ติดทน 1–3 เดือน เลือกได้กว่า 100 เฉด',[('s.gelh','ทาสีเจลมือ','฿250'),('s.gelf','ทาสีเจลเท้า','฿300'),('s.cat','สีลูกแก้ว Cat Eye','฿350')])}{d4_alt(P_LONG,'ต่อเล็บ PVC ผลงาน Nail Me',False,'Extensions &amp; art','g.ext','ต่อเล็บ · เสริมเล็บ','s.art.d','เพ้นท์ลาย +20 · เฟรนช์ปลาย +30 · ออมเบร +30 · ติดอะไหล่ +20 · ปั้นนูน +50',[('s.pvc','ต่อเล็บ PVC','฿350'),('s.ov1','เสริมหน้าเล็บหลังทาสี','฿150'),('s.ov2','เสริมหน้าเล็บก่อนทาสี','฿450')])}        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3b. เมนูราคาเต็ม พื้นเข้ม แบบเมนูร้านชา (Hojicha) ===== -->
+    <section id="menu" class="bg-cocoa text-cream py-14 md:py-20 lg:py-24" aria-labelledby="menu-title">
+      <div class="mx-auto max-w-[1200px] px-4 md:px-8 grid lg:grid-cols-12 gap-10 lg:gap-16">
+        <div class="lg:col-span-4 reveal">
+          <p class="label !text-gold-light">Full menu</p>
+          <h2 id="menu-title" class="font-display font-medium text-[clamp(32px,4.5vw,48px)] mt-2 text-gold-light" data-i18n="menu.title">เมนูราคาเต็ม</h2>
+          <p class="mt-4 text-cream/75 text-[15px]" data-i18n="services.note">ราคาตามป้ายราคาในร้าน (ต.ค. 2569) · บริการผม ขนตา แว็กซ์ สอบถามทางโทรศัพท์หรือเพจ</p>
+          <a class="btn btn-lg bg-gold-light text-cocoa hover:bg-cream mt-8" href="tel:+66646542666" data-track="call"><i class="ph ph-phone" aria-hidden="true"></i><span data-i18n="cta.call">โทรจองคิว</span></a>
+        </div>
+        <div class="lg:col-span-8 grid md:grid-cols-2 gap-x-12 gap-y-8 reveal">
+          <div><p class="label !text-gold-light mb-2" data-i18n="g.gel">ทาสีเจล · Gel polish</p><ul>
+            <li class="tea-row"><span data-i18n="s.gelh">ทาสีเจลมือ</span><span class="lead" aria-hidden="true"></span><span class="pr">฿250</span></li>
+            <li class="tea-row"><span data-i18n="s.gelf">ทาสีเจลเท้า</span><span class="lead" aria-hidden="true"></span><span class="pr">฿300</span></li>
+            <li class="tea-row"><span data-i18n="s.cat">สีลูกแก้ว Cat Eye</span><span class="lead" aria-hidden="true"></span><span class="pr">฿350</span></li></ul></div>
+          <div><p class="label !text-gold-light mb-2" data-i18n="g.ext">ต่อเล็บ · เสริมเล็บ</p><ul>
+            <li class="tea-row"><span data-i18n="s.pvc">ต่อเล็บ PVC</span><span class="lead" aria-hidden="true"></span><span class="pr">฿350</span></li>
+            <li class="tea-row"><span data-i18n="s.ov1">เสริมหน้าเล็บหลังทาสี</span><span class="lead" aria-hidden="true"></span><span class="pr">฿150</span></li>
+            <li class="tea-row"><span data-i18n="s.ov2">เสริมหน้าเล็บก่อนทาสี</span><span class="lead" aria-hidden="true"></span><span class="pr">฿450</span></li></ul></div>
+          <div><p class="label !text-gold-light mb-2" data-i18n="g.care">ดูแลเล็บ · สปา</p><ul>
+            <li class="tea-row"><span data-i18n="s.fspa">สปาเท้า 10&nbsp;<span class="whitespace-nowrap">ขั้นตอน</span></span><span class="lead" aria-hidden="true"></span><span class="pr">฿499</span></li>
+            <li class="tea-row"><span data-i18n="s.hspa">สปามือ 9&nbsp;<span class="whitespace-nowrap">ขั้นตอน</span></span><span class="lead" aria-hidden="true"></span><span class="pr">฿399</span></li>
+            <li class="tea-row"><span data-i18n="s.mani">Manicure / Pedicure</span><span class="lead" aria-hidden="true"></span><span class="pr">฿200</span></li></ul></div>
+          <div><p class="label !text-gold-light mb-2" data-i18n="g.rem">ถอดเล็บ · งานเพิ่ม</p><ul>
+            <li class="tea-row"><span data-i18n="s.rem.d">ถอดแล้วทำต่อที่ร้าน เจล 50 · PVC 100 · ถอดอย่างเดียว 100</span><span class="lead" aria-hidden="true"></span><span class="pr">฿50+</span></li>
+            <li class="tea-row"><span data-i18n="s.art.d">เพ้นท์ลาย +20 · เฟรนช์ปลาย +30 · ออมเบร +30 · ติดอะไหล่ +20 · ปั้นนูน +50</span><span class="lead" aria-hidden="true"></span><span class="pr">฿20+</span></li></ul></div>
+        </div>
+      </div>
+    </section>
+"""
+
+D4_EN = """      'promo.cta2': 'Call to book the offer', 'reviews.label': 'Guest reviews', 'gallery.label': 'Nail art', 'gallery.title2': 'Nail art from the salon',
+      'gallery.sub': 'Plain colours, French, chrome, glitter, gems and hand-painted designs. Pick with your technician at the salon or send us a photo in advance.',
+      'menu.title': 'Full price list',
+"""
+
+def build_d4(src, imgs):
+    d4 = sub_colors(src, D4_COLORS, D4_FONTS, 'bg-blush')
+    d4 = d4.replace('<!-- web-dev/freelance/websites/nail-me/index.html · แบบ "Blush & Gold" อิงโลโก้ร้าน (หน้าเดียว TH/EN) · ดู DESIGN.md -->',
+                    '<!-- web-dev/freelance/websites/nail-me/design4.html · แบบ 4 "Hojicha Evening × Blush" โครงจากดราฟต์ญี่ปุ่นเดิม + CI โลโก้ (สร้างจาก builder/variants.py อย่าแก้ตรงนี้) -->')
+    d4 = d4.replace('    .reveal { opacity: 0;', D4_CSS + '    .reveal { opacity: 0;')
+    # ดึง section ที่ใช้ร่วม (4 สปา, 5 ทำไม, 8 จองคิว, 9 FAQ, 10 ที่ตั้ง) แล้วเรียงใหม่
+    def get(n):
+        a, b = section(d4, n); return d4[a:b]
+    s4, s5, s8, s9, s10 = get(4), get(5), get(8), get(9), get(10)
+    photos = '\n'.join(f'        <div class="snap-start shrink-0 w-[78%] sm:w-[44%] lg:w-[30%] aspect-[3/4] overflow-hidden rounded-3xl">{im}</div>' for im in imgs)
+    main_start = d4.index('  <main id="main">\n') + len('  <main id="main">\n')
+    main_end = d4.index('  </main>')
+    body = D4_HERO + '\n' + D4_PROMO + '\n' + D4_REVIEWS + '\n' + D4_GALLERY.replace('__PHOTOS__', photos) + '\n' + D4_SERVICES + '\n' + s4 + '\n' + s5 + '\n' + s8 + '\n' + s9 + '\n' + s10
+    d4 = d4[:main_start] + body + d4[main_end:]
+    # ส่วนที่ใช้ร่วม: หัวข้อตัวบางกว่า, พื้นสลับ
+    d4 = d4.replace('class="font-display font-semibold text-[clamp(32px,4.5vw,48px)]"', 'class="font-display font-medium text-[clamp(32px,4.5vw,48px)]"')
+    d4 = d4.replace('<section id="spa" class="border-t border-line', '<section id="spa" class="bg-cream border-t border-line')
+    d4 = d4.replace('<section id="why" class="bg-cream border-t border-line', '<section id="why" class="border-t border-line')
+    d4 = d4.replace('<section id="faq" class="py-14', '<section id="faq" class="bg-cream border-t border-line py-14')
+    d4 = d4.replace('<section id="visit" class="bg-cream border-t border-line', '<section id="visit" class="border-t border-line')
+    # nav
+    d4 = d4.replace('<a class="nav-link" href="#services" data-i18n="nav.services">บริการและราคา</a>\n        <a class="nav-link" href="#spa" data-i18n="nav.spa">สปา</a>\n        <a class="nav-link" href="#gallery" data-i18n="nav.gallery">ผลงาน</a>\n        <a class="nav-link" href="#reviews" data-i18n="nav.reviews">รีวิว</a>',
+                    '<a class="nav-link" href="#reviews" data-i18n="nav.reviews">รีวิว</a>\n        <a class="nav-link" href="#gallery" data-i18n="nav.gallery">ผลงาน</a>\n        <a class="nav-link" href="#services" data-i18n="nav.services">บริการและราคา</a>\n        <a class="nav-link" href="#spa" data-i18n="nav.spa">สปา</a>')
+    d4 = d4.replace('<meta name="theme-color" content="#FBEDEA">', '<meta name="theme-color" content="#4A2C30">')
+    d4 = d4.replace('.site-header { transition:', '.site-header { background: var(--blush); transition:')
+    d4 = re.sub(r'    <p class="wordmark[^\n]*\n', '', d4)
+    d4 = d4.replace("    const I18N_EN = {\n", "    const I18N_EN = {\n" + D4_EN)
+    (ROOT / 'design4.html').write_text(d4)
+
 def build():
     src = SRC.read_text()
     a, b = section(src, 6)
@@ -394,7 +597,8 @@ def build():
     d3 = re.sub(r'    <p class="wordmark[^\n]*\n', '', d3)
     d3 = d3.replace("    const I18N_EN = {\n", "    const I18N_EN = {\n" + extra)
     (ROOT / 'design3.html').write_text(d3)
-    print('built design2.html, design3.html')
+    build_d4(src, imgs)
+    print('built design2.html, design3.html, design4.html')
 
 if __name__ == '__main__':
     build()
