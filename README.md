@@ -2,11 +2,9 @@
 
 ร้านทำเล็บ สปาเท้า ตัด สระ ไดร์ สุราษฎร์ธานี · งาน Fastwork แพ็ก A
 
-- `index.html` แบบ 1 **แมกกาซีน** ทำมือ · `design2.html` แบบ 2 **ห้องส่วนตัว** (โครง seeUnail) ทำมือ · `design3.html` แบบ 3 **ป้ายหน้าร้าน** (จากป้ายราคาในร้าน) ทำมือ → สร้างจาก `python builder/handmade.py` (ข้อมูลร้านอยู่ในไฟล์นั้น)
-- `design4.html` แบบ 4 **Hojicha Evening × Blush** (Tailwind, ไฟล์นิ่ง ไม่ต้องสร้างใหม่ · `builder/variants.py` เลิกใช้แล้ว)
-- `design5.html` แบบ 5 **โต๊ะช่าง** ทำมือ คอลลาจ ป้ายเขียนมือ
-- ทุกแบบ: ภาษาไทยก่อน อังกฤษทำหลังลูกค้าเลือกแบบ (แบบ 4 มี `?lang=en`)
-- `drafts/` แบบเก่า 3 แนวญี่ปุ่น เก็บไว้อ้างอิง
+- **ส่งลูกค้า 3 แบบ (เลือกโดย Apex 10 ต.ค. 21:16):** `index.html` แบบ 1 Blush & Gold (อิงโลโก้) · `design2.html` แบบ 2 Private & Calm (โครง seeUnail) · `design4.html` แบบ 4 Hojicha Evening × Blush
+- แบบ 2 สร้างจาก index ด้วย `python builder/variants.py` (ข้อมูล showcase ใน `builder/showcase_data.py`) · แบบ 4 ไฟล์นิ่ง
+- `drafts/` แบบที่ไม่ได้ส่ง: ญี่ปุ่นเก่า 2 แบบ, design3-garden (nailgarden), design5-table (โต๊ะช่าง), ฉบับเขียนมือใน `builder/handmade.py`
 - `img/photos.json` รหัสรูปจากโฟลเดอร์ Drive ที่ร้านแชร์ (ตอนนี้ลิงก์ตรง ก่อนขึ้นจริงต้องโหลดมาไว้ใน img/)
 - `logo/` โลโก้จากเพจ + ร่างโลโก้ 3 แนวทาง
 - `img/` โลโก้ตัดพื้น + favicon + รูป OG
