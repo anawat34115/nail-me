@@ -135,3 +135,5 @@ updated: 2026-10-09
 - [ ] Meta Pixel + GTM ทำงาน
 - [ ] Responsive ผ่าน
 - [ ] Apex อนุญาต deploy/ส่งแล้ว
+
+- 2026-10-11 (18:48): **ลูกค้าเลือกแบบ 2 (Private & Calm · design2.html)** เป็นแบบหลัก · งานต่อไปทำบนแบบ 2 เท่านั้น (EN ครบ, /en/, ขึ้นจริง) · แบบ 1/4 เก็บไว้เป็นต้นทาง builder (design2 สร้างจาก index.html ผ่าน builder/variants.py)
