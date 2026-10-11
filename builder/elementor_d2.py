@@ -78,7 +78,8 @@ def P(html, color=MUTE, size=17, mob=16, align='start', lh=1.75, extra=None):
     return W('text-editor', s)
 def label(text, color=GDEEP, align='start'):
     return H(text, 'p', color, 13, 500, BODY, 1.4, 0.5 if not EN else 2, 'uppercase', align=align)
-def h2(text, color=INK, align='start', big=False):
+def h2(text, color=INK, align='start', big=False, small=False):
+    if small: return H(text, 'h2', color, 36, 600, SERIF, 1.3, None, None, 32, 28, align)
     return H(text, 'h2', color, 56 if big else 48, 600, SERIF, 1.3, None, None, 44 if big else 40, 36 if big else 32, align)
 def h3(text, color=INK, size=22, mob=20, align='start'):
     return H(text, 'h3', color, size, 600, SERIF, 1.35, None, None, None, mob, align)
@@ -130,6 +131,8 @@ def section(sid, bg, kids, pad=(96, 64, 56), border=None, extra=None, boxed=1200
 
 def cols(kids, widths, gap=64, tab_stack=True, align='flex-start', wrap=True, mob_order=None):
     """แถวหลายคอลัมน์ widths เป็น % (รวม gap แล้วต้อง ≤ 100)"""
+    room = 100 - gap * (len(kids) - 1) / 1136 * 100 - 0.5
+    if sum(widths) > room: widths = [round(w * room / sum(widths), 2) for w in widths]
     for k, w in zip(kids, widths):
         k['settings']['width'] = S(w, '%')
         k['settings']['width_tablet'] = S(100 if tab_stack else w, '%')
@@ -146,11 +149,12 @@ def image(k, h, h_mob=None, radius=8, alt_th=None):
 
 # ======================= sections =======================
 def header():
-    logo = C({"flex_direction": "row", "flex_align_items": "center", "flex_gap": GAP(12), "width": S(240), "width_mobile": S(184),
+    logo = C({"flex_direction": "row", "flex_direction_mobile": "row", "flex_wrap": "nowrap", "flex_align_items": "center", "flex_gap": GAP(12),
+              "width": S(260), "width_mobile": S(220),
               "html_tag": "a", "link": L('#top')},
              [W('image', {"image": LOGO, "image_size": "full", "width": S(44), "image_border_radius": D(999),
                           "_element_width": "initial", "_element_custom_width": S(44)}),
-              C({"flex_gap": GAP(4), "width": S(150)}, [
+              C({"flex_gap": GAP(4), "width": S(200), "width_mobile": S(164)}, [
                   H('Nail Me', 'p', PDEEP, 24, 600, NUM, 1, style='italic'),
                   H(T('ตลาดศาลเจ้า · Surat Thani', 'San Chao Market · Surat Thani'), 'p', GDEEP, 12, 400, BODY, 1.2, 1, mob=11)])])
     items = [(T('โปรโมชั่น','Promotion'),'#promo'),(T('บริการและราคา','Services & prices'),'#services'),(T('สปา','Spa'),'#spa'),
@@ -181,7 +185,7 @@ def hero():
     inner = C({"content_width": "boxed", "boxed_width": S(800), "width": S(100, '%'), "flex_align_items": "center", "flex_gap": GAP(24),
                "padding": D(96, 32), "padding_tablet": D(80, 24), "padding_mobile": D(64, 16)}, [
         label(T('ร้านทำเล็บ สุราษฎร์ธานี · ข้างตลาดศาลเจ้า', 'Nail salon in Surat Thani · next to San Chao Market'), GLIGHT, 'center'),
-        H(T('ร้านหรู <span style="color:%s">แต่ราคาน่ารัก</span>' % GLIGHT, 'Luxury salon, <span style="color:%s">lovely prices</span>' % GLIGHT),
+        H(T('ร้านหรู <span style="color:%s;white-space:nowrap">แต่ราคาน่ารัก</span>' % GLIGHT, 'Luxury salon, <span style="color:%s">lovely prices</span>' % GLIGHT),
           'h1', CREAM, 80, 600, SERIF, 1.2, None, None, 64, 44, 'center'),
         P(T('Nail Me ร้านทำเล็บ สปาเท้า สปามือ และสระไดร์ ใจกลางเมืองสุราษฎร์ธานี ทาสีเจลเริ่มต้น 200 บาท สีเจลให้เลือกกว่า 100 เฉด ทำแล้วดูแลให้หลังทำ ไม่ทิ้งงาน',
             'Nail Me is a nail salon, foot spa, hand spa and blow-dry bar in central Surat Thani. Gel polish from 200 THB, 100+ gel shades, and aftercare you can count on.'),
@@ -199,14 +203,14 @@ def promo_card(k, bg, big, rows):
     s = {"min_height": S(320), "min_height_mobile": S(240), "flex_justify_content": "flex-end", "padding": D(32), "padding_mobile": D(24),
          "border_radius": D(8), "overflow": "hidden", "flex_gap": GAP(8), "background_background": "classic", "background_image": IMG(k),
          "background_position": "center center", "background_size": "cover", "background_overlay_background": "classic",
-         "background_overlay_color": bg, "background_overlay_opacity": S(0.55)}
+         "background_overlay_color": bg, "background_overlay_opacity": S(0.72)}
     return C(s, [price(big, CREAM, 72, 56)] + rows)
 
 def promo():
     head = C({"flex_direction": "row", "flex_wrap": "wrap", "flex_justify_content": "space-between", "flex_align_items": "flex-end",
               "flex_gap": GAP(16), "width": S(100, '%')}, [
         C({"flex_gap": GAP(8), "width": S(640), "width_mobile": S(100, '%')}, [label(T('โปรเดือนนี้', 'This month')),
-            h2(T('แคปโพสต์โปร ให้ช่างก่อนรับบริการ', 'Show this promo to your technician'))]),
+            h2(T('แคปโพสต์โปร ให้ช่างก่อนรับบริการ', 'Show this promo to your technician'), small=True)]),
         tlink(T('ดูโพสต์โปรบนเพจ', 'See the promo post'), FB1)])
     c1 = promo_card('glitter', PDEEP, '฿200', [P(T('ทาสีเจล ตัดแต่งหนังฟรี <s>250</s>', 'Gel polish with free cuticle care <s>250</s>'), CREAM, 16, 15)])
     c2 = promo_card('toes_glitter', COCOA, '฿450', [P(T('สปาเท้า 10 ขั้นตอน <s>499</s>', '10-step foot spa <s>499</s>'), CREAM, 16, 15),
