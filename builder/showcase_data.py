@@ -3,7 +3,7 @@
 # ราคา = ตามป้ายราคาในร้าน · promo = ราคาโปร ก.ย. 69 (ถ้ามี) · ชื่อลาย/ราคาต่อใบเป็นการจับคู่โดยเรา ต้องให้ร้านตรวจ
 import json, pathlib
 PH = json.load(open(pathlib.Path(__file__).resolve().parent.parent / 'img' / 'photos.json'))
-P = lambda k: f'https://lh3.googleusercontent.com/d/{PH[k]}=w1200'
+P = lambda k: f'img/work/{k}.webp'  # รูปจริงเก็บในเว็บ (WebP) · ต้นฉบับ: photos-src/ + รหัส Drive ใน photos.json
 
 # (id, label_key, label_th, label_en)
 CATS = [

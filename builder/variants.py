@@ -45,7 +45,9 @@ D2_FONTS = {
     'link': '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Noto+Serif+Thai:wght@500;600&family=Noto+Sans+Thai:wght@300;400;500&display=swap">',
     'display_css': '"Cormorant Garamond", serif', 'body_css': '"Noto Sans Thai", sans-serif',
 }
-PHO = lambda k: f'https://lh3.googleusercontent.com/d/{k}=w1200'
+import json as _json
+_REV = {v: k for k, v in _json.load(open(pathlib.Path(__file__).resolve().parent.parent / 'img' / 'photos.json')).items()}
+PHO = lambda k: f'img/work/{_REV[k]}.webp'  # รหัส Drive → ไฟล์ WebP ในเว็บ
 P_HAND = PHO('15XJ6vhagHu2wiS42nPKwGygAmkw32Ddo'); P_FEET = PHO('1PJcpMwC7X_qX3z4oiqHcDRZhIesSawyU'); P_CAT = PHO('1IL1Bl3lZf0EJge_MZ1uISRHAorFu3-7n')
 P_PVC = PHO('1Oei9dUjojxuSW-H6natRzdzBWvKEZrLM'); P_FSPA = PHO('1L0eg8f7cFxLhymha1i9WO9aAN6N9W_Um'); P_HSPA = PHO('1bbEwPtwzzEIAQPlsJBp3Yin35wcx4Ipo')
 P_ART = PHO('1pntTSKYGk-EFayT3rF-0HT8P55UZXQ5F'); P_GLIT = PHO('1YmKe5tEzvpZkWJGLssCTW6MaXt49mOmg')
@@ -183,6 +185,7 @@ D2_REVIEWS = """    <!-- ===== 7. รีวิว: คะแนนใหญ่ +
           <div><dt class="num text-[32px] leading-none text-pink-deep">100+</dt><dd class="mt-1 text-[14px] text-muted" data-i18n="stat.2">เฉดสีเจลให้เลือก</dd></div>
         </dl>
         <a class="inline-flex items-center gap-2 mt-8 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep reveal" href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="reviews.more">อ่านรีวิวทั้งหมดบนเพจ</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+        <a class="flex w-max mx-auto items-center gap-2 mt-3 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep reveal" href="https://maps.google.com/?cid=4022439905576818047" target="_blank" rel="noopener" data-track="google-reviews"><span data-i18n="reviews.google">ดูรีวิวบน Google · 4.5 ★ (28)</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
       </div>
     </section>
 """
@@ -330,6 +333,7 @@ D3_REVIEWS = """    <!-- ===== 7. รีวิว: quote เรียงลง (
         </figure>
         <p class="mt-8 text-muted reveal"><span class="num text-[28px] text-pink-deep">100%</span> <span data-i18n="stat.0">แนะนำ จาก 6 รีวิวบนเพจ</span> · <span class="num text-[28px] text-pink-deep">1,000+</span> <span data-i18n="stat.1">ผู้ติดตามเพจหลัก</span></p>
         <a class="arrow-link reveal" href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook" data-i18n="reviews.more">อ่านรีวิวทั้งหมดบนเพจ</a>
+        <a class="arrow-link reveal" href="https://maps.google.com/?cid=4022439905576818047" target="_blank" rel="noopener" data-track="google-reviews" data-i18n="reviews.google">ดูรีวิวบน Google · 4.5 ★ (28)</a>
       </div>
     </section>
 """
@@ -437,7 +441,7 @@ D4_REVIEWS = """    <!-- ===== 7→3. รีวิว ขึ้นก่อน�
             <p class="label" data-i18n="reviews.label">Guest reviews</p>
             <h2 id="reviews-title" class="font-display font-medium text-[clamp(32px,4.5vw,48px)] mt-2" data-i18n="reviews.title">รีวิวจากลูกค้า</h2>
           </div>
-          <a class="inline-flex items-center gap-2 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="reviews.more">อ่านรีวิวทั้งหมดบนเพจ</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+          <div class="flex flex-col gap-2"><a class="inline-flex items-center gap-2 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://www.facebook.com/profile.php?id=61580350351076" target="_blank" rel="noopener" data-track="facebook"><span data-i18n="reviews.more">อ่านรีวิวทั้งหมดบนเพจ</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="inline-flex items-center gap-2 text-[15px] underline decoration-gold underline-offset-4 hover:text-pink-deep" href="https://maps.google.com/?cid=4022439905576818047" target="_blank" rel="noopener" data-track="google-reviews"><span data-i18n="reviews.google">ดูรีวิวบน Google · 4.5 ★ (28)</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></div>
         </div>
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <figure class="lg:col-span-7 border-t border-cocoa pt-6 reveal">
