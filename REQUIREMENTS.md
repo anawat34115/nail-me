@@ -137,3 +137,4 @@ updated: 2026-10-09
 - [ ] Apex อนุญาต deploy/ส่งแล้ว
 
 - 2026-10-11 (18:48): **ลูกค้าเลือกแบบ 2 (Private & Calm · design2.html)** เป็นแบบหลัก · งานต่อไปทำบนแบบ 2 เท่านั้น (EN ครบ, /en/, ขึ้นจริง) · แบบ 1/4 เก็บไว้เป็นต้นทาง builder (design2 สร้างจาก index.html ผ่าน builder/variants.py)
+- 2026-10-11 (20:30): **ขึ้น WordPress ที่ nailmesurat.com** (Hostinger) · ลง Elementor 4.3.4 ฟรี + ธีม Hello Elementor · อัปรูป 18 WebP + โลโก้ + OG เข้า Media (id 6–25) · สร้างเทมเพลต native จาก `builder/elementor_d2.py` (widget ล้วน 430 ชิ้น ไม่มี CSS/JS แยก, template canvas) → Saved Template id 58 → หน้า "หน้าแรก" id 48 **สถานะ Draft** · ตรวจ 1440/390 แล้ว · รอ Apex อนุมัติ publish + ตั้งเป็นหน้าแรก · ถัดไป: หน้า /en/ (สร้างจาก builder เดียวกัน `en`), ปุ่มลอย + JSON-LD (Code Snippet), SEO title/description
