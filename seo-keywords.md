@@ -19,3 +19,20 @@
 - ชื่อร้าน + ที่อยู่ + เบอร์ ต้องตรงกันทุกที่ (เว็บ, GBP, เพจ FB 2 เพจ) — รอร้านยืนยันเบอร์หลัก
 - ไม่ยัดคีย์เวิร์ดซ้ำเกินในย่อหน้าเดียว ใช้ภาษาคนอ่าน
 - ขึ้นจริงแล้วส่ง sitemap ใน Search Console และใส่ลิงก์เว็บใน GBP + เพจ
+
+## ออนเพจที่ทำแล้ว (11 ต.ค. 16:54 · ทุกแบบ)
+- [x] title / meta description TH+EN มีคีย์เวิร์ดหลัก + เบอร์ + LINE
+- [x] h1 มีคีย์เวิร์ด "ร้านทำเล็บ สุราษฎร์ธานี · ข้างตลาดศาลเจ้า" (บรรทัดเล็กใน h1) + "ร้านหรู แต่ราคาน่ารัก"
+- [x] h2 มีคีย์เวิร์ดแบบธรรมชาติ: บริการทำเล็บและราคา / ผลงานทำเล็บจากร้าน / แวะมาที่ร้าน ตลาดศาลเจ้า สุราษฎร์ธานี
+- [x] canonical, og:url, og:locale th_TH + en_US, og:site_name, twitter:card, geo.region TH-84
+- [x] JSON-LD NailSalon ครบ: url, logo, openingHoursSpecification, priceRange ฿150–฿799, areaServed, hasMap, makesOffer 5 บริการ, sameAs (FB 2 เพจ + LINE) + FAQPage 6 ข้อ
+- [x] รูปทุกใบมี alt บอกบริการ+ชื่อร้าน, width/height, lazy ยกเว้น hero (fetchpriority=high)
+- [x] ลิงก์ภายใน (#menu #spa #faq) และ data-track ทุกปุ่มติดต่อ
+
+## ต้องทำตอนขึ้นจริง (ยังทำไม่ได้ตอนนี้)
+- [ ] ลบ `<meta name="robots" content="noindex">` และเปลี่ยน canonical / og:url / JSON-LD url เป็นโดเมนจริง (มี TODO ในโค้ด)
+- [ ] โหลดรูปจาก Drive มาไว้ใน img/ แปลง WebP ≤300KB (ตอนนี้ลิงก์ lh3 ไม่ติดอันดับรูปและเสี่ยงหาย)
+- [ ] ใส่ GTM/GA4 + Search Console + ส่ง sitemap.xml + robots.txt
+- [ ] แยกหน้า /en/ (หรือ hreflang) ถ้าอยากให้ Google จัดอันดับภาษาอังกฤษแยก — ตอนนี้สลับด้วย JS Google เห็นเฉพาะไทย
+- [ ] ยืนยันเบอร์/เวลาเปิดกับร้านแล้วแก้ให้ตรง GBP
+- [ ] หน้านโยบายความเป็นส่วนตัว

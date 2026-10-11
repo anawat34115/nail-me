@@ -6,13 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>ร้านทำเล็บ สุราษฎร์ธานี Nail Me ตลาดศาลเจ้า | ทำเล็บเจล สปาเท้า ต่อเล็บ เริ่ม 200.-</title>
   <meta name="description" content="ร้านทำเล็บ สุราษฎร์ธานี Nail Me ข้างตลาดศาลเจ้า ทำเล็บเจลเริ่ม 200 บาท สปาเท้า 10 ขั้นตอน สปามือ ต่อเล็บ PVC เพ้นท์เล็บ สระไดร์ เปิดทุกวัน 09:00–21:00 จองคิวโทร 064-654-2666 หรือ LINE jenny5667 ยินดีต้อนรับนักท่องเที่ยว">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow"><!-- TODO ขึ้นจริง: ลบบรรทัดนี้ -->
+  <link rel="canonical" href="https://nail-me-pi.vercel.app/"><!-- TODO ขึ้นจริง: เปลี่ยนเป็นโดเมนจริง -->
+  <meta name="geo.region" content="TH-84"><meta name="geo.placename" content="Surat Thani">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี · ร้านหรู แต่ราคาน่ารัก">
   <meta property="og:description" content="Nail salon in Surat Thani next to San Chao Market. Gel nails from 200 THB, 10-step foot spa, hand spa, nail extensions. Open daily 09:00–21:00. English-speaking, travellers welcome.">
   <meta property="og:image" content="img/og-logo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://nail-me-pi.vercel.app/"><meta property="og:locale" content="th_TH"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#4A2C30">
   <link rel="icon" type="image/png" href="img/favicon-64.png">
   <link rel="apple-touch-icon" href="img/nail-me-logo-160.png">
@@ -213,11 +217,23 @@
         "@type": "NailSalon",
         "@id": "#salon",
         "name": "Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี",
-        "image": "img/og-logo.jpg",
-        "description": "ร้านทำเล็บข้างตลาดศาลเจ้า ใจกลางเมืองสุราษฎร์ธานี ทาสีเจล สปาเท้า 10 ขั้นตอน สปามือ 9 ขั้นตอน ต่อเล็บ PVC สระไดร์",
+        "url": "https://nail-me-pi.vercel.app/",
+        "image": "https://nail-me-pi.vercel.app/img/og-logo.jpg",
+        "logo": "https://nail-me-pi.vercel.app/img/nail-me-logo-512.png",
+        "description": "ร้านทำเล็บ สุราษฎร์ธานี ข้างตลาดศาลเจ้า ใจกลางเมือง ทำเล็บเจล สปาเท้า 10 ขั้นตอน สปามือ 9 ขั้นตอน ต่อเล็บ PVC เพ้นท์เล็บ สระไดร์",
         "telephone": "+66646542666",
-        "openingHours": "Mo-Su 09:00-21:00",
-        "priceRange": "฿",
+        "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "09:00", "closes": "21:00" }],
+        "priceRange": "฿150 - ฿799",
+        "currenciesAccepted": "THB",
+        "areaServed": { "@type": "City", "name": "Surat Thani" },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Nail+Me+%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2+%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B2%E0%B8%A9%E0%B8%8E%E0%B8%A3%E0%B9%8C%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%B5",
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ทาสีเจลมือ" }, "price": "250", "priceCurrency": "THB" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ทาสีเจลเท้า" }, "price": "300", "priceCurrency": "THB" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ต่อเล็บ PVC" }, "price": "350", "priceCurrency": "THB" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "สปาเท้า 10 ขั้นตอน" }, "price": "499", "priceCurrency": "THB" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "สปามือ 9 ขั้นตอน" }, "price": "399", "priceCurrency": "THB" }
+        ],
         "address": { "@type": "PostalAddress", "streetAddress": "ข้างตลาดศาลเจ้า ตรงข้ามรถไฟฟ้าบ้านดอน", "addressLocality": "Mueang Surat Thani", "addressRegion": "Surat Thani", "addressCountry": "TH" },
         "sameAs": ["https://www.facebook.com/profile.php?id=61580350351076", "https://www.facebook.com/nailmesuratthani", "https://line.me/ti/p/~jenny5667"]
       },
@@ -609,7 +625,7 @@
     <section id="visit" class="border-t border-line py-14 md:py-20 lg:py-24" aria-labelledby="visit-title">
       <div class="mx-auto max-w-[1200px] px-4 md:px-8 grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         <div class="lg:col-span-5 reveal">
-          <h2 id="visit-title" class="font-display font-medium text-[clamp(32px,4.5vw,48px)]" data-i18n="visit.title">แวะมาที่ร้าน</h2>
+          <h2 id="visit-title" class="font-display font-medium text-[clamp(32px,4.5vw,48px)]" data-i18n="visit.title">แวะมาที่ร้าน ตลาดศาลเจ้า สุราษฎร์ธานี</h2>
           <p class="mt-4 text-muted" data-i18n="visit.sub">ข้างตลาดศาลเจ้า ใจกลางเมืองสุราษฎร์ธานี มาเที่ยวแวะได้เลย ยินดีต้อนรับทั้งลูกค้าไทยและนักท่องเที่ยว</p>
           <p class="label mt-8" data-i18n="visit.howLabel">จุดสังเกต</p>
           <ol class="mt-2 border-t border-gold/50">
@@ -709,7 +725,7 @@
       'board.note': 'Promo prices, Sep 2026',
       'promo.label': 'This month', 'promo.title': 'Show the promo post to your technician before service',
       'promo.p0': 'Gel polish, free cuticle care <span class="line-through opacity-70">250</span>', 'promo.p1': '9-step foot spa <span class="line-through opacity-70">499</span>', 'promo.p2': 'Wash &amp; blow-dry, any length', 'promo.cta': 'See the post on Facebook',
-      'services.title': 'Services &amp; prices',
+      'services.title': 'Nail services &amp; prices',
       'services.intro': 'Gel polish, extensions, nail care and spa. Regular prices as on the salon’s price board; promotion prices are lower, see this month’s offer.',
       'services.note': 'Prices from the salon’s price board (Oct 2026) · hair, lash and wax services: please call or message.',
       'g.gel': 'Gel polish', 'g.ext': 'Extensions &amp; overlay', 'g.care': 'Nail care &amp; spa', 'g.rem': 'Removal &amp; add-ons', 'from': 'from',
@@ -736,7 +752,7 @@
       'w3': 'Clear prices, no surprises', 'w3.d': 'Every price is on the board at the salon. Nail art is priced per nail as listed.',
       'w4': 'Central and easy to find', 'w4.d': 'Next to San Chao Market, opposite the Ban Don electric train stop, across from Tops.',
       'w5': 'Travellers welcome', 'w5.d': 'We welcome both Thai customers and international travellers.',
-      'gallery.title': 'From the salon', 'gallery.more': 'See the latest work on our page',
+      'gallery.title': 'Nail work from the salon', 'gallery.more': 'See the latest work on our page',
       'gallery.sub': 'Real designs done at the salon with prices from our board. Pick one and call to book, or send us a photo on LINE.',
       'chip.1': 'Gel colour', 'chip.2': 'Nail art', 'chip.3': 'Extensions &amp; spa', 'chip.4': 'All prices', 'show.all': 'See all prices', 'show.book': 'Book',
       'show.c1': 'Nail colour', 'show.c2': 'Nail art &amp; decorations', 'show.c3': 'Extensions &amp; spa',
@@ -762,7 +778,7 @@
       'q4': 'Can you remove gel done at another salon?', 'a4': 'Yes. Removal only is 100 THB. Removal with a new set here: gel 50 THB, PVC 100 THB.',
       'q5': 'How is nail art priced?', 'a5': 'Per nail on top of gel polish: hand-painted +20, French tip +30, ombre +30, small decorations +20, 3D +50 THB. During promotions gel + art on any number of nails is 350 THB.',
       'q6': 'Do you welcome international travellers?', 'a6': 'Yes. We welcome both Thai customers and international travellers. We are next to San Chao Market in central Surat Thani, open daily 09:00–21:00. WhatsApp +66 84 999 6109, call +66 64 654 2666 or message our Facebook page.',
-      'visit.title': 'Visit us',
+      'visit.title': 'Visit us at San Chao Market, Surat Thani',
       'visit.sub': 'Next to San Chao Market in central Surat Thani. Thai customers and international travellers are all welcome.',
       'visit.howLabel': 'How to find us', 'visit.l1': 'Opposite the Ban Don electric train stop', 'visit.l2': 'Across from Tops', 'visit.l3': 'Beside Kong Paisan gold shop',
       'visit.hoursLabel': 'Hours', 'visit.hours': 'Daily 09:00–21:00', 'visit.phoneLabel': 'Phone',
