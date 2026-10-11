@@ -427,13 +427,13 @@ def visit():
         tiles.append(C({"flex_direction": "row", "flex_wrap": "nowrap", "flex_align_items": "center", "flex_gap": GAP(12), "html_tag": "a",
                         "link": L(url, ext(url)), "min_height": S(56), "padding": D(8, 16), "border_border": "solid", "border_width": D(1),
                         "border_color": LINE, "border_radius": D(8), "background_background": "classic", "background_color": CREAM,
-                        "border_hover_border": "solid", "border_hover_color": PDEEP, "width": S(48, '%')},
+                        "border_hover_border": "solid", "border_hover_color": PDEEP, "width": S(47, '%'), "width_mobile": S(46, '%')},
                        [W('icon', {"selected_icon": ic, "primary_color": PDEEP, "size": S(20), "_element_width": "initial"}),
                         C({"flex_gap": GAP(0)}, [H(lab, 'span', MUTE, 12, 400, BODY, 1.4), H(val, 'span', INK, 15, 500, BODY, 1.4)])]))
     tgrid = C({"flex_direction": "row", "flex_wrap": "wrap", "flex_gap": GAP(12), "flex_justify_content": "space-between", "width": S(100, '%')}, tiles)
     info = cols([C({"flex_gap": GAP(4)}, [label(T('เวลาเปิด', 'Hours')), P(T('ทุกวัน 09:00–21:00', 'Daily 09:00–21:00'), INK, 16, 15)]),
                  C({"flex_gap": GAP(4)}, [label(T('โทร', 'Phone')), tlink('064-654-2666', TEL, INK, 16)])], [47, 47], 24, tab_stack=False)
-    for k in info['elements']: k['settings']['width_mobile'] = S(47, '%')
+    for k in info['elements']: k['settings']['width_mobile'] = S(45, '%')
     btns = C({"flex_direction": "row", "flex_wrap": "wrap", "flex_gap": GAP(16)},
              [btn(T('โทรจองคิว', 'Call to book'), TEL, 'pink', I_PHONE), btn(T('นำทาง', 'Directions'), DIR, 'gold', I_NAV)])
     left = C({"flex_gap": GAP(16)}, [
@@ -460,7 +460,7 @@ def visit():
 
 def footer():
     brand = C({"flex_gap": GAP(24)}, [
-        C({"flex_direction": "row", "flex_align_items": "center", "flex_gap": GAP(16)}, [
+        C({"flex_direction": "row", "flex_direction_mobile": "row", "flex_wrap": "nowrap", "flex_align_items": "center", "flex_gap": GAP(16)}, [
             W('image', {"image": LOGO, "image_size": "full", "width": S(56), "image_border_radius": D(999), "_element_width": "initial", "_element_custom_width": S(56)}),
             C({"flex_gap": GAP(4), "width": S(220)}, [H('Nail Me', 'p', GLIGHT, 28, 600, NUM, 1, style='italic'),
                                                      H('ตลาดศาลเจ้า · Surat Thani', 'p', 'rgba(233,215,165,0.8)', 12, 400, BODY, 1.3, 1)])]),
