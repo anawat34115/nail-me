@@ -353,17 +353,18 @@ def reviews():
     stats = C({"flex_direction": "row", "flex_wrap": "nowrap", "flex_justify_content": "space-between", "content_width": "boxed",
                "boxed_width": S(400), "width": S(100, '%')}, [stat('1,000+', T('ผู้ติดตามเพจหลัก', 'followers on our main page')),
                                                           stat('100+', T('เฉดสีเจลให้เลือก', 'gel shades to choose from'))])
-    kids = [H(T('รีวิวจากลูกค้า', 'Guest reviews'), 'h2', GDEEP, 13, 500, BODY, 1.4, 0.5, 'uppercase', align='center'),
-            price('100%', PDEEP, 96, 72, 'center'),
-            P(T('แนะนำ จาก 6 รีวิวบนเพจ', 'recommended, from 6 reviews on our page'), MUTE, 17, 16, 'center'),
-            H(T('“ทำเล็บเท้าสวยค่ะ ชอบมาก สวยมากค้า”', '“Beautiful pedicure — I love it, so pretty!”'), 'blockquote', INK, 36, 500, SERIF, 1.45,
-              None, None, 30, 24, 'center', extra={"_margin": D(24, 0, 0, 0)}),
-            P(T('ปฐมาวดี ชูมี · รีวิวบนเพจ Facebook 17 ก.ค. 2569 · เล็บเจล', 'Pathamawadee C. · Facebook review, 17 Jul 2026 · gel nails'), MUTE, 15, 14, 'center'),
-            stats,
-            C({"flex_align_items": "center", "flex_gap": GAP(12), "width": S(100, '%')},
-              [tlink(T('อ่านรีวิวทั้งหมดบนเพจ', 'Read all reviews on our page'), FB1, align='center'),
-               tlink(T('ดูรีวิวบน Google · 4.5 ★ (28)', 'See reviews on Google · 4.5 ★ (28)'), GPLACE, align='center')])]
-    return section('reviews', BLUSH, kids, boxed=800, gap=16, align='center')
+    # การ์ดรีวิว Google จากปลั๊กอิน Trustindex (Widgets for Google Reviews) ดึงรีวิวจริงอัตโนมัติ
+    cards = W('shortcode', {"shortcode": "[trustindex no-registration=google]", "_element_width": "", "width": S(100, '%')})
+    links = C({"flex_direction": "row", "flex_direction_mobile": "column", "flex_wrap": "wrap", "flex_align_items": "center",
+               "flex_justify_content": "center", "flex_gap": GAP(32, 12), "width": S(100, '%')},
+              [tlink(T('ดูรีวิวทั้งหมดบน Google', 'See all reviews on Google'), GPLACE, align='center'),
+               tlink(T('★ เขียนรีวิวให้เรา', '★ Write us a review'), WRITE, align='center'),
+               tlink(T('รีวิวบนเพจ Facebook', 'Reviews on Facebook'), FB1, align='center')])
+    kids = [H(T('รีวิวจากลูกค้า', 'Guest reviews'), 'div', GDEEP, 13, 500, BODY, 1.4, 0.5, 'uppercase', align='center'),
+            h2(T('ลูกค้าพูดถึง Nail Me บน Google', 'What guests say about Nail Me on Google'), INK, 'center'),
+            C({"width": S(100, '%'), "_margin": D(16, 0, 8, 0)}, [cards]),
+            links, C({"width": S(100, '%'), "_margin": D(24, 0, 0, 0)}, [stats])]
+    return section('reviews', BLUSH, kids, gap=16, align='center')
 
 BK = [('โทรหรือทักเพจ', 'Call or message us', 'บอกบริการที่อยากทำและเวลาที่สะดวก ร้านตอบกลับเร็ว', 'Tell us the service and time you prefer — we reply quickly.'),
       ('เลือกสีและลายหน้าร้าน', 'Choose colours in the salon', 'มีสีเจลกว่า 100 เฉดให้ลอง ช่างช่วยแนะนำ ส่งรูปลายที่ชอบมาก่อนได้', 'Try 100+ gel shades with our help, or send a design photo first.'),
@@ -481,9 +482,33 @@ def footer():
     bottom = C({"flex_direction": "row", "flex_wrap": "wrap", "flex_justify_content": "space-between", "flex_gap": GAP(16), "padding": D(24, 0, 0, 0),
                 "border_border": "solid", "border_width": D(1, 0, 0, 0), "border_color": "rgba(255,253,250,0.15)", "width": S(100, '%')},
                [P('© 2026 Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี', 'rgba(255,253,250,0.7)', 13, 13),
-                H(T('นโยบายความเป็นส่วนตัว', 'Privacy policy'), 'div', 'rgba(255,253,250,0.7)', 13, 400, BODY, 1.6,
-                  link=T('/privacy-policy/', '/privacy-policy/'))])
-    return section('footer', COCOA, [top, bottom], pad=(56, 48, 48), gap=48, extra={"html_tag": "footer"})
+                P(T('ร้านทำเล็บ สุราษฎร์ธานี · เปิดทุกวัน 09:00–21:00', 'Nail salon in Surat Thani · Open daily 09:00–21:00'),
+                  'rgba(255,253,250,0.7)', 13, 13)])
+    return section('footer', COCOA, [top, bottom, W('html', {"html": schema()})], pad=(56, 48, 48), gap=48, extra={"html_tag": "footer"})
+
+def schema():
+    """JSON-LD NailSalon + FAQPage ต่อภาษา (Yoast ทำ WebPage/WebSite ให้แล้ว)"""
+    home = 'https://nailmesurat.com/en/' if EN else 'https://nailmesurat.com/'
+    svc = [(T('ทาสีเจลมือ', 'Gel polish (hands)'), 250), (T('ทาสีเจลเท้า', 'Gel polish (feet)'), 300),
+           (T('ต่อเล็บ PVC', 'PVC nail extensions'), 350), (T('สปาเท้า 10 ขั้นตอน', '10-step foot spa'), 499),
+           (T('สปามือ 9 ขั้นตอน', '9-step hand spa'), 399)]
+    salon = {"@type": "NailSalon", "@id": "https://nailmesurat.com/#salon",
+             "name": T('Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี', 'Nail Me San Chao Market, Surat Thani'),
+             "alternateName": ['Nail Me', 'Nail Me ตลาดศาลเจ้า'], "url": home, "inLanguage": T('th', 'en'),
+             "image": U + 'nailme-hero.webp', "logo": U + 'nailme-logo.png',
+             "description": T('ร้านทำเล็บ สุราษฎร์ธานี ข้างตลาดศาลเจ้า ใจกลางเมือง ทำเล็บเจล สปาเท้า 10 ขั้นตอน สปามือ 9 ขั้นตอน ต่อเล็บ PVC เพ้นท์เล็บ สระไดร์',
+                              'Nail salon next to San Chao Market in central Surat Thani: gel polish, PVC extensions, nail art, 10-step foot spa and 9-step hand spa.'),
+             "telephone": "+66646542666", "priceRange": "฿150 - ฿799", "currenciesAccepted": "THB",
+             "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "09:00", "closes": "21:00"}],
+             "address": {"@type": "PostalAddress", "streetAddress": T('285/6 ถนนหน้าเมือง ตำบลตลาด (ข้างตลาดศาลเจ้า)', '285/6 Na Mueang Rd, Talat (next to San Chao Market)'),
+                         "addressLocality": "Mueang Surat Thani", "postalCode": "84000", "addressRegion": "Surat Thani", "addressCountry": "TH"},
+             "geo": {"@type": "GeoCoordinates", "latitude": 9.1454277, "longitude": 99.3267822},
+             "hasMap": GPLACE, "areaServed": {"@type": "City", "name": "Surat Thani"},
+             "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n}, "price": str(pr), "priceCurrency": "THB"} for n, pr in svc],
+             "sameAs": [FB1, FB2, LINE_URL]}
+    faq = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": T(q, qe), "acceptedAnswer": {"@type": "Answer", "text": T(a, ae)}}
+                                               for q, qe, a, ae in FAQ if not (not EN and q.startswith('Do you welcome'))]}
+    return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": [salon, faq]}, ensure_ascii=False) + '</script>'
 
 def build():
     content = [header(), hero(), promo(), services(), spa(), why(), gallery(), reviews(), booking(), faq(), visit(), footer()]
