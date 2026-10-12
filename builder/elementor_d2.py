@@ -213,7 +213,7 @@ def promo():
             h2(T('แคปโพสต์โปร ให้ช่างก่อนรับบริการ', 'Show this promo to your technician'), small=True)]),
         tlink(T('ดูโพสต์โปรบนเพจ', 'See the promo post'), FB1)])
     c1 = promo_card('glitter', PDEEP, '฿200', [P(T('ทาสีเจล ตัดแต่งหนังฟรี <s>250</s>', 'Gel polish with free cuticle care <s>250</s>'), CREAM, 16, 15)])
-    c2 = promo_card('toes_glitter', COCOA, '฿450', [P(T('สปาเท้า 10 ขั้นตอน <s>499</s>', '10-step foot spa <s>499</s>'), CREAM, 16, 15),
+    c2 = promo_card('toes_glitter', COCOA, '฿450', [P(T('สปาเท้า 9 ขั้นตอน <s>499</s>', '9-step foot spa <s>499</s>'), CREAM, 16, 15),
         P(T('<b style="font-family:Cormorant Garamond;font-size:22px">฿150</b> สระไดร์ ทุกความยาว', '<b style="font-family:Cormorant Garamond;font-size:22px">฿150</b> wash &amp; blow-dry, any length'),
           'rgba(255,253,250,0.85)', 15, 14)])
     return section('promo', BLUSH, [head, cols([c1, c2], [48.5, 48.5], 24, tab_stack=False)], pad=(80, 64, 56))
@@ -222,7 +222,7 @@ SVC = [('hero', 'ทาสีเจลมือ', 'Gel polish, hands', 'สี�
        ('toes_brown', 'ทาสีเจลเท้า', 'Gel polish, feet', 'สีสวย เงางาม แห้งไว ไม่ทำลายหน้าเล็บ', 'Glossy colour, quick dry, gentle on nails', '฿300'),
        ('chrome', 'สีลูกแก้ว Cat Eye', 'Cat-eye gel', 'เจลแม่เหล็ก ประกายลึกเหมือนตาแมว', 'Magnetic gel with a deep cat-eye shimmer', '฿350'),
        ('long_clear', 'ต่อเล็บ PVC', 'PVC extensions', 'ต่อเล็บยาวสวยเป็นธรรมชาติ เจลเว้นโคน', 'Natural-looking long nails with gel', '฿350'),
-       ('toes_glitter', 'สปาเท้า 10 ขั้นตอน', '10-step foot spa', 'ขัดถึงใต้เข่า แช่ ขัด มาร์ก นวด บำรุง', 'Soak, scrub, mask, massage — up to the knee', '฿499'),
+       ('toes_glitter', 'สปาเท้า 9 ขั้นตอน', '9-step foot spa', 'ขัดถึงใต้เข่า แช่ ขัด มาร์ก นวด บำรุง', 'Soak, scrub, mask, massage — up to the knee', '฿499'),
        ('nude2', 'สปามือ 9 ขั้นตอน', '9-step hand spa', 'บำรุงล้ำลึก ผ่อนคลายสุดมือ', 'Deep nourishment and a relaxing massage', '฿399')]
 PRICE_ROWS = [('เสริมหน้าเล็บหลังทาสี', 'Overlay after gel', '฿150'), ('เสริมหน้าเล็บก่อนทาสี', 'Overlay before gel', '฿450'),
               ('Manicure / Pedicure', 'Manicure / Pedicure', '฿200'),
@@ -263,13 +263,13 @@ def services():
     cta = C({"flex_align_items": "center", "width": S(100, '%')}, [btn(T('โทรจองคิว', 'Call to book'), TEL, 'pink', I_PHONE, align='center')])
     return section('services', CREAM, [head, grid, plist, note, cta], border=D(1, 0, 1, 0), gap=40)
 
-STEPS = [('แช่เกลือ ดีท็อกซ์ผิวเท้า', 'Salt soak to detox'), ('แช่น้ำนม', 'Milk soak'), ('ฟอก ขัด ล้างเท้า', 'Wash and scrub'), ('สครับเกลือ', 'Salt scrub'),
+STEPS = [('แช่เกลือ ดีท็อกซ์ผิวเท้า', 'Salt soak to detox'), ('ฟอก ขัด ล้างเท้า', 'Wash and scrub'), ('สครับเกลือ', 'Salt scrub'),
          ('มาร์กสครับ + แรป บำรุงล้ำลึก', 'Mask + wrap'), ('ตัดหนัง', 'Cuticle care'), ('ขัดส้นเท้า', 'Heel buffing'), ('บำรุงโลชั่น', 'Lotion'),
          ('นวดผ่อนคลาย', 'Relaxing massage'), ('ฉีดสเปรย์ให้ความชุ่มชื้น', 'Hydrating mist')]
 
 def spa():
     left = C({"flex_gap": GAP(16)}, [
-        h2(T('สปาเท้า 10 ขั้นตอน ขัดถึงใต้เข่า', '10-step foot spa, up to the knee')),
+        h2(T('สปาเท้า 9 ขั้นตอน ขัดถึงใต้เข่า', '9-step foot spa, up to the knee')),
         P(T('ผ่อนคลาย บำรุงล้ำลึก เพื่อเท้าที่คุณรัก ใช้เวลาเต็มขั้นตอน ไม่รีบ เหมาะกับหลังเลิกงานหรือหลังเดินเที่ยวทั้งวัน',
             'Relax and nourish your feet. We take our time with every step — perfect after work or a long day of sightseeing.')),
         H(f'<span style="font-family:{NUM};font-size:48px;font-weight:600;color:{PDEEP}">฿499</span> ' + T('· โปรเดือนนี้ 450', '· this month 450'),
@@ -389,8 +389,8 @@ FAQ = [('ต้องจองคิวล่วงหน้าไหม', 'Do I
         'ราคาปกติ ทาสีเจลมือ 250 เท้า 300 สีลูกแก้ว 350 บาท ช่วงโปรโมชั่นเริ่มต้น 200 บาท ตัดแต่งหนังฟรี (แคปโพสต์โปรให้ช่างก่อนรับบริการ)',
         'Regular prices: hands 250, feet 300, cat-eye 350 THB. During promotions from 200 THB with free cuticle care.'),
        ('สปาเท้ามีขั้นตอนอะไรบ้าง ใช้เวลานานไหม', 'What is included in the foot spa?',
-        'สปาเท้า 10 ขั้นตอน 499 บาท ขัดถึงใต้เข่า ตั้งแต่แช่เกลือ แช่น้ำนม ขัด สครับ มาร์ก+แรป ตัดหนัง ขัดส้นเท้า บำรุง นวด จนถึงสเปรย์ให้ความชุ่มชื้น ทำเต็มทุกขั้นตอน ไม่รีบ',
-        'Our 10-step foot spa (499 THB) covers up to the knee: salt and milk soak, scrub, mask and wrap, cuticle care, heel buffing, lotion, massage and hydrating mist.'),
+        'สปาเท้า 9 ขั้นตอน 499 บาท ขัดถึงใต้เข่า ตั้งแต่แช่เกลือ ขัด สครับ มาร์ก+แรป ตัดหนัง ขัดส้นเท้า บำรุง นวด จนถึงสเปรย์ให้ความชุ่มชื้น ทำเต็มทุกขั้นตอน ไม่รีบ',
+        'Our 9-step foot spa (499 THB) covers up to the knee: salt soak, scrub, mask and wrap, cuticle care, heel buffing, lotion, massage and hydrating mist.'),
        ('ถอดสีเจลที่ทำจากร้านอื่นได้ไหม', 'Can you remove gel done elsewhere?',
         'ได้ ถอดสีเจลอย่างเดียว 100 บาท ถอดแล้วทำต่อที่ร้าน 50 บาท ถอด PVC แล้วทำต่อ 100 บาท',
         'Yes. Removal only 100 THB, removal with a new set 50 THB, PVC removal with a new set 100 THB.'),
@@ -453,9 +453,9 @@ def visit():
         C({"flex_gap": GAP(12), "padding": D(32, 0, 0, 0), "border_border": "solid", "border_width": D(1, 0, 0, 0), "border_color": LINE,
            "_margin": D(24, 0, 0, 0)}, [
             h3(T('เกี่ยวกับ Nail Me ร้านทำเล็บ สุราษฎร์ธานี', 'About Nail Me, nail salon in Surat Thani'), INK, 24),
-            P(T('Nail Me เป็นร้านทำเล็บในสุราษฎร์ธานี ตั้งอยู่ข้างตลาดศาลเจ้า ใจกลางเมือง ให้บริการทำเล็บเจล ต่อเล็บ PVC เพ้นท์เล็บ สปาเท้า 10 ขั้นตอน สปามือ 9 ขั้นตอน รวมถึงสระไดร์ ใครหาร้านทำเล็บสุราษฎร์ที่ราคาชัด เดินทางง่าย แวะมาได้เลย ในคอนเซปต์ “ร้านหรู แต่ราคาน่ารัก” ราคาติดชัดตามป้ายหน้าร้าน ทำแล้วดูแลให้หลังทำ ไม่ทิ้งงาน',
-                'Nail Me is a nail salon next to San Chao Market in central Surat Thani, offering gel polish, PVC nail extensions, nail art, a 10-step foot spa, a 9-step hand spa and blow-dry. Our idea is simple: a luxury salon with lovely prices — clear prices on the board and aftercare you can count on.'), MUTE, 15, 15),
-            P('Nail Me is a nail salon next to San Chao Market in central Surat Thani, offering gel polish, PVC nail extensions, nail art, a 10-step foot spa and a 9-step hand spa. Open daily 09:00–21:00. Thai customers and international travellers are all welcome.', MUTE, 15, 15) if not EN else
+            P(T('Nail Me เป็นร้านทำเล็บในสุราษฎร์ธานี ตั้งอยู่ข้างตลาดศาลเจ้า ใจกลางเมือง ให้บริการทำเล็บเจล ต่อเล็บ PVC เพ้นท์เล็บ สปาเท้า 9 ขั้นตอน สปามือ 9 ขั้นตอน รวมถึงสระไดร์ ใครหาร้านทำเล็บสุราษฎร์ที่ราคาชัด เดินทางง่าย แวะมาได้เลย ในคอนเซปต์ “ร้านหรู แต่ราคาน่ารัก” ราคาติดชัดตามป้ายหน้าร้าน ทำแล้วดูแลให้หลังทำ ไม่ทิ้งงาน',
+                'Nail Me is a nail salon next to San Chao Market in central Surat Thani, offering gel polish, PVC nail extensions, nail art, a 9-step foot spa, a 9-step hand spa and blow-dry. Our idea is simple: a luxury salon with lovely prices — clear prices on the board and aftercare you can count on.'), MUTE, 15, 15),
+            P('Nail Me is a nail salon next to San Chao Market in central Surat Thani, offering gel polish, PVC nail extensions, nail art, a 9-step foot spa and a 9-step hand spa. Open daily 09:00–21:00. Thai customers and international travellers are all welcome.', MUTE, 15, 15) if not EN else
             P('Open daily 09:00–21:00 · 285/6 Na Mueang Rd, Surat Thani 84000.', MUTE, 15, 15)])])
     return section('visit', CREAM, [cols([left, right], [40, 55], 64)], border=D(1, 0, 0, 0))
 
@@ -491,14 +491,14 @@ def schema():
     """JSON-LD NailSalon + FAQPage ต่อภาษา (Yoast ทำ WebPage/WebSite ให้แล้ว)"""
     home = 'https://nailmesurat.com/en/' if EN else 'https://nailmesurat.com/'
     svc = [(T('ทาสีเจลมือ', 'Gel polish (hands)'), 250), (T('ทาสีเจลเท้า', 'Gel polish (feet)'), 300),
-           (T('ต่อเล็บ PVC', 'PVC nail extensions'), 350), (T('สปาเท้า 10 ขั้นตอน', '10-step foot spa'), 499),
+           (T('ต่อเล็บ PVC', 'PVC nail extensions'), 350), (T('สปาเท้า 9 ขั้นตอน', '9-step foot spa'), 499),
            (T('สปามือ 9 ขั้นตอน', '9-step hand spa'), 399)]
     salon = {"@type": "NailSalon", "@id": "https://nailmesurat.com/#salon",
              "name": T('Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี', 'Nail Me San Chao Market, Surat Thani'),
              "alternateName": ['Nail Me', 'Nail Me ตลาดศาลเจ้า'], "url": home, "inLanguage": T('th', 'en'),
              "image": U + 'nailme-hero.webp', "logo": U + 'nailme-logo.png',
-             "description": T('ร้านทำเล็บ สุราษฎร์ธานี ข้างตลาดศาลเจ้า ใจกลางเมือง ทำเล็บเจล สปาเท้า 10 ขั้นตอน สปามือ 9 ขั้นตอน ต่อเล็บ PVC เพ้นท์เล็บ สระไดร์',
-                              'Nail salon next to San Chao Market in central Surat Thani: gel polish, PVC extensions, nail art, 10-step foot spa and 9-step hand spa.'),
+             "description": T('ร้านทำเล็บ สุราษฎร์ธานี ข้างตลาดศาลเจ้า ใจกลางเมือง ทำเล็บเจล สปาเท้า 9 ขั้นตอน สปามือ 9 ขั้นตอน ต่อเล็บ PVC เพ้นท์เล็บ สระไดร์',
+                              'Nail salon next to San Chao Market in central Surat Thani: gel polish, PVC extensions, nail art, 9-step foot spa and 9-step hand spa.'),
              "telephone": "+66646542666", "priceRange": "฿150 - ฿799", "currenciesAccepted": "THB",
              "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "09:00", "closes": "21:00"}],
              "address": {"@type": "PostalAddress", "streetAddress": T('285/6 ถนนหน้าเมือง ตำบลตลาด (ข้างตลาดศาลเจ้า)', '285/6 Na Mueang Rd, Talat (next to San Chao Market)'),
