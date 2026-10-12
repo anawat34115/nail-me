@@ -156,7 +156,7 @@ def header():
                           "_element_width": "initial", "_element_custom_width": S(44)}),
               C({"flex_gap": GAP(4), "width": S(200), "width_mobile": S(164)}, [
                   H('Nail Me', 'p', PDEEP, 24, 600, NUM, 1, style='italic'),
-                  H(T('ตลาดศาลเจ้า · Surat Thani', 'San Chao Market · Surat Thani'), 'p', GDEEP, 12, 400, BODY, 1.2, 1, mob=11)])])
+                  H(T('ตลาดศาลเจ้า · Surat Thani', 'San Chao · Surat Thani'), 'p', GDEEP, 12, 400, BODY, 1.2, 1, mob=11)])])
     items = [(T('โปรโมชั่น','Promotion'),'#promo'),(T('บริการและราคา','Services & prices'),'#services'),(T('สปา','Spa'),'#spa'),
              (T('ผลงาน','Gallery'),'#gallery'),(T('รีวิว','Reviews'),'#reviews'),(T('คำถามที่พบบ่อย','FAQ'),'#faq'),(T('ที่ตั้งร้าน','Visit'),'#visit')]
     nav = W('icon-list', {"view": "inline", "icon_list": [{"text": t, "link": L(h), "selected_icon": {"value": "", "library": ""}, "_id": nid()} for t, h in items],
@@ -177,9 +177,9 @@ def header():
 
 def hero():
     btns = C({"flex_direction": "row", "flex_wrap": "wrap", "flex_gap": GAP(16), "flex_justify_content": "center", "width": S(100, '%')},
-             [btn(T('โทรจองคิว','Call to book'), TEL, 'cream', I_PHONE), btn(T('ทัก LINE','Message on LINE'), LINE_URL, 'ondark', I_LINE)])
+             [btn(T('โทรจองคิว','Call us'), TEL, 'cream', I_PHONE), btn(T('ทัก LINE','LINE us'), LINE_URL, 'ondark', I_LINE)])
     info = P(T('เปิดทุกวัน 09:00–21:00 · จองคิวหรือ walk-in · ', 'Open daily 09:00–21:00 · Booking or walk-in · ') +
-             f'<a href="{TEL}" style="color:{GLIGHT};text-decoration:underline;text-underline-offset:4px">064-654-2666</a> · LINE '
+             f'<a href="{TEL}" style="color:{GLIGHT};text-decoration:underline;text-underline-offset:4px;white-space:nowrap">064-654-2666</a> · LINE '
              f'<a href="{LINE_URL}" target="_blank" rel="noopener" style="color:{GLIGHT};text-decoration:underline;text-underline-offset:4px">jenny5667</a>',
              'rgba(255,253,250,0.8)', 15, 14, 'center', 1.7)
     inner = C({"content_width": "boxed", "boxed_width": S(800), "width": S(100, '%'), "flex_align_items": "center", "flex_gap": GAP(24),
@@ -377,7 +377,7 @@ def booking():
                         "border_color": "rgba(255,253,250,0.3)"},
                        [price(str(i), GLIGHT, 40), h3(T(th, en), CREAM, 24, 22), P(T(dth, den), 'rgba(255,253,250,0.8)', 15, 15)]))
     btns = C({"flex_direction": "row", "flex_wrap": "wrap", "flex_gap": GAP(16), "flex_justify_content": "center", "width": S(100, '%')},
-             [btn(T('โทรจองคิว', 'Call to book'), TEL, 'cream', I_PHONE), btn(T('ทัก LINE', 'Message on LINE'), LINE_URL, 'ondark', I_LINE)])
+             [btn(T('โทรจองคิว', 'Call us'), TEL, 'cream', I_PHONE), btn(T('ทัก LINE', 'LINE us'), LINE_URL, 'ondark', I_LINE)])
     head = C({"flex_align_items": "center", "flex_gap": GAP(8), "width": S(100, '%')},
              [label('Please make a reservation', GLIGHT, 'center'), h2(T('จองคิวง่าย ๆ 3 ขั้นตอน', 'Book in 3 easy steps'), CREAM, 'center')])
     return section('booking', PDEEP, [head, cols(steps, [31, 31, 31], 32), btns], pad=(80, 64, 56))
@@ -464,7 +464,7 @@ def footer():
         C({"flex_direction": "row", "flex_direction_mobile": "row", "flex_wrap": "nowrap", "flex_align_items": "center", "flex_gap": GAP(16)}, [
             W('image', {"image": LOGO, "image_size": "full", "width": S(56), "image_border_radius": D(999), "_element_width": "initial", "_element_custom_width": S(56)}),
             C({"flex_gap": GAP(4), "width": S(220)}, [H('Nail Me', 'p', GLIGHT, 28, 600, NUM, 1, style='italic'),
-                                                     H('ตลาดศาลเจ้า · Surat Thani', 'p', 'rgba(233,215,165,0.8)', 12, 400, BODY, 1.3, 1)])]),
+                                                     H(T('ตลาดศาลเจ้า · Surat Thani', 'San Chao Market · Surat Thani'), 'p', 'rgba(233,215,165,0.8)', 12, 400, BODY, 1.3, 1)])]),
         P(T('เปลี่ยนเล็บสวยให้โดดเด่นในทุกวัน ยินดีต้อนรับทั้งลูกค้าไทยและนักท่องเที่ยว', 'Beautiful nails for every day. Thai customers and international travellers welcome.'),
           'rgba(255,253,250,0.8)', 15, 15)])
     contact = C({"flex_gap": GAP(8)}, [label(T('ติดต่อ', 'Contact'), GLIGHT),
@@ -481,10 +481,11 @@ def footer():
     for k in top['elements']: k['settings']['width_tablet'] = S(100, '%')
     bottom = C({"flex_direction": "row", "flex_wrap": "wrap", "flex_justify_content": "space-between", "flex_gap": GAP(16), "padding": D(24, 0, 0, 0),
                 "border_border": "solid", "border_width": D(1, 0, 0, 0), "border_color": "rgba(255,253,250,0.15)", "width": S(100, '%')},
-               [P('© 2026 Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี', 'rgba(255,253,250,0.7)', 13, 13),
+               [P(T('© 2026 Nail Me ตลาดศาลเจ้า สุราษฎร์ธานี', '© 2026 Nail Me San Chao Market, Surat Thani'), 'rgba(255,253,250,0.7)', 13, 13),
                 P(T('ร้านทำเล็บ สุราษฎร์ธานี · เปิดทุกวัน 09:00–21:00', 'Nail salon in Surat Thani · Open daily 09:00–21:00'),
                   'rgba(255,253,250,0.7)', 13, 13)])
-    return section('footer', COCOA, [top, bottom, W('html', {"html": schema()})], pad=(56, 48, 48), gap=48, extra={"html_tag": "footer"})
+    return section('footer', COCOA, [top, bottom, W('html', {"html": schema()})], pad=(56, 48, 48), gap=48,
+                   extra={"html_tag": "footer", "padding_mobile": D(48, 0, 120, 0)})  # เผื่อที่แถบปุ่มลอยมือถือ
 
 def schema():
     """JSON-LD NailSalon + FAQPage ต่อภาษา (Yoast ทำ WebPage/WebSite ให้แล้ว)"""
@@ -510,8 +511,21 @@ def schema():
                                                for q, qe, a, ae in FAQ if not (not EN and q.startswith('Do you welcome'))]}
     return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": [salon, faq]}, ensure_ascii=False) + '</script>'
 
+def mobile_cta():
+    """แถบปุ่มโทร/LINE ติดล่างจอ เฉพาะมือถือ (เลียนแบบ #mobile-cta ที่เพิ่มในหน้า TH)"""
+    ex = {"_flex_size": "grow", "align": "justify", "text_padding": D(14, 16), "border_color": PDEEP, "button_hover_border_color": PDEEP}
+    b1 = btn(T('โทรจองคิว', 'Call us'), TEL, 'cream', I_PHONE, lg=False, extra=dict(ex))
+    b2 = btn(T('ทัก LINE', 'LINE us'), LINE_URL, 'cream', I_LINE, lg=False, extra=dict(ex))
+    return C({"_element_id": "mobile-cta", "flex_direction": "row", "flex_direction_mobile": "row", "flex_wrap": "nowrap",
+              "flex_gap": GAP(8), "padding": D(8, 16), "background_background": "classic", "background_color": CREAM,
+              "border_border": "solid", "border_width": D(1, 0, 0, 0), "border_color": "#E6DCCF",
+              "box_shadow_box_shadow_type": "yes",
+              "box_shadow_box_shadow": {"horizontal": 0, "vertical": -4, "blur": 16, "spread": 0, "color": "rgba(60,40,30,0.08)"},
+              "position": "fixed", "_offset_orientation_v": "end", "_offset_y_end": S(0), "_offset_x": S(0), "z_index": 999,
+              "width": S(100, '%'), "hide_desktop": "hidden-desktop", "hide_tablet": "hidden-tablet"}, [b1, b2], inner=False)
+
 def build():
-    content = [header(), hero(), promo(), services(), spa(), why(), gallery(), reviews(), booking(), faq(), visit(), footer()]
+    content = [header(), hero(), promo(), services(), spa(), why(), gallery(), reviews(), booking(), faq(), visit(), footer(), mobile_cta()]
     return {"version": "0.4", "title": T('Nail Me หน้าแรก (TH) · แบบ 2 native', 'Nail Me Home (EN) · design 2 native'), "type": "page",
             "content": content,
             "page_settings": {"hide_title": "yes", "template": "elementor_canvas", "background_background": "classic", "background_color": BLUSH}}
